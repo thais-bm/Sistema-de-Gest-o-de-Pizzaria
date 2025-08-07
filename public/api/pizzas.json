@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "title": "Calabresa",
+    "price": 99.99,
+    "category": "salgada",
+    "image": "images/pizza_calabresa.jpg",
+    "ingredients": "calabresa, massa"
+  },
+  {
+    "id": 2,
+    "title": "Marguerita",
+    "price": 98.00,
+    "category": "salgada",
+     "image": "/images/pizzar.jpg",
+     "ingredients": "queijo, tomate, massa"
+  },
+  {
+    "id": 3,
+    "title": "Quatro queijos",
+    "price": 8.25,
+    "category": "salgada",
+    "image": "/images/pizzar.jpg",
+    "ingredients": "queijo 1, queijo 2, queijo 3, queijo 4"
+  },
+  {
+    "id": 4,
+    "title": "Atum",
+    "price": 8.75,
+    "category": "salgada",
+    "image": "/images/pizzar.jpg",
+    "ingredients": "atum, massa"
+  },
+  {
+    "id": 5,
+    "title": "Brigadeiro",
+    "price": 78.25,
+    "category": "doce",
+    "image": "/images/pizzar.jpg",
+    "ingredients": "brigadeiro, massa"
+  },
+  {
+    "id": 6,
+    "title": "Doce de Leite",
+    "price": 78.25,
+    "category": "doce",
+    "image": "/images/pizzar.jpg",
+    "ingredients": "doce de leite, massa"
+  },
+  {
+    "id": 7,
+    "title": "Tomate seco",
+    "price": 78.25,
+    "category": "salgada",
+    "image": "/images/pizzar.jpg",
+    "ingredients": "tomate seco, massa"
+  },
+  {
+    "id": 8,
+    "title": "Brigadeiro",
+    "price": 78.25,
+    "category": "doce",
+    "image": "/images/pizzar.jpg",
+    "ingredients": ""
+  },
+  {
+    "id": 9,
+    "title": "Brigadeiro",
+    "price": 78.25,
+    "category": "doce",
+    "image": "/images/pizzar.jpg",
+    "ingredients": ""
+  },
+  {
+    "id": 10,
+    "title": "Brigadeiro",
+    "price": 78.25,
+    "category": "doce",
+    "image": "/images/pizzar.jpg",
+    "ingredients": ""
+  },
+  {
+    "id": 11,
+    "title": "Brigadeiro",
+    "price": 78.25,
+    "category": "doce",
+    "image": "/images/pizzar.jpg",
+    "ingredients": ""
+  },
+  {
+    "id": 12,
+    "title": "Coca-cola",
+    "price": 5.25,
+    "category": "bebida",
+    "image": "/images/coca.jpg",
+    "quantity": 7
+  },
+  {
+    "id": 13,
+    "title": "Sprite",
+    "price": 4.25,
+    "category": "bebida",
+    "image": "/images/coca.jpg",
+    "quantity": 6
+  },
+  {
+    "id": 14,
+    "title": "Fanta-Uva",
+    "price": 4.25,
+    "category": "bebida",
+    "image": "/images/coca.jpg",
+    "quantity": 3
+  },
+  {
+    "id": 15,
+    "title": "Fanta-Laranja",
+    "price": 4.25,
+    "category": "bebida",
+    "image": "/images/coca.jpg",
+    "quantity": 5
+  },
+  {
+    "id": 16,
+    "title": "Água",
+    "price": 2.25,
+    "category": "bebida",
+    "image": "/images/coca.jpg",
+    "quantity": 4
+  },
+  {
+    "id": 17,
+    "title": "Vinho",
+    "price": 102.35,
+    "category": "bebida",
+    "image": "/images/coca.jpg",
+    "quantity": 5
+  },
+  {
+    "id": 18,
+    "title": "Portuguesa",
+    "price": 78.25,
+    "category": "salgada",
+    "image": "/images/pizzar.jpg"
+  }
+  
+]
