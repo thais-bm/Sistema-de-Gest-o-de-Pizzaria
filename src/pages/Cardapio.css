@@ -19,15 +19,29 @@
     text-align: center;
     background: linear-gradient(90deg, #663402, #b84e07, #e45609);
     background-color: #684422;
+    -webkit-text-stroke: 1px rgb(66, 26, 14);
     border-radius: 30px; /*caso nao quiser redondo tira isso aq*/
 }
 
-.body{
-  background-color: #3a2406;
+
+.cardapio {
+  flex-grow: 1;
+  background-image: url("images/madeira.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat:repeat;
+  position: relative;
+  padding-top: 140px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.cardapio{
-  padding-top: 178px;
+body{
+  margin:0;
 }
 
 
@@ -61,8 +75,21 @@
   text-decoration-color: #750606;
 }
 
+body {
+  background-color: #3a2406;
 
-.produtos{
-
+  justify-content: center; 
+   
+  min-height: 100vh;       
+  margin: 0;
 }
 
+
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 colunas */
+  gap: 1.5rem; /* espaçamento entre os cards */
+  justify-items: center; /* centraliza cada card dentro da célula */
+}

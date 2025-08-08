@@ -7,7 +7,7 @@ const Header = () => {
     <header>
         <div className="header-container">
             <div>
-                <h1 className="melting-text">Freedy's Pizzaria</h1>
+                <h1 className="melting-text">Freddy's Pizzaria</h1>
                 <img src='/logo/freddy_pizza.png' alt='Logo' className='logo'/>
             </div>
             <button> 🛒 Carrinho</button>

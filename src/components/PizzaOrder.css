@@ -6,7 +6,8 @@
     object-fit: cover; 
 }
 
-/*colocar pro lado direto da tela*/
+/* colocar a pizza pro lado esquerdo da tela*/
+/*colocar  as informações pro lado direto da tela*/
 /*queria fazer tipo uma box que tenha as informações da pizza*/
 /*e fazer o coisinha de escolher tamanho mais bonitinho*/
 .order-box{
@@ -14,6 +15,7 @@
     justify-content: center;
 }
 
-input[type="radio"] {
 
-    }
+body{
+    background: linear-gradient(135deg,  rgb(182, 125, 34),rgb(176, 96, 4) 50%,rgb(120, 74, 0) 50%,rgb(231, 129, 4) 50%,rgb(198, 109, 7) 100%) 
+}

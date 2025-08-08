@@ -2,9 +2,12 @@ import React from 'react'
 import PizzaCard from '../components/PizzaCard'
 import Header from '../components/Header'
 import "./Cardapio.css"
+import { useProdutos } from "../context/ProdutosContext";
 
 
-const Cardapio = ({produtos}) => {
+const Cardapio = () => {
+  const {produtos} = useProdutos();
+
   const pizzasSalgadas = produtos.filter(p => p.category === "pizza" && p.subcategory === "salgada");
   const pizzasDoces = produtos.filter(p => p.category === "pizza" && p.subcategory === "doce");
   const bebidasRefri = produtos.filter(p => p.category === "bebida" && p.subcategory === "refrigerante");
@@ -36,14 +39,14 @@ const Cardapio = ({produtos}) => {
           </div>
         </div>
 
-        <h1 className='produto-h1'> Pizzas salgadas </h1>
-        <div>
+        <h2 className='produto-h2'> Pizzas salgadas </h2>
+        <div className='cards'>
           {pizzasSalgadas.map(pizza => (
             <PizzaCard  key={pizza.id} pizza={pizza} />
           ))}
         </div>
 
-        <h1 className='produto-h1'> Pizzas doces </h1>
+        <h2 className='produto-h2'> Pizzas doces </h2>
         <div className='cards'>
           {pizzasDoces.map(pizza => (
             <PizzaCard key={pizza.id} pizza={pizza} />
@@ -57,23 +60,29 @@ const Cardapio = ({produtos}) => {
 
         <div>
           <h2 className='produto-h2'> Água </h2>
-          {bebidasAgua.map(pizza => (
-            <PizzaCard key={pizza.id} pizza={pizza} />
-          ))}
+          <div className='cards'>
+            {bebidasAgua.map(pizza => (
+              <PizzaCard key={pizza.id} pizza={pizza} />
+            ))}
+          </div>
         </div>
 
         <div>
           <h2 className='produto-h2'> Refrigerante </h2>
-          {bebidasRefri.map(pizza => (
-            <PizzaCard key={pizza.id} pizza={pizza} />
-          ))}
+          <div className='cards'>
+            {bebidasRefri.map(pizza => (
+              <PizzaCard key={pizza.id} pizza={pizza} />
+            ))}
+          </div>
         </div>
 
         <div>
           <h2> Vinho </h2>
+          <div className='cards'>
           {bebidasVinho.map(pizza => (
             <PizzaCard key={pizza.id} pizza={pizza} />
           ))}
+          </div>
         </div>
       </section>
     </div>
