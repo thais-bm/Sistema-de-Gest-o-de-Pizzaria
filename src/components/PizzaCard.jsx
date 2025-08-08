@@ -20,9 +20,11 @@ const PizzaCard = ({pizza}) => {
     <span class="feat">Promoção</span>
     </div>
     <div class="bottom">
-    <div class="price">
-      <span class="new"> R$ {pizza.price} </span>
-    </div>
+    {pizza.price && (
+        <div className="price">
+          <span className="new">R$ {pizza.price}</span>
+        </div>
+    )}
     <button class="btn">
       <span>Adicionar ao carrinho</span>
       <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

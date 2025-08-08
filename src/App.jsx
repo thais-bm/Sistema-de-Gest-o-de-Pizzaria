@@ -3,7 +3,8 @@ import axios from "axios"
 import './App.css'
 import Header from './components/Header';
 import PizzaCard from './components/PizzaCard';
-
+import Cardapio from './pages/Cardapio';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const [pizza, setPizza] = useState(null);
@@ -38,9 +39,9 @@ function App() {
 
   return (
    <main>
-    <Header/>
-    <PizzaCard pizza={pizza}/>
-    <PizzaCard pizza={pizza}/>
+    <Routes>
+      <Route element={<Cardapio pizza={pizza}/>} path="/"/>
+    </Routes>
    </main>
   )
 }

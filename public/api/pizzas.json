@@ -2,97 +2,87 @@
   {
     "id": 1,
     "title": "Calabresa",
-    "price": 99.99,
     "category": "salgada",
     "image": "images/pizza_calabresa.jpg",
-    "ingredients": "calabresa, massa"
+    "ingredients": "calabresa, queijo, azeitona preta, cebola"
   },
   {
     "id": 2,
     "title": "Marguerita",
-    "price": 98.00,
     "category": "salgada",
-     "image": "/images/pizzar.jpg",
-     "ingredients": "queijo, tomate, massa"
+     "image": "/images/marguerita.jpg",
+     "ingredients": "molho de tomate, muçarela, alho frito, orégano, azeitonas"
   },
   {
     "id": 3,
     "title": "Quatro queijos",
-    "price": 8.25,
     "category": "salgada",
-    "image": "/images/pizzar.jpg",
-    "ingredients": "queijo 1, queijo 2, queijo 3, queijo 4"
+    "image": "/images/4queijos.jpg",
+    "ingredients": "mussarela, provolone, gorgonzola, parmessão"
   },
   {
     "id": 4,
-    "title": "Atum",
-    "price": 8.75,
+    "title": "Muçarela",
     "category": "salgada",
-    "image": "/images/pizzar.jpg",
-    "ingredients": "atum, massa"
+    "image": "/images/muçarela.jpg",
+    "ingredients": "molho de tomate, muçarela, orégano, azeitonas"
   },
   {
     "id": 5,
     "title": "Brigadeiro",
-    "price": 78.25,
     "category": "doce",
-    "image": "/images/pizzar.jpg",
-    "ingredients": "brigadeiro, massa"
+    "image": "/images/brigadeiro.jpg",
+    "ingredients": "chocolate em pó, chocolate granulado"
   },
   {
     "id": 6,
     "title": "Doce de Leite",
-    "price": 78.25,
     "category": "doce",
-    "image": "/images/pizzar.jpg",
-    "ingredients": "doce de leite, massa"
+    "image": "/images/doce_de_leite.jpg",
+    "ingredients": "doce de leite, coco ralado, queijo mussarela"
   },
   {
     "id": 7,
-    "title": "Tomate seco",
-    "price": 78.25,
+    "title": "Catupiry com frango",
+
     "category": "salgada",
-    "image": "/images/pizzar.jpg",
-    "ingredients": "tomate seco, massa"
+    "image": "/images/catupiry.jpg",
+    "ingredients":"molho de tomate, catupiry, parmesão, frango desfiado, orégano, azeitonas"
   },
   {
     "id": 8,
-    "title": "Brigadeiro",
-    "price": 78.25,
+    "title": "Estrogonofe de carne",
     "category": "doce",
-    "image": "/images/pizzar.jpg",
-    "ingredients": ""
+    "image": "/images/estrogonofe.jpg",
+    "ingredients": "estrogonofe de carne. muçarela, orégano, azeitonas"
   },
   {
     "id": 9,
-    "title": "Brigadeiro",
-    "price": 78.25,
-    "category": "doce",
-    "image": "/images/pizzar.jpg",
-    "ingredients": ""
+    "title": "Atum",
+    "category": "salgada",
+    "image": "/images/atum.jpg",
+    "ingredients": "molho de tomate, muçarela, atum, cebola, orégano, azeitonas"
   },
   {
     "id": 10,
-    "title": "Brigadeiro",
-    "price": 78.25,
-    "category": "doce",
-    "image": "/images/pizzar.jpg",
-    "ingredients": ""
+    "title": "Camarão",
+    "category": "salgada",
+    "image": "/images/camarão.jpg",
+    "ingredients": "molho de tomate, muçarela, camarão, salsinha, cebola, orégano, azeitonas"
   },
   {
     "id": 11,
-    "title": "Brigadeiro",
-    "price": 78.25,
-    "category": "doce",
-    "image": "/images/pizzar.jpg",
-    "ingredients": ""
+    "title": "Tomate seco",
+    "category": "salgada",
+    "image": "/images/tomate_seco.jpg",
+    "ingredients": "molho de tomate, muçarela, tomate seco, cebolinha, manjericão, orégano, azeitonas"
   },
   {
     "id": 12,
     "title": "Coca-cola",
     "price": 5.25,
     "category": "bebida",
-    "image": "/images/coca.jpg",
+    "image": "/images/coca_cola.png",
     "quantity": 7
   },
   {
@@ -108,7 +98,7 @@
     "title": "Fanta-Uva",
     "price": 4.25,
     "category": "bebida",
-    "image": "/images/coca.jpg",
+    "image": "/images/fanta_uva.jpg",
     "quantity": 3
   },
   {
@@ -116,7 +106,7 @@
     "title": "Fanta-Laranja",
     "price": 4.25,
     "category": "bebida",
-    "image": "/images/coca.jpg",
+    "image": "/images/fanta_laranja.png",
     "quantity": 5
   },
   {
@@ -124,7 +114,7 @@
     "title": "Água",
     "price": 2.25,
     "category": "bebida",
-    "image": "/images/coca.jpg",
+    "image": "/images/água.png",
     "quantity": 4
   },
   {
@@ -132,15 +122,15 @@
     "title": "Vinho",
     "price": 102.35,
     "category": "bebida",
-    "image": "/images/coca.jpg",
+    "image": "/images/vinho.jpg",
     "quantity": 5
   },
   {
     "id": 18,
     "title": "Portuguesa",
-    "price": 78.25,
     "category": "salgada",
-    "image": "/images/pizzar.jpg"
+    "image": "/images/portuguesa.jpg",
+    "ingredients": "molho de tomate, muçarela, calabresa fatiada, presunto, ovos, cebola, orégano"
   }
   
 ]
