@@ -1,10 +1,35 @@
-h1{
-    color: rgb(148, 59, 4);
+.produto-h1{
+    border: 2px solid #4f2b09;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(237, 162, 116);
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(90deg, #472504, #9a4309, #c74b08);
+    background-color: #4f2b09;
+    -webkit-text-stroke: 2px rgb(66, 26, 14);
+    border-radius: 5px; /*caso nao quiser redondo tira isso aq*/
 }
 
-h2{
-    color:chocolate;
+.produto-h2{
+  color:rgb(123, 56, 8);
+  border: 2px solid #291c0f;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(233, 176, 140);
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(90deg, #663402, #b84e07, #e45609);
+    background-color: #684422;
+    border-radius: 30px; /*caso nao quiser redondo tira isso aq*/
 }
+
+.body{
+  background-color: #3a2406;
+}
+
+.cardapio{
+  padding-top: 178px;
+}
+
 
 .tamanhos {
   display: flex;
@@ -14,6 +39,7 @@ h2{
 
 .tamanho-item {
   display: flex;
+  font-family:Impact;
   flex-direction: column; 
   align-items: center; 
   min-width: 100px;
@@ -21,22 +47,22 @@ h2{
 
 .tamanho-item h2 {
   margin: 0;
+  font-family:Impact;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 .tamanho-item p {
+  font-family:Impact;
   margin: 0.25rem 0 0 0;
   font-size: 1.6rem;
-  color: #555;
+  color: #5c0606;
+  text-decoration: underline;
+  text-decoration-color: #750606;
 }
 
 
 .produtos{
-  align-self: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  text-align: center;
-  padding-left: 45rem;
+
 }
 

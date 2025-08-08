@@ -1,0 +1,11 @@
+.order img{
+    padding-top: 40px;
+    width: 600px; 
+    height: 600px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+.order h1{
+    
+}

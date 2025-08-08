@@ -20,9 +20,7 @@ header {
     position: relative;
 }
 
-main {
-  padding-top: 178px; /* mesmo valor da altura do header */
-}
+
 
 .logo{
     position: fixed;
