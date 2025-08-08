@@ -1,46 +1,32 @@
 import { useState, useEffect } from 'react'
 import axios from "axios"
 import './App.css'
-import Header from './components/Header';
-import PizzaCard from './components/PizzaCard';
 import Cardapio from './pages/Cardapio';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const [pizza, setPizza] = useState(null);
   const [erro, setErro] = useState(null);
+  const [produtos, setProdutos] = useState([]);
 
 
   useEffect(() => {
-    const carregarPizzas = async () => {
+    const carregarProdutos = async () => {
       try{
-        const response = await axios.get("/api/pizzas.json");
-        setPizza(response.data);
+        const response = await axios.get("/api/produtos.json");
+        setProdutos(response.data);
       }catch(error){
-        console.error("Erro ao carregar pizzas:",error);
+        console.error("Erro ao carregar produtos:",error);
         setErro("Falha ao carrrgar as pizzas. Aff")
       }
     };
-    carregarPizzas();
+    carregarProdutos();
   },[]);
 
-  //so pra testar o card dps eu coloco certinho
-  useEffect(() => {
-    fetch("api/pizzas.json")
-      .then(res => res.json())
-      .then(data => {
-        const pizza1 = data.find(p => p.id === 1);
-        setPizza(pizza1);
-      })
-      .catch(erro => console.error("Erro ao carregar pizza:", erro));
-  }, []);
-
-  if (!pizza) return <p>Não tem pizzar</p>;
 
   return (
    <main>
     <Routes>
-      <Route element={<Cardapio pizza={pizza}/>} path="/"/>
+      <Route element={<Cardapio produtos={produtos}/>} path="/"/>
     </Routes>
    </main>
   )

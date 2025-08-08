@@ -6,6 +6,37 @@ h2{
     color:chocolate;
 }
 
-tamanhos{
-    
+.tamanhos {
+  display: flex;
+  gap: 2rem; 
+  justify-content: center;
 }
+
+.tamanho-item {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  min-width: 100px;
+}
+
+.tamanho-item h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.tamanho-item p {
+  margin: 0.25rem 0 0 0;
+  font-size: 1.6rem;
+  color: #555;
+}
+
+
+.produtos{
+  align-self: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 45rem;
+}
+

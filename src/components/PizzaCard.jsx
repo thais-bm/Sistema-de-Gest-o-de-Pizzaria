@@ -15,8 +15,8 @@ const PizzaCard = ({pizza}) => {
     <h2 class="title">{pizza.title}</h2>
     <p class="desc"> </p>
     <div class="feats">
-    <span class="feat">Pizza</span>
-    <span class="feat">Salgada</span>
+    <span class="feat">{pizza.category}</span>
+    <span class="feat">{pizza.subcategory}</span>
     <span class="feat">Promoção</span>
     </div>
     <div class="bottom">
