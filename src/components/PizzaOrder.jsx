@@ -1,12 +1,14 @@
 import React from 'react'
 import './PizzaOrder.css'
+import { useLocation } from 'react-router-dom';
 
 //Queria q isso aq fosse uma pequena pagina tipo
 //um pop up que tem do ifood
 //n q fosse pra uma pagina diferente aff
-
-function PizzaOrder({pizza}) {
-
+// 
+const PizzaOrder = () => {
+  const location = useLocation();
+  const pizza = location.state?.pizza;
 
   return (
     <div className="order">

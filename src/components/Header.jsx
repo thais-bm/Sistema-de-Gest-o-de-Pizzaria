@@ -2,6 +2,8 @@ import React from 'react'
 import { Link} from 'react-router-dom'
 import './Header.css'
 
+//tem que ajeitar essa header ae
+
 const Header = () => {
   return (
     <header>

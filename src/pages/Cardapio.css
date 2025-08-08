@@ -89,7 +89,8 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 4 colunas */
+  grid-template-columns: repeat(3, 1fr); 
+  padding: 0 200px; /* 4 colunas */
   gap: 1.5rem; /* espaçamento entre os cards */
   justify-items: center; /* centraliza cada card dentro da célula */
 }
