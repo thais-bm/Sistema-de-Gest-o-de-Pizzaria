@@ -6,6 +6,14 @@
     object-fit: cover; 
 }
 
-.order h1{
-    
+/*colocar pro lado direto da tela*/
+/*queria fazer tipo uma box que tenha as informações da pizza*/
+/*e fazer o coisinha de escolher tamanho mais bonitinho*/
+.order-box{
+    align-items:center ;
+    justify-content: center;
 }
+
+input[type="radio"] {
+
+    }
