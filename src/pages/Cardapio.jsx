@@ -76,7 +76,7 @@ const Cardapio = () => {
         </div>
 
         <div>
-          <h2> Vinho </h2>
+          <h2 className='produto-h2'> Vinho </h2>
           <div className='cards'>
           {bebidasVinho.map(pizza => (
             <PizzaCard key={pizza.id} pizza={pizza} />

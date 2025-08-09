@@ -44,26 +44,27 @@ const PizzaOrder = () => {
       onClose: () => navigate('/Carrinho') 
     });
   };
-    
-      const aumentarQuantidade = () => {
+
+    const aumentarQuantidade = () => {
           setQuantidade(prev => prev + 1);
         };
 
       const diminuirQuantidade = () => {
         setQuantidade(prev => (prev > 1 ? prev - 1 : 1));
       };
+ 
 
   return (
     <div className="order">
       <img src={pizza.image}/>
       <div className='order-box'>
         <h1>{pizza.title}</h1>
-        <h2>{pizza.ingredients}</h2>
+        <h2 >{pizza.ingredients}</h2>
         
         {pizza.category === "pizza" && (
           <div className="tamanho">
           <form>
-            <p>Selecione o tamanho da pizza:</p>
+            <p className='tamanho-pizzas'>Selecione o tamanho da pizza:</p>
             {/* Com base do dicionario no ProdutosContext */}
             {precosPizza.map((precoInfo) => (
               <React.Fragment key={precoInfo.id}>
@@ -83,8 +84,8 @@ const PizzaOrder = () => {
           </div>
         )}
 
-        <div className='quantidade'>
-        <p>Selecione a quantidade:</p>
+      <div className='quantidade'>
+        <p className='tamanho-pizzas'>Selecione a quantidade:</p>
         <div className='quantidade-controle'>
           <button type="button" onClick={diminuirQuantidade}> - </button>
           <span>  {quantidade}  </span>
