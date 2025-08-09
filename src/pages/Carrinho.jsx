@@ -1,8 +1,14 @@
 import React from 'react'
+//import { useCarrinho } from '../context/CarrinhoContext';
+//preguicar
 
-function Carrinho() {
+const Carrinho = () => {
+
+
   return (
-    <div>Carrinho</div>
+    <div className="carrinho">
+      <h1> Carrinho </h1>
+    </div>
   )
 }
 

@@ -4,7 +4,6 @@ import Header from '../components/Header'
 import "./Cardapio.css"
 import { useProdutos } from "../context/ProdutosContext";
 
-
 const Cardapio = () => {
   const {produtos} = useProdutos();
 

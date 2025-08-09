@@ -36,7 +36,7 @@ const PizzaOrder = () => {
             
             <p> Alguma observação? </p>
             <textarea rows="5" cols="50" placeholder="Ex: Tirar cebola, tirar azeitonas..."></textarea>
-
+            <br/>
 
             <button> Adicionar ao Carrinho </button>
 

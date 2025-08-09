@@ -6,13 +6,14 @@ import Carrinho from '../pages/Carrinho';
 import Cozinha from '../pages/Cozinha';
 import NotFound from '../pages/NotFound';
 import { ProdutosProvider } from '../context/ProdutosContext';
-
+import { CarrinhoProvider } from '../context/CarrinhoContext';
 
 
 const AppRoutes = () => {
 
     return(
         <ProdutosProvider>
+          <CarrinhoProvider>
           <Routes>
             <Route element={<Cardapio />} path="/" />
             <Route element={<PizzaOrder />} path="/PizzaOrder" />
@@ -20,6 +21,7 @@ const AppRoutes = () => {
             <Route element={<Cozinha />} path="/Cozinha" />
             <Route element={<NotFound />} path="/NotFound" />
           </Routes>
+          </CarrinhoProvider>
         </ProdutosProvider>
     )
 }

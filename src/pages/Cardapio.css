@@ -44,7 +44,6 @@ body{
   margin:0;
 }
 
-
 .tamanhos {
   display: flex;
   gap: 2rem; 
@@ -62,7 +61,7 @@ body{
 .tamanho-item h2 {
   margin: 0;
   font-family:Impact;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -77,20 +76,15 @@ body{
 
 body {
   background-color: #3a2406;
-
   justify-content: center; 
-   
   min-height: 100vh;       
   margin: 0;
 }
 
-
-
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  padding: 0 200px; /* 4 colunas */
-  gap: 1.5rem; /* espaçamento entre os cards */
-  justify-items: center; /* centraliza cada card dentro da célula */
+  padding: 0 200px; 
+  gap: 1.5rem; 
+  justify-items: center; 
 }
