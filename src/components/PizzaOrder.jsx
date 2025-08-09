@@ -17,6 +17,7 @@ const PizzaOrder = () => {
             <h1> {pizza.title} </h1>
             <h2> {pizza.ingredients} </h2>
             
+            {pizza.category === "pizza" ? (
             <form>
                 <p>Selecione o tamanho da pizza:</p>
 
@@ -32,7 +33,25 @@ const PizzaOrder = () => {
                 <input type="radio" id="pizza" name="pizza" value="familia"/>
                 <label for="pequena">Pizza família (R$ 120,99)</label>  <br/>
 
+                <p> Selecione a quantidade: </p>
+                <select name="quantidade" id="quantidade">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                  </select>
+
             </form>
+            ) : pizza.category === "bebida" ? (
+              <div>
+              <p> Selecione a quantidade: </p>
+                <select name="quantidade" id="quantidade">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                </select>
+              </div>
+            ): null}
+
             
             <p> Alguma observação? </p>
             <textarea rows="5" cols="50" placeholder="Ex: Tirar cebola, tirar azeitonas..."></textarea>

@@ -94,7 +94,8 @@
     "category": "bebida",
     "subcategory": "refrigerante",
     "image": "/images/coca_cola.png",
-    "quantity": 7
+    "quantity": 7,
+    "ingredients": "500ml"
   },
   {
     "id": 13,
@@ -103,7 +104,8 @@
     "category": "bebida",
     "subcategory": "refrigerante",
     "image": "/images/sprite.png",
-    "quantity": 6
+    "quantity": 6,
+    "ingredients": "500ml"
   },
   {
     "id": 14,
@@ -112,7 +114,8 @@
     "category": "bebida",
     "subcategory": "refrigerante",
     "image": "/images/fanta_uva.png",
-    "quantity": 3
+    "quantity": 3,
+    "ingredients": "500ml"
   },
   {
     "id": 15,
@@ -121,7 +124,8 @@
     "category": "bebida",
     "subcategory": "refrigerante",
     "image": "/images/fanta_laranja.png",
-    "quantity": 5
+    "quantity": 5,
+    "ingredients": "500ml"
   },
   {
     "id": 16,
@@ -130,7 +134,8 @@
     "category": "bebida",
     "subcategory": "água",
     "image": "/images/água.png",
-    "quantity": 4
+    "quantity": 4,
+    "ingredients": "500ml"
   },
   {
     "id": 17,
@@ -139,7 +144,8 @@
     "category": "bebida",
     "subcategory": "vinho",
     "image": "/images/vinho.jpeg",
-    "quantity": 5
+    "quantity": 5,
+    "ingredients": "1L"
   },
   {
     "id": 18,

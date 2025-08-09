@@ -8,23 +8,24 @@ const PizzaCard = ({pizza}) => {
 
   const handleOrder = () => {
       navigate('/PizzaOrder', { state: { pizza } });
-    };
+  };
+
   return (
    <div className="card">
-    <div className="badge">Mais Vendida!</div>
+    <div className="badge"></div>
     <div className="tilt">
     <div className="img">
       <img src={pizza.image}/>
     </div>
   </div>
   <div className="info">
-    <div className="cat">Pizzas mais vendidas</div>
+    <div className="cat">{pizza.ingredients}</div>
     <h2 className="title">{pizza.title}</h2>
     <p className="desc"> </p>
     <div className="feats">
     <span className="feat">{pizza.category}</span>
     <span className="feat">{pizza.subcategory}</span>
-    <span className="feat">Promoção</span>
+    <span className="feat"></span>
     </div>
     <div className="bottom">
     {pizza.price && (
