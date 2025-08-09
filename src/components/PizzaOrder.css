@@ -1,13 +1,13 @@
 .order img{
-    top: 0;
-    padding-top: 70px;
-    left: 0;
-    position: fixed;
+    top: 18%;
+    left:4%;
+    position: absolute;
     width: 600px; 
     height: 600px;
     border-radius: 50%;
     object-fit: cover; 
 }
+
 
 textarea {
   color: rgb(255, 255, 255); 
@@ -16,17 +16,178 @@ textarea {
 textarea::placeholder {
   color: lightgray
 }
-input[type="radio"] {
-      accent-color: blue; 
-}
+
 
 .order-box{
     padding-left: 500px;
     align-items:center ;
     justify-content: center;
+    display: grid;
+    margin: 0 auto;
+}
+
+.order-box h1{
+    top: 0;
+    z-index: 1000;
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: Impact;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #970e97, #b1770a, #1e0ca4);
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px black;
+    margin: 0;
+}
+
+.order-box h2{
+  font-size: 1.6rem;
+  font-style: italic;
+}
+
+.order-box {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente */
+  height: 100vh;           /* para centralizar verticalmente na tela toda */
+  position: relative;      /* mantém o contexto para elementos absolutos filhos */
+  flex-direction: column;  /* se quiser vários elementos empilhados no centro */
+}
+
+.tamanho{
+  text-align: center;
+  font-size: 20px;
+
+}
+body{
+  accent-color: red;
+    background: linear-gradient(135deg,  rgb(182, 125, 34),rgb(176, 96, 4) 50%,rgb(120, 74, 0) 50%,rgb(231, 129, 4) 50%,rgb(198, 109, 7) 100%) 
+}
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background-color: white; 
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
 }
 
 
-body{
-    background: linear-gradient(135deg,  rgb(182, 125, 34),rgb(176, 96, 4) 50%,rgb(120, 74, 0) 50%,rgb(231, 129, 4) 50%,rgb(198, 109, 7) 100%) 
+input[type="radio"]:checked {
+    background-color: rgb(92, 16, 92); 
+}
+
+input[type="radio"]:checked::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.quantidade{
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+
+}
+
+.quantidade span{
+  font-size: 20px;
+}
+
+
+.quantidade-controle button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background-color: aliceblue;
+  color: black;  
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+.quantidade{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
+  width: 100%;
+}
+
+.note p{
+  color: #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.tamanho, .quantidade {
+  margin: 0;
+  padding: 10px;
+}
+
+.quantidade, .note{
+  margin: 0;
+  padding: 10px;
+}
+
+.note {
+  display: block;
+  position: relative;
+  padding: 1em;
+  width: 300px;
+  min-height: 300px;
+  background-color: #FFFD75;
+  box-shadow: 5px 5px 10px -2px rgba(33, 33, 33, .3);
+  transform: rotate(2deg) skew(-1deg, 1deg);
+  transition: transform 0.15s;
+  margin: 0;
+}
+
+.note:hover {
+  cursor: move;
+}
+
+.note textarea {
+  color: #000;
+  background-color: transparent;
+  border: none;
+  resize: vertical;
+  font-family: "Gloria Hallelujah", cursive;
+  width: 100%;
+  padding: 5px;
+}
+
+.note textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5); /* Cor do placeholder */
+}
+.note textarea:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,.2) inset;
+}
+
+.note textarea.title {
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000;
+  height: 64px;
+  margin-top: 20px;
+}
+
+.note textarea.cnt {
+  min-height: 200px;
 }

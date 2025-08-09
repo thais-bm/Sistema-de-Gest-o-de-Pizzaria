@@ -2,8 +2,6 @@ import React from 'react'
 import { useCarrinho } from '../context/CarrinhoContext';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Carrinho = () => {
   const { carrinho, removerDoCarrinho, limparCarrinho, valorTotal } = useCarrinho();
   const navigate = useNavigate();

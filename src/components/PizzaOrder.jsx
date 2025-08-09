@@ -44,6 +44,14 @@ const PizzaOrder = () => {
       onClose: () => navigate('/Carrinho') 
     });
   };
+    
+      const aumentarQuantidade = () => {
+          setQuantidade(prev => prev + 1);
+        };
+
+      const diminuirQuantidade = () => {
+        setQuantidade(prev => (prev > 1 ? prev - 1 : 1));
+      };
 
   return (
     <div className="order">
@@ -53,6 +61,7 @@ const PizzaOrder = () => {
         <h2>{pizza.ingredients}</h2>
         
         {pizza.category === "pizza" && (
+          <div className="tamanho">
           <form>
             <p>Selecione o tamanho da pizza:</p>
             {/* Com base do dicionario no ProdutosContext */}
@@ -66,23 +75,28 @@ const PizzaOrder = () => {
                   onChange={(e) => setTamanho(e.target.value)}
                 />
                 <label htmlFor={precoInfo.id}>
-                  {`Pizza ${precoInfo.nome} R$${precoInfo.preco}`}
+                  {`Pizza ${precoInfo.nome} (R$${precoInfo.preco})`}
                 </label> <br/>
               </React.Fragment>
             ))}
           </form>
+          </div>
         )}
 
-        <p> Selecione a quantidade: </p>
-        <select value={quantidade} onChange={(e) => setQuantidade(Number(e.target.value))}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        
+        <div className='quantidade'>
+        <p>Selecione a quantidade:</p>
+        <div className='quantidade-controle'>
+          <button type="button" onClick={diminuirQuantidade}> - </button>
+          <span>  {quantidade}  </span>
+          <button type="button" onClick={aumentarQuantidade}> + </button>
+        </div>
+      </div>
+
+      <div className='note'>
         <p> Alguma observação? </p>
         <textarea 
             value={observacao} 
+            className='cnt'
             onChange={(e) => setObservacao(e.target.value)}
             rows="5" 
             cols="50" 
@@ -91,6 +105,7 @@ const PizzaOrder = () => {
         <br/>
 
         <button onClick={handleCarrinhoClick}> Adicionar ao Carrinho </button>
+      </div>
       </div>
     </div>
   );

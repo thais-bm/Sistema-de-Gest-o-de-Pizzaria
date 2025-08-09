@@ -12,7 +12,9 @@ const PizzaCard = ({pizza}) => {
 
   return (
    <div className="card">
-    <div className="badge"></div>
+    {pizza.id === 2 && (
+      <div className="badge"> Mais vendido! </div>
+    )}
     <div className="tilt">
     <div className="img">
       <img src={pizza.image}/>
