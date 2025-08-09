@@ -4,8 +4,17 @@ import { useEffect, useState, useContext, createContext } from 'react';
 
 const ProdutosContext = createContext();
 
+// Preços das pizzas
+const precosPizza = [
+  { id: 'pequena', nome: 'Pequena', preco: 77.99 },
+  { id: 'media', nome: 'Média', preco: 99.99 },
+  { id: 'grande', nome: 'Grande', preco: 110.99 },
+  { id: 'familia', nome: 'Família', preco: 130.99 }
+];
+
 export function ProdutosProvider({ children }) {
 
+  // Estado para armazenar os produtos e possíveis erros
   const [produtos, setProdutos] = useState([]);
   const [erro, setErro] = useState(null);
 
@@ -23,7 +32,7 @@ export function ProdutosProvider({ children }) {
   }, []);
 
   return (
-    <ProdutosContext.Provider value={{ produtos, erro }}>
+    <ProdutosContext.Provider value={{ produtos, erro, precosPizza }}>
       {children}
     </ProdutosContext.Provider>
   )

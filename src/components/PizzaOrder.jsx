@@ -1,67 +1,99 @@
-import React from 'react'
-import './PizzaOrder.css'
-import { useLocation } from 'react-router-dom';
+// Em PizzaOrder.jsx
 
-//Queria q isso aq fosse uma pequena pagina tipo
-//um pop up que tem do ifood
-//n q fosse pra uma pagina diferente aff
-// 
+import React, { useState } from 'react';
+import './PizzaOrder.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useCarrinho } from '../context/CarrinhoContext';
+import { useProdutos } from '../context/ProdutosContext'; 
+
 const PizzaOrder = () => {
   const location = useLocation();
   const pizza = location.state?.pizza;
+  const navigate = useNavigate();
+
+  const { adicionarAoCarrinho } = useCarrinho();
+  const { precosPizza } = useProdutos(); 
+
+  const [tamanho, setTamanho] = useState(null); 
+  const [quantidade, setQuantidade] = useState(1);
+  const [observacao, setObservacao] = useState('');
+
+  const handleCarrinhoClick = () => {
+    if (pizza.category === 'pizza' && !tamanho) {
+      toast.error("Por favor, selecione o tamanho da pizza!");
+      return;
+    }
+
+    // 4. Lógica para encontrar o preço e nome corretos
+    const tamanhoSelecionado = precosPizza.find(p => p.id === tamanho);
+    const precoFinal = tamanhoSelecionado ? tamanhoSelecionado.preco : pizza.price;
+    const nomeTamanho = tamanhoSelecionado ? tamanhoSelecionado.nome : null;
+
+    const itemParaAdicionar = {
+      ...pizza,
+      id: `${pizza.id}-${tamanho || ''}-${Date.now()}`, // ID único para o item no carrinho: assim diferencia pizzas de tamanhos diferentes
+      tamanho: nomeTamanho, // Salva o nome do tamanho (ex: "Pequena, Média, etc")
+      quantidade: quantidade, // Quantidade selecionada
+      observacao: observacao, // Observação do cliente
+      preco: precoFinal, // Preço correto baseado na seleção!
+    };
+
+    adicionarAoCarrinho(itemParaAdicionar); // junta tudo e adiciona ao carrinho
+    toast.success("Item adicionado ao carrinho!", {
+      onClose: () => navigate('/Carrinho') 
+    });
+  };
 
   return (
     <div className="order">
-        <img src={pizza.image}/>
-        <div className='order-box'>
-            <h1> {pizza.title} </h1>
-            <h2> {pizza.ingredients} </h2>
-            
-            {pizza.category === "pizza" ? (
-            <form>
-                <p>Selecione o tamanho da pizza:</p>
+      <img src={pizza.image}/>
+      <div className='order-box'>
+        <h1>{pizza.title}</h1>
+        <h2>{pizza.ingredients}</h2>
+        
+        {pizza.category === "pizza" && (
+          <form>
+            <p>Selecione o tamanho da pizza:</p>
+            {/* Com base do dicionario no ProdutosContext */}
+            {precosPizza.map((precoInfo) => (
+              <React.Fragment key={precoInfo.id}>
+                <input 
+                  type="radio" 
+                  id={precoInfo.id} 
+                  name="tamanho" 
+                  value={precoInfo.id} 
+                  onChange={(e) => setTamanho(e.target.value)}
+                />
+                <label htmlFor={precoInfo.id}>
+                  {`Pizza ${precoInfo.nome} R$${precoInfo.preco}`}
+                </label> <br/>
+              </React.Fragment>
+            ))}
+          </form>
+        )}
 
-                <input type="radio" id="pizza" name="pizza" value="pequena"/>
-                <label for="pequena">Pizza pequena (R$ 77,99)</label> <br/>
+        <p> Selecione a quantidade: </p>
+        <select value={quantidade} onChange={(e) => setQuantidade(Number(e.target.value))}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        
+        <p> Alguma observação? </p>
+        <textarea 
+            value={observacao} 
+            onChange={(e) => setObservacao(e.target.value)}
+            rows="5" 
+            cols="50" 
+            placeholder="Ex: Tirar cebola, tirar azeitonas..."
+        ></textarea>
+        <br/>
 
-                <input type="radio" id="pizza" name="pizza" value="media"/>
-                <label for="pequena">Pizza média (R$ 99,99)</label>  <br/>
-
-                <input type="radio" id="pizza" name="pizza" value="grande"/>
-                <label for="pequena">Pizza grande (R$ 109,99)</label>  <br/>
-
-                <input type="radio" id="pizza" name="pizza" value="familia"/>
-                <label for="pequena">Pizza família (R$ 120,99)</label>  <br/>
-
-                <p> Selecione a quantidade: </p>
-                <select name="quantidade" id="quantidade">
-                    <option value="1"> 1 </option>
-                    <option value="2"> 2 </option>
-                    <option value="3"> 3 </option>
-                  </select>
-
-            </form>
-            ) : pizza.category === "bebida" ? (
-              <div>
-              <p> Selecione a quantidade: </p>
-                <select name="quantidade" id="quantidade">
-                    <option value="1"> 1 </option>
-                    <option value="2"> 2 </option>
-                    <option value="3"> 3 </option>
-                </select>
-              </div>
-            ): null}
-
-            
-            <p> Alguma observação? </p>
-            <textarea rows="5" cols="50" placeholder="Ex: Tirar cebola, tirar azeitonas..."></textarea>
-            <br/>
-
-            <button> Adicionar ao Carrinho </button>
-
-        </div>
+        <button onClick={handleCarrinhoClick}> Adicionar ao Carrinho </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default PizzaOrder
+export default PizzaOrder;

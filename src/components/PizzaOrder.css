@@ -11,9 +11,11 @@
 
 textarea {
   color: rgb(255, 255, 255); 
-  background-color: rgb(243, 216, 216);
 }
 
+textarea::placeholder {
+  color: lightgray
+}
 input[type="radio"] {
       accent-color: blue; 
 }
