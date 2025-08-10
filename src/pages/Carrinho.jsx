@@ -3,7 +3,6 @@ import { useCarrinho } from '../context/CarrinhoContext';
 import { useNavigate } from 'react-router-dom';
 import "./Carrinho.css"
 
-//A quantidade não muda D:
 const Carrinho = () => {
   const { carrinho, removerDoCarrinho, limparCarrinho, valorTotal } = useCarrinho();
   const navigate = useNavigate();
@@ -16,13 +15,11 @@ const Carrinho = () => {
     setMesa(event.target.value);
   };
 
-  
-
   return (
     <main className='carrinho'>
-      <div class="bg"></div>
-      <div class="bg bg2"></div>
-      <div class="bg bg3"></div>
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
       {carrinho.length === 0 ? (
         <section className='carrinho-vazio'>  
           <p className='carinha-vazio-header'>Seu carrinho está vazio :(</p>
@@ -60,8 +57,7 @@ const Carrinho = () => {
                     <button  style={{background: 'FireBrick'}} className="button-29" onClick={() => removerDoCarrinho(item.id)}>Remover</button>
                   </div>
 
-                   
-                
+
                 </div>
               ))}
             </div>
@@ -88,27 +84,34 @@ const Carrinho = () => {
               </form>
             
 
-          {entrega === "mesa" ? (
-            <div>
-              <h2> Informe o número da mesa: </h2>
-               <select id="mesa" value={mesa} onChange={handleChangeMesa}>
-                <option value="301">301</option>
-                <option value="125">125</option>
-                <option value="174">174</option>
-              </select>
-            </div>
-
-          ): entrega === "casa" ?(
-            <div>
-              <h2>Informe o endereço de entrega:</h2>
-             <textarea
-                value={endereco}
-                onChange={(e) => setEndereco(e.target.value)}
-                placeholder="Digite seu endereço..."
-                className='endereco'
-              />
-            </div>
-          ): null }
+          {(() => {
+            if (entrega === "mesa") {
+              return (
+                <div>
+                  <h2> Informe o número da mesa: </h2>
+                  <select id="mesa" value={mesa} onChange={handleChangeMesa}>
+                    <option value="301">301</option>
+                    <option value="125">125</option>
+                    <option value="174">174</option>
+                  </select>
+                </div>
+              );
+            } else if (entrega === "casa") {
+              return (
+                <div>
+                  <h2>Informe o endereço de entrega:</h2>
+                  <input
+                    type="text"
+                    value={endereco}
+                    onChange={(e) => setEndereco(e.target.value)}
+                    placeholder="Digite seu endereço"
+                  />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })()}
 
           </div>
 
