@@ -2,10 +2,21 @@ import React from 'react'
 import PizzaCard from '../components/PizzaCard'
 import Header from '../components/Header'
 import "./Cardapio.css"
+import { useState } from 'react'
 import { useProdutos } from "../context/ProdutosContext";
 
 const Cardapio = () => {
-  const {produtos} = useProdutos();
+  const {produtos, ingredientes} = useProdutos();
+
+  const [mostrarFiltros, setMostrarFiltros] = useState(false);
+  const [ingredienteSelecionado, setIngredienteSelecionado] = useState("");
+
+  //Pizzas filtradas por ingredientes (que estão no produtosContext)
+  const pizzasFiltradas = ingredienteSelecionado
+    ? produtos.filter(pizza =>
+        pizza.ingredients[0]
+      )
+    : produtos;
 
   const pizzasSalgadas = produtos.filter(p => p.category === "pizza" && p.subcategory === "salgada");
   const pizzasDoces = produtos.filter(p => p.category === "pizza" && p.subcategory === "doce");
@@ -15,9 +26,47 @@ const Cardapio = () => {
 
   return (
     <div className="cardapio">
+      <div  className='background-cardapio'>
     <Header/>
       <section>
         <div>
+
+        <div className='filtro'>
+          <button className='filtro-botao' onClick={() => setMostrarFiltros(!mostrarFiltros)}>
+            {mostrarFiltros ? "Ocultar Filtros" : "Filtrar por ingrediente"}
+          </button>
+
+          {mostrarFiltros && (
+            <div>
+              <h3>Selecione um ingrediente:</h3>
+              <select
+                value={ingredienteSelecionado}
+                onChange={(e) => setIngredienteSelecionado(e.target.value)}
+              >
+                <option value="">Todos</option>
+                {ingredientes.map((ing, index) => (
+                  <option key={index} value={ing}>
+                    {ing}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {ingredienteSelecionado && (
+            <div>
+              <h2 className='produto-h2'>Pizzas filtradas</h2>
+              <div className='cards'>
+                {pizzasFiltradas.map(pizza => (
+                  <PizzaCard key={pizza.id} pizza={pizza} />
+                ))}
+              </div>
+            </div>
+          )}
+           
+            
+        </div>
+
         <h1 className='produto-h1'> Pizzas </h1>
         <div className="tamanhos">
           <div className="tamanho-item">
@@ -84,6 +133,7 @@ const Cardapio = () => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }
