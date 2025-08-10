@@ -18,7 +18,7 @@ const AppRoutes = () => {
       <CarrinhoProvider>
         {/* O ToastContainer pros alertas */}
         <ToastContainer
-          autoClose={2000}
+          autoClose={1500}
           hideProgressBar={false}
           closeOnClick
           pauseOnHover
