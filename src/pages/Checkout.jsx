@@ -53,7 +53,7 @@ const Checkout = () => {
         <p>Você pode encontrar os dados no seu cartão igual no exemplo abaixo</p>
         <img src="images/exemplo-cartao.png" alt="Exemplo de Cartão"/>
 
-        <form onSubmit={handleFinalizarComprar} className='form-checkout'>
+        <form onSubmit={handleFinalizarCompra} className='form-checkout'>
           <input type="text" placeholder="Nome no Cartão (Ex.: Fulano de Tal)" required />
           <input type="tel" inputMode="numeric" placeholder="Número do Cartão (Ex.: 1234 5678 9101 1121)" maxLength="16" required />
           
