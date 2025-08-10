@@ -159,17 +159,7 @@
 }
 
 
-select {
-  appearance: none;
-  @supports (appearance: base-select) {
-    @media (hover: hover) {
-      &,
-      &::picker(select) {
-        appearance: base-select;
-      }
-    }
-  }
-}
+
 select {
   min-width: 300px;
   color: white;

@@ -12,6 +12,7 @@ const precosPizza = [
   { id: 'familia', nome: 'Família', preco: 130.99 }
 ];
 
+
 export function ProdutosProvider({ children }) {
 
   // Estado para armazenar os produtos e possíveis erros
@@ -31,8 +32,15 @@ export function ProdutosProvider({ children }) {
     carregarProdutos();
   }, []);
 
+
+  const todosIngredientes = produtos.flatMap(pizza => 
+    pizza.ingredients[0].split(",").map(ing => ing.trim().toLowerCase())
+  );
+
+  const ingredientes= [...new Set(todosIngredientes)];
+
   return (
-    <ProdutosContext.Provider value={{ produtos, erro, precosPizza }}>
+    <ProdutosContext.Provider value={{ produtos, erro, precosPizza, ingredientes}}>
       {children}
     </ProdutosContext.Provider>
   )
