@@ -52,9 +52,10 @@ header {
 
 
 .button-29 {
+  margin-top: 30px; /*faz ele descer*/
+  left: 15%;
   position: relative;
   appearance: none;
-  background-image: orange;
   border: 0;
   border-radius: 6px;
   box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
@@ -66,10 +67,12 @@ header {
   height: 48px;
   justify-content: center;
   line-height: 1;
+  background-color: #b32900 ;
   list-style: none;
   overflow: hidden;
   text-align: left;
   text-decoration: none;
+  border: 1px solid rgb(66, 26, 14); 
   transition: box-shadow .15s,transform .15s;
   user-select: none;
   -webkit-user-select: none;

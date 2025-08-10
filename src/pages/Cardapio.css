@@ -101,20 +101,6 @@ body {
   justify-items: center; 
 }
 
-.filtro{
-  position: relative;
-  padding-top: 100px;
-}
-
-.filtro-botao{
-   background-color:  #b32900 ; /* Blue background */
-  color: #000000 ; /* White text */
-  padding: 10px 20px; /* Padding inside the button */
-  border: 1px solid rgb(66, 26, 14); /* No border */ /* Rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Font size */
-  transition: background-color 0.3s ease; 
-}
 
 .select {
   min-width: 300px;
@@ -129,9 +115,52 @@ body {
   padding-right: 30px; /* espaço pro ícone da seta */
 }
 
+.filtro{
+  position: relative;
+  padding-top: 100px;
+}
+
+.filtro-botao{
+   background-color:  #b32900 ; 
+  color: #000000 ; 
+  padding: 10px 20px; 
+  border: 1px solid rgb(66, 26, 14); 
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: background-color 0.3s ease;
+  position: relative;
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  background-color: #b32900 ;
+  list-style: none;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid rgb(66, 26, 14); 
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+
 .filtro-botao:hover {
   outline: 2px solid  #6c1305; 
 }
+
 
 .filtro-botao:focus-visible {
   outline: 2px solid  #6c1305; 
@@ -141,3 +170,23 @@ body {
   outline: none;         
   box-shadow: 0 0 0 2px  #6c1305; 
 }
+
+.filtro-botao:active {
+  box-shadow: #db410e 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.filtro-botao:focus {
+  box-shadow: #d75f03 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #d64b0a 0 -3px 0 inset;
+}
+
+.filtro-botao:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #ce6107 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.filtro-botao:active {
+  box-shadow: #db410e 0 3px 7px inset;
+  transform: translateY(2px);
+}
+

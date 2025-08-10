@@ -56,9 +56,11 @@ const Carrinho = () => {
                     <h3>Preço: R$ {item.preco}</h3>
                     <h3>Quantidade: {item.quantidade}</h3>
                     <h3>Tamanho: {item.tamanho}</h3>
+                  
+                    <button  style={{background: 'FireBrick'}} className="button-29" onClick={() => removerDoCarrinho(item.id)}>Remover</button>
                   </div>
 
-                   <button  style={{background: 'FireBrick'}} className="botao-remover" onClick={() => removerDoCarrinho(item.id)}>Remover</button>
+                   
                 
                 </div>
               ))}
@@ -99,11 +101,11 @@ const Carrinho = () => {
           ): entrega === "casa" ?(
             <div>
               <h2>Informe o endereço de entrega:</h2>
-              <input
-                type="text"
+             <textarea
                 value={endereco}
                 onChange={(e) => setEndereco(e.target.value)}
-                placeholder="Digite seu endereço"
+                placeholder="Digite seu endereço..."
+                className='endereco'
               />
             </div>
           ): null }
