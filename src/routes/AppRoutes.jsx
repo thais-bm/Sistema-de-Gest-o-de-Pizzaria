@@ -10,7 +10,7 @@ import Cozinha from '../pages/Cozinha';
 import NotFound from '../pages/NotFound';
 import { ProdutosProvider } from '../context/ProdutosContext';
 import { CarrinhoProvider } from '../context/CarrinhoContext';
-import Checkout from '../pages/Checkout';
+import Pagamento from '../pages/Pagamento';
 
 const AppRoutes = () => {
   return (
@@ -33,7 +33,7 @@ const AppRoutes = () => {
           <Route element={<Carrinho />} path="/Carrinho" />
           <Route element={<Cozinha />} path="/Cozinha" />
           <Route element={<NotFound />} path="*" /> 
-          <Route element={<Checkout/>} path="/Checkout"/>
+          <Route element={<Pagamento/>} path="/Pagamento"/>
         </Routes>
       </CarrinhoProvider>
     </ProdutosProvider>
