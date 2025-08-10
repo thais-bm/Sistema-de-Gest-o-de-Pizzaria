@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData)); // Armazena no localStorage
-      return true;
+      return userData; // usuario + role
     }
 
     else if (username === 'cozinha' && password === '123') {
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData)); // Armazena no localStorage
-      return true;
+      return userData; // usuario + role
     }
 
     return false;
