@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCarrinho } from '../context/CarrinhoContext';
 import { useNavigate } from 'react-router-dom';
 import "./Carrinho.css"
@@ -8,17 +8,26 @@ const Carrinho = () => {
   const { carrinho, removerDoCarrinho, limparCarrinho, valorTotal } = useCarrinho();
   const navigate = useNavigate();
 
+  const[entrega, setEntrega] = useState(null)
+  const [mesa, setMesa] = useState(0)
+  const [endereco, setEndereco] = useState(null)
+
+   const handleChangeMesa = (event) => {
+    setMesa(event.target.value);
+  };
+
+  
 
   return (
     <main className='carrinho'>
       {carrinho.length === 0 ? (
         <section className='carrinho-vazio'>  
-          <p>Seu carrinho está vazio :(</p>
+          <p className='carinha-triste'>Seu carrinho está vazio :(</p>
           <br />
-          <p>Por que você não dá uma olhada no nosso cardápio e faz um pedido?</p>
+          <p className='olhada-produtos'>Por que você não dá uma olhada no nosso cardápio e faz um pedido?</p>
 
           <img 
-            src='/imagens/empty_cart.gif' 
+            src='/images/empty_cart.gif' 
             alt="Carrinho vazio" 
             width={200} 
           />
@@ -40,8 +49,9 @@ const Carrinho = () => {
                   <img src={item.image} alt={item.title} />
                   <div className='carrinho-item-info'>
                     <h2>{item.title}</h2>
-                    <p>Preço: R$ {item.preco}</p>
-                    <p>Quantidade: {item.quantidade}</p>
+                    <h3>Preço: R$ {item.preco}</h3>
+                    <h3>Quantidade: {item.quantidade}</h3>
+                    <h3>Tamanho: {item.tamanho}</h3>
                   </div>
 
                    <button className="btn-remover" onClick={() => removerDoCarrinho(item.id)}>Remover</button>
@@ -52,9 +62,52 @@ const Carrinho = () => {
 
             <div className='carrinho-total'>
               <h2>Total: R$ {valorTotal}</h2>
-              <button onClick={() => navigate('/checkout')} className='btn'>Finalizar Compra</button>
             </div>
 
+            <div className='comanda'>
+              <h2> Informe se é para entrega em casa ou mesa </h2>
+              <form>
+                <label htmlFor="mesa">Mesa</label>
+                <input
+                  type="radio" id="mesa" name="entrega" value="mesa"
+                  onChange={(e) => setEntrega(e.target.value)}
+                />
+                <br/>
+
+                <label htmlFor="casa">Entrega</label>
+                <input
+                  type="radio" id="casa" name="entrega" value="casa"
+                  onChange={(e) => setEntrega(e.target.value)}
+                />
+              </form>
+            
+
+          {entrega === "mesa" ? (
+            <div>
+              <h2> Informe o número da mesa: </h2>
+               <select id="mesa" value={mesa} onChange={handleChangeMesa}>
+                <option value="301">301</option>
+                <option value="125">125</option>
+                <option value="174">174</option>
+              </select>
+            </div>
+
+          ): entrega === "casa" ?(
+            <div>
+              <h2>Informe o endereço de entrega:</h2>
+              <input
+                type="text"
+                value={endereco}
+                onChange={(e) => setEndereco(e.target.value)}
+                placeholder="Digite seu endereço"
+              />
+            </div>
+          ): null }
+
+          </div>
+          
+          <button onClick={() => navigate('/checkout')} className='btn'>Finalizar Compra</button>
+          
         </section>
       )
       }

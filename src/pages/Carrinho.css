@@ -14,6 +14,31 @@
     margin: 0 auto;
 }
 
+.carinha-triste{
+  color:rgb(123, 56, 8);
+  border: 3px solid #291c0f;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(249, 230, 218);
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(90deg, #390a5a, #995020, #ade5ac);
+    background-color: #684422;
+    -webkit-text-stroke: 2px rgb(66, 26, 14);
+    border-radius: 30px; /*caso nao quiser redondo tira isso aq*/
+}
+
+
+
+.olhada-produtos{
+
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(229, 209, 197);
+    padding: 10px;
+    text-align: center;
+
+    -webkit-text-stroke: 1.5px rgb(44, 15, 117);
+    border-radius: 30px; /*caso nao quiser redondo tira isso aq*/
+}
 .carrinho-vazio{
     text-align: center;
     color:rgb(123, 56, 8);
@@ -45,11 +70,13 @@
   display: flex;
   align-items: center;
   gap: 10px; /* espaçamento entre imagem, infos e botão */
-  padding: 10px 0;
+  padding: 20px 30px;
   border: 3px solid #ddd;
   margin-bottom: 20px; /*altera a distância entre os itens*/
   border-radius: 30px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  background-color: #a9863f;
 }
 
 .carrinho-item img {
@@ -60,22 +87,23 @@
 }
 
 .carrinho-item-info {
+  margin-left: 80px;
+  padding: 30px 30px;
   flex-grow: 1; /* ocupa o espaço restante */
+  
 }
 
 .carrinho-item-info h2 {
   margin: 0 0 5px 0;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
-.carrinho-item-info p {
+.carrinho-item-info h3 {
   margin: 2px 0;
-  font-size: 1rem;
+  color: #fffce8;
+  font-size: 20px;
+  
 }
-
-
-
-
 
 .carrinho-com-itens {
   max-width: 800px;
@@ -83,10 +111,9 @@
   padding: 20px;
 }
 
-
 .carrinho button {
   margin: auto; /* empurra o botão para a direita */
-  width: auto; /* remove largura fixa se quiser */
+  width: 20px; /* remove largura fixa se quiser */
   padding: 10px 20px;
   background: #3c257dd5;
   border: 2px solid #a31b1b;
@@ -98,6 +125,131 @@
   font-size: 20px;
   font-weight: 300;
   padding: 16px 0;
-  width: 290px;
+  width: 200px;
   text-align: center;
 }
+.comanda h2{
+    border: 2px solid #291c0f;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(243, 223, 211);
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    background: linear-gradient(90deg, #58310b, #b84e07, #e45609);
+    background-color: #684422;
+    -webkit-text-stroke: 1px rgb(66, 26, 14);
+    border-radius: 30px;
+}
+
+.comanda form{
+    font-size: 40px;
+    padding: 30px;
+    font-weight: Impact;
+}
+
+
+select {
+  appearance: none;
+  @supports (appearance: base-select) {
+    @media (hover: hover) {
+      &,
+      &::picker(select) {
+        appearance: base-select;
+      }
+    }
+  }
+}
+select {
+  min-width: 300px;
+  color: white;
+
+
+  border-radius: 30px;
+  border: 2px solid rgb(85, 51, 109);
+  cursor: pointer;
+  font-weight: 700;
+  background: rgb(135, 126, 79)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23FFF' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E%0A")
+    right 10px center / 20px no-repeat;
+  @media (hover: hover) {
+    @supports (appearance: base-select) {
+      padding-inline: 20px;
+      background-image: none;
+      &::picker-icon {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23FFF' class='size-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E%0A");
+        transition: rotate 0.2s ease-out;
+      }
+      &:open::picker-icon {
+        rotate: 180deg;
+      }
+      &::picker(select) {
+        padding: 0;
+        margin-top: 5px;
+        border: 2px solid indigo;
+        background: white;
+        border-radius: 20px;
+        font-weight: 400;
+
+        opacity: 0;
+        height: 0;
+        overflow: clip;
+        transition: height 0.5s ease-out, opacity 0.5s ease-out, overlay 0.5s,
+          display 0.5s;
+
+        transition-behavior: allow-discrete;
+      }
+      &:open::picker(select) {
+        opacity: 1;
+        height: calc-size(auto, size);
+        overflow: auto;
+        @starting-style {
+          opacity: 0;
+          height: 0;
+        }
+      }
+      option {
+        padding: 15px 20px;
+        border-top: 1px solid indigo;
+        cursor: pointer;
+        transition-property: color, background;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-out;
+        &:where(:hover, :focus, :active) {
+          background: dodgerblue;
+          color: white;
+        }
+        &:checked {
+          background: navy;
+          color: white;
+        }
+        &::checkmark {
+          display: none;
+        }
+        &:first-child {
+          border: 0;
+        }
+      }
+    }
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
