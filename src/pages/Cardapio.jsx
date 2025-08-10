@@ -21,19 +21,19 @@ const Cardapio = () => {
         <h1 className='produto-h1'> Pizzas </h1>
         <div className="tamanhos">
           <div className="tamanho-item">
-            <h2 className='produto-h2'>Pequena</h2>
+            <h2 className='tamanhos-tamanho'>Pequena</h2>
             <p>R$ 77,99</p>
           </div>
           <div className="tamanho-item">
-            <h2 className='produto-h2'>Média</h2>
+            <h2 className='tamanhos-tamanho'>Média</h2>
             <p>R$ 99,99</p>
           </div>
           <div className="tamanho-item">
-            <h2 className='produto-h2'>Grande</h2>
+            <h2 className='tamanhos-tamanho'>Grande</h2>
             <p>R$ 110,99</p>
           </div>
           <div className="tamanho-item">
-            <h2 className='produto-h2'>Família</h2>
+            <h2 className='tamanhos-tamanho'>Família</h2>
             <p>R$ 130,99</p>
           </div>
         </div>

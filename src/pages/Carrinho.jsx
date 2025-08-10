@@ -20,9 +20,12 @@ const Carrinho = () => {
 
   return (
     <main className='carrinho'>
+      <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div>
       {carrinho.length === 0 ? (
         <section className='carrinho-vazio'>  
-          <p className='carinha-triste'>Seu carrinho está vazio :(</p>
+          <p className='carinha-vazio-header'>Seu carrinho está vazio :(</p>
           <br />
           <p className='olhada-produtos'>Por que você não dá uma olhada no nosso cardápio e faz um pedido?</p>
 
@@ -47,6 +50,7 @@ const Carrinho = () => {
               {carrinho.map((item) => (
                 <div key={item.id} className='carrinho-item'>
                   <img src={item.image} alt={item.title} />
+                  
                   <div className='carrinho-item-info'>
                     <h2>{item.title}</h2>
                     <h3>Preço: R$ {item.preco}</h3>
@@ -105,13 +109,12 @@ const Carrinho = () => {
           ): null }
 
           </div>
-          
+
           <button onClick={() => navigate('/checkout')} className='btn'>Finalizar Compra</button>
           
         </section>
       )
       }
-
     </main>
   )
 }
