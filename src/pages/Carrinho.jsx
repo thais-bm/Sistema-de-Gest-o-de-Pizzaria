@@ -58,7 +58,7 @@ const Carrinho = () => {
                     <h3>Tamanho: {item.tamanho}</h3>
                   </div>
 
-                   <button className="btn-remover" onClick={() => removerDoCarrinho(item.id)}>Remover</button>
+                   <button  style={{background: 'FireBrick'}} className="botao-remover" onClick={() => removerDoCarrinho(item.id)}>Remover</button>
                 
                 </div>
               ))}

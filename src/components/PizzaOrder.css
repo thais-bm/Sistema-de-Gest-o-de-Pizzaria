@@ -11,7 +11,7 @@
 .order{
   position: flex;
   height: 100vw;
-  background: linear-gradient(110deg,  #d37115  40%, #faae33 40%);
+  background: linear-gradient(135deg,  rgb(182, 125, 34),rgb(176, 96, 4) 40%,rgb(120, 74, 0) 40%,rgb(231, 129, 4) 40%,rgb(198, 109, 7) 100%)
 }
 
 textarea {

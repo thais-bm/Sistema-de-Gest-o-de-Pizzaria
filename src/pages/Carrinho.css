@@ -14,6 +14,22 @@
     margin: 0 auto;
 }
 
+.botao-remover{
+  text-align: center;
+  width: 20px; /* remove largura fixa se quiser */
+  padding: 10px 20px;
+  border: 2px solid #000000;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  border-style: none none solid none;
+  color: #fef4f4;
+  padding: 16px 0;
+  width: 200px;
+  font-size: 20px;
+  font-weight: 300;
+  
+}
+
+
 /* deixei eles um do lado do outro */
 .botoes-carrinho {
   display: flex;
@@ -24,7 +40,7 @@
 
 .botoes-carrinho .btn:hover {
   background: #efac41;
-  color: #330a04;
+  color: #ffffff;
   transform: scale(1.05);
 }
 
@@ -69,7 +85,7 @@
 }
 
 .carrinho-nome{
-    color:rgb(221, 188, 165);
+    color:rgb(247, 235, 227);
     border: 3px solid #330a04 ;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     padding: 10px;
@@ -158,6 +174,20 @@
     font-weight: Impact;
 }
 
+.comanda label {
+  margin: 0 0 5px 0;
+  font-size: 3rem;
+  color: #efac41;
+  font-weight: 600;
+}
+
+.comanda select {
+  min-width: 200px;   /* aumenta largura */
+  height: 50px;       /* aumenta altura da barra */
+  font-size: 1.2rem;  /* aumenta o tamanho do texto */
+  padding: 0 15px;    /* mais espaço interno */
+  border-radius: 8px; /* cantos arredondados */
+}
 
 
 select {
@@ -275,22 +305,6 @@ select {
   animation-duration:5s;
 }
 
-.content {
-  background-color:rgba(255,255,255,.8);
-  border-radius:.25em;
-  box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
-  left:50%;
-  padding:10vmin;
-  position:fixed;
-  text-align:center;
-  top:50%;
-  transform:translate(-50%, -50%);
-}
-
-h1 {
-  font-family:monospace;
-}
 
 @keyframes slide {
   0% {
