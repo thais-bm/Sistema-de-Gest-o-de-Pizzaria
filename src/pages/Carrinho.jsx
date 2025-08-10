@@ -110,7 +110,12 @@ const Carrinho = () => {
 
           </div>
 
-          <button onClick={() => navigate('/checkout')} className='btn'>Finalizar Compra</button>
+
+          <div className="botoes-carrinho">
+            <button onClick={() => navigate('/checkout')} className='btn' style={{background: 'green'}}>Finalizar Compra</button>
+            <button onClick={limparCarrinho} className='btn' style={{background: 'FireBrick'}}>Limpar Carrinho</button>
+            <button onClick={() => navigate('/Cardapio')} className='btn' style={{background: 'gold'}}>Continuar Comprando</button>
+          </div>
           
         </section>
       )

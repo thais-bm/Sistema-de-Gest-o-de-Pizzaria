@@ -19,9 +19,9 @@ export const CarrinhoProvider = ({ children }) => {
     setCarrinho((prevCarrinho) => {
       const itemNoCarrinho = prevCarrinho.find((item) => item.id === produto.id);
       if (itemNoCarrinho) {
-        return prevCarrinho.map((item) => item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item);
+        return prevCarrinho.map((item) => item.id === produto.id ? { ...item, quantidade: item.quantidade + produto.quantidade } : item);
       }
-      return [...prevCarrinho, { ...produto, quantidade: 1 }];
+      return [...prevCarrinho, { ...produto, quantidade: produto.quantidade }];
     });
   };
 
@@ -39,7 +39,7 @@ export const CarrinhoProvider = ({ children }) => {
   };
 
   // calculador de preço total
-  const valorTotal = carrinho.reduce((total, produto) => total + (produto.preco * produto.quantidade), 0);
+  const valorTotal = (carrinho.reduce((total, produto) => total + (produto.preco * produto.quantidade), 0)).toFixed(2); // assim só tem 2 digitos
 
   return (
     <CarrinhoContext.Provider value={{ carrinho, adicionarAoCarrinho, limparCarrinho, valorTotal , removerDoCarrinho }}>
