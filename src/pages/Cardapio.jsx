@@ -15,6 +15,8 @@ const Cardapio = () => {
   const pizzasFiltradas = ingredienteSelecionado
     ? produtos.filter(pizza =>
         pizza.ingredients[0]
+        .toLowerCase()
+          .includes(ingredienteSelecionado.toLowerCase())
       )
     : produtos;
 
@@ -40,6 +42,7 @@ const Cardapio = () => {
             <div>
               <h3>Selecione um ingrediente:</h3>
               <select
+                className='select'
                 value={ingredienteSelecionado}
                 onChange={(e) => setIngredienteSelecionado(e.target.value)}
               >

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect} from 'react';
 import { set } from 'react-hook-form';
 
 const CarrinhoContext = createContext();
@@ -11,8 +11,15 @@ export const useCarrinho = () => {
 // transformei em arrow function pro professor não reclamar 
 // e porque é pra manter o padrão
 export const CarrinhoProvider = ({ children }) => {
-  const [carrinho, setCarrinho] = useState([]);
+  const [carrinho, setCarrinho] = useState(() => {
+  const carrinhoSalvo = localStorage.getItem("carrinho");
+    return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+  });
 
+  // atualiza localStorage toda vez que o carrinho mudar
+  useEffect(() => {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  }, [carrinho]);
 
   // mexi pq n tava aparecendo a quantidade no carrinho
   const adicionarAoCarrinho = (produto) => {
