@@ -106,7 +106,7 @@ const PizzaOrder = () => {
         ></textarea>
         <br/>
 
-        <button onClick={handleCarrinhoClick}> Adicionar ao Carrinho </button>
+        <button className="button-29" onClick={handleCarrinhoClick}> Adicionar ao Carrinho </button>
       </div>
       </div>
     </div>

@@ -10,7 +10,7 @@
 
 .order{
   position: flex;
-  height: 100vw;
+  height: 1050px;
   background: linear-gradient(135deg,  rgb(182, 125, 34),rgb(176, 96, 4) 40%,rgb(120, 74, 0) 40%,rgb(231, 129, 4) 40%,rgb(198, 109, 7) 100%)
 }
 
@@ -144,6 +144,7 @@ input[type="radio"]:checked::after {
     -webkit-text-stroke: 1px rgb(66, 26, 14);
     border-radius: 30px; /*caso nao quiser redondo tira isso aq*/
 }
+
 .quantidade{
   display: flex;
   align-items: center;
@@ -192,7 +193,7 @@ input[type="radio"]:checked::after {
   resize: vertical;
   font-family: "Gloria Hallelujah", cursive;
   width: 100%;
-  padding: 5px;
+ 
 }
 
 .note textarea::placeholder {
@@ -217,8 +218,6 @@ input[type="radio"]:checked::after {
 }
 
 .note button{
-  padding: 100px;
-  
+  left: -5%;
+  top: 20%
 }
-
-
