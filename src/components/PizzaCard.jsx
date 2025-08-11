@@ -10,6 +10,17 @@ const PizzaCard = ({pizza}) => {
       navigate('/PizzaOrder', { state: { pizza } });
   };
 
+  const getImageUrl = () => {
+    // Verifica se a string é Base64
+    if (pizza.image.startsWith('data:')) {
+      return pizza.image;
+    } 
+    // Verifica se é um caminho de diretório
+    if (pizza.image.startsWith('/images/') || pizza.image.startsWith('/img/') || pizza.image.startsWith('images')){
+      return `http://localhost:3001${pizza.image}`;
+    }
+  };
+
   return (
    <div className="card">
     {pizza.id === 2 && (
@@ -17,7 +28,7 @@ const PizzaCard = ({pizza}) => {
     )}
     <div className="tilt">
     <div className="img">
-      <img src={pizza.image}/>
+      <img src={getImageUrl()}/>
     </div>
   </div>
   <div className="info">

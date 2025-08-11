@@ -6,6 +6,7 @@ import { Container, Card, Box, CardContent, Button, Typography, Paper, Collapse 
 import { KeyboardArrowDown, KeyboardArrowUp} from '@mui/icons-material';
 import { set } from 'react-hook-form';
 import { PedidosProvider, useHistorico } from '../context/PedidosContext';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 import AddProduto from '../components/AddProduto';
 
@@ -52,6 +53,14 @@ const NovoMenu = () => {
       {/* Paper: um container "elevado" */}
 
         <Paper elevation={3} sx={{ padding: 4, width: '100%'}}>
+          <Button sx={{mb: 4}}
+            variant="outlined"
+            startIcon={<ArrowBackRoundedIcon />}
+            onClick={() => navigate('/')}
+          >
+          Retornar 
+          </Button>
+
           <Typography component="h1" variant="h5" align="center" color="primary">Bem-vindo ao painel de Adminstração</Typography>
           <Typography variant="h6" color="primary" padding="10px">O que deseja fazer?</Typography> 
 

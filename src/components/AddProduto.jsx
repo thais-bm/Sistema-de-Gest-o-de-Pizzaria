@@ -93,12 +93,14 @@ const AddProduto = ({ onCancel }) => {
             ]}
           </Select>
         </FormControl>
-        <TextField
+        {novoProduto.category === 'bebida' &&
+          <TextField
           name="price"
           label="Preço"
           value={novoProduto.price}
           onChange={handleChange}
         />
+        }
         <TextField
           name="ingredients"
           label="Ingredientes (separados por vírgula)"
