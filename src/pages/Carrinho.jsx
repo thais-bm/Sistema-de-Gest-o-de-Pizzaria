@@ -101,6 +101,7 @@ const Carrinho = () => {
                 <div>
                   <h2>Informe o endereço de entrega:</h2>
                   <input
+                    className='endereco'
                     type="text"
                     value={endereco}
                     onChange={(e) => setEndereco(e.target.value)}

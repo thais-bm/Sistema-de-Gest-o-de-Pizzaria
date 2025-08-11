@@ -26,11 +26,10 @@ const Login = () => {
   };
 
   return (
-    <Box component="section" maxWidth="xs" sx={{ 
+    <Container component="section" maxWidth="100%" sx={{
+      
       backgroundImage: 'url(/images/madeira.jpg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
+      
      }}>
       <Container component="main" maxWidth="xs" sx={{
       minHeight: '100vh',
@@ -90,7 +89,7 @@ const Login = () => {
           </Box>
         </Paper>
     </Container>
-    </Box>
+    </Container>
 
   )
 }

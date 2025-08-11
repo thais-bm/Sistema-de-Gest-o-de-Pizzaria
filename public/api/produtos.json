@@ -20,7 +20,7 @@
     "title": "Quatro queijos",
     "category": "pizza",
     "subcategory": "salgada",
-    "image": "/images/4queijos.jpeg",
+    "image": "/images/quatro_queijos.jpg",
     "ingredients": ["mussarela, provolone, gorgonzola, parmessão"]
   },
   {
@@ -28,7 +28,7 @@
     "title": "Muçarela",
     "category": "pizza",
     "subcategory": "salgada",
-    "image": "/images/muçarela.jpeg",
+    "image": "/images/muçarela.jpg",
     "ingredients": ["molho de tomate, muçarela, orégano, azeitonas"]
   },
   {
