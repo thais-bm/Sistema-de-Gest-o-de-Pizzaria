@@ -6,7 +6,7 @@ import { Container, Card, Box, CardContent, Button, Typography, Paper, Collapse 
 import { KeyboardArrowDown, KeyboardArrowUp} from '@mui/icons-material';
 import { set } from 'react-hook-form';
 
-import AddProduto from './AddProduto';
+import AddProduto from '../components/AddProduto';
 
 // eu vou transformar em um menu dropdown pra aparecer na propria pagina de Admin
 const gerenciarDropdown = () => {
