@@ -22,7 +22,7 @@ const Header = () => {
                 <img src='/logo/freddy_pizza.png' alt='Logo' className='logo'/>
             </div>
             <div className="nav-links">
-              <button onClick={handleCarrinhoClick} className="button-29" role="button"> 🛒 Carrinho</button>
+              <button onClick={handleCarrinhoClick} className="button-29" role="button"> 🛒</button>
               <button onClick={handleAcessoRestritoClick} className="button-29" role="button">🚫 Acesso Restrito</button>
             </div>
         </div>      

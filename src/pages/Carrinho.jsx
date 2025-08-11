@@ -25,6 +25,7 @@ const Carrinho = () => {
     data: new Date().toLocaleString()
     };
     enviarParaCozinha(pedido);
+    limparCarrinho();
     navigate('/Cozinha');
   }
 

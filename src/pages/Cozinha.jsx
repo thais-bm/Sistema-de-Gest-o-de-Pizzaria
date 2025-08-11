@@ -49,7 +49,7 @@ const Cozinha = () => {
 
             <CardActions>
               <Stack direction="row" spacing={1}>
-                <Button onClick={() => navigate('/Entregas')} className='botao' variant="contained" color="success" disableElevation>
+                <Button onClick={ () => {cancelarPedido(pedido.id) ;navigate('/Entregas')}} className='botao' variant="contained" color="success" disableElevation>
                   Pedido pronto
                 </Button>
                 <Button onClick = {() => cancelarPedido(pedido.id)}className='botao' variant="contained" color="error" disableElevation>
