@@ -13,17 +13,36 @@ export const useCarrinho = () => {
 export const CarrinhoProvider = ({ children }) => {
 
   const [pedidosPendentes, setPedidosPendentes] = useState(() => {
-  const pedidosSalvos = localStorage.getItem('pedidosPendentes');
-  return pedidosSalvos ? JSON.parse(pedidosSalvos) : [];
+    const pedidosSalvos = localStorage.getItem('pedidosPendentes');
+    return pedidosSalvos ? JSON.parse(pedidosSalvos) : [];
+  });
+
+  const [pedidosEntrega, setPedidosEntrega] = useState(() => {
+    const pedidosEntrega = localStorage.getItem('pedidosEntrega');
+    return pedidosEntrega ? JSON.parse(pedidosEntrega) : [];
   });
 
   useEffect(() => {
     localStorage.setItem('pedidosPendentes', JSON.stringify(pedidosPendentes));
   }, [pedidosPendentes]);
 
+  useEffect(() => {
+    localStorage.setItem('pedidosEntrega', JSON.stringify(pedidosEntrega));
+  }, [pedidosEntrega]);
+
   // Função para adicionar pedido à lista de pendentes
   const enviarParaCozinha = (pedido) => {
     setPedidosPendentes(prev => [...prev, pedido]);
+  };
+
+  //Funcao para adicionar a pagina de entregas
+  const enviarParaEntrega = (pedido) => {
+    setPedidosEntrega(prev => [...prev, pedido]);
+  };
+
+  //Função para remover da pagina de entregas
+  const removerDaEntrega = (id) => {
+    setPedidosEntrega((prevPedidos) => prevPedidos.filter((pedido) => pedido.id !== id));
   };
 
   // função para cancelar o pedido dos pedidosPendentes
@@ -107,7 +126,11 @@ export const CarrinhoProvider = ({ children }) => {
         setEndereco,
         pedidosPendentes,
         enviarParaCozinha,
-        cancelarPedido  
+        cancelarPedido,
+        enviarParaEntrega,
+        removerDaEntrega,
+        pedidosEntrega, 
+        setPedidosEntrega
       }}
       >
 
