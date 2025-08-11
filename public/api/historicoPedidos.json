@@ -1,0 +1,28 @@
+{
+    "comments": "Historico de pedidos da API. Esse é apenas um modelo pro historico de pedidos",
+    "version": "1.0",
+
+    "pedidos": [
+        {
+            "id": 1,
+            "cliente": "João Silva",
+            "data": "2023-10-01",
+            "itens": [
+                {
+                    "id": "1",
+                    "title": "Calabresa",
+                    "category": "salgada",
+                    "subcategory": "salgada",
+                    "image": "images/pizza_calabresa.jpg",
+                    "ingredients": [
+                        "calabresa, queijo, azeitona preta, cebola"
+                    ],
+                    "quantidade": 2,
+                    "tamanho": "medio"
+                }
+            ],
+            "total": 150.00,
+            "status": "Entregue"
+        }
+    ]
+}
