@@ -16,14 +16,20 @@ import { ProdutosProvider } from '../context/ProdutosContext';
 import { CarrinhoProvider } from '../context/CarrinhoContext';
 import { AuthProvider } from '../context/AuthContext';
 
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'; // Reseta o CSS padrão do navegador
+import theme from '../theme/theme.jsx'; // Importa o seu tema
+
 const AppRoutes = () => {
   return (
-    <AuthProvider>
-    <ProdutosProvider>
-      <CarrinhoProvider>
-        {/* O ToastContainer pros alertas */}
-        <ToastContainer
-          autoClose={1500}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AuthProvider>
+        <ProdutosProvider>
+          <CarrinhoProvider>
+            {/* O ToastContainer pros alertas */}
+            <ToastContainer
+              autoClose={1500}
           hideProgressBar={false}
           closeOnClick
           pauseOnHover
@@ -51,6 +57,8 @@ const AppRoutes = () => {
       </CarrinhoProvider>
     </ProdutosProvider>
     </AuthProvider>
+  </ThemeProvider>
+
   );
 };
 

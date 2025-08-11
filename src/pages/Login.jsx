@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import { Box, TextField, Button, Typography, Paper, Container, Icon } from '@mui/material';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -24,29 +25,73 @@ const Login = () => {
     }
   };
 
-  
-
-
   return (
-    <div className='login-container'>
-      <h1>Login</h1>
-      <p>Faça login para acessar o sistema</p>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Usuário"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Entrar</button>
-      </form>
-    </div>
+    <Box component="section" maxWidth="xs" sx={{ 
+      backgroundImage: 'url(/images/madeira.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+     }}>
+      <Container component="main" maxWidth="xs" sx={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',  
+      }}>
+
+        <Paper elevation={3} sx={{ padding: 4, width: '100%'}}>
+          <Button
+            variant="outlined"
+            startIcon={<ArrowBackRoundedIcon />}
+            onClick={() => navigate('/')}
+          >
+            Retornar 
+          </Button>
+          <Typography component="h1" variant="h5" align="center" marginTop={5}>
+            Login
+          </Typography>
+          <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 1, mb: 3 }}>
+            Faça login para acessar o sistema
+          </Typography>
+          <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Usuário"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Senha"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              color='primary'
+            >
+              Entrar
+            </Button>
+          </Box>
+        </Paper>
+    </Container>
+    </Box>
+
   )
 }
 
