@@ -1,12 +1,19 @@
 
 /* CSS responsável pelo estilo da página de checkout */
 .pagina-checkout{
-  display: grid;
+  display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 20px 20px 20px;
   background-color: #f8f9fa;
-  color: darkgray;
+  color: rgb(77, 70, 70);
+
+
+  
+  max-width: 800px; /* Limita largura */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  border-radius: 10px; /* Arredonda bordas */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
 .pagina-checkout h4{
@@ -67,9 +74,9 @@
     display: block;
     margin: 0 auto;
     width: 100%;
-    max-width: 300px;
+    max-width: 600px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .form-checkout input {

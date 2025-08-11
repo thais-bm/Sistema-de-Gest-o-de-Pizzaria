@@ -1,17 +1,20 @@
 import React from 'react'
 import '../components/PizzaCard.css'
 import { useProdutos } from "../context/ProdutosContext";
+import { useNavigate } from 'react-router-dom';
 import { Container, Card, Box, CardContent, Button } from '@mui/material';
 
 const Admin = () => {
+  const navigate = useNavigate();
+  
+  const {produtos, removerProduto, atualizarProduto} = useProdutos();
 
-  const {produtos, adicionarProduto, removerProduto, atualizarProduto} = useProdutos();
 
   return (
     <Container>
 
       <Card>
-        <Button onClick={() => adicionarProduto}> Adicionar produto</Button>
+        <Button onClick={() => navigate('/Adicionar')}> Adicionar produto</Button>
       </Card>
 
       <Card >
@@ -53,6 +56,11 @@ const Admin = () => {
       </Card>
     </Container>
   )
+
+  
+
+   
+ 
 }
 
-export default Admin
+export default Admin;
