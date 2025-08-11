@@ -1,12 +1,10 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProdutos } from "../context/ProdutosContext";
+import { Paper, Box, Typography, TextField, Select, MenuItem, Button, FormControl, InputLabel } from '@mui/material';
 
-const AddProduto= () => {
-
-  const {adicionarProduto, setAdicionar} = useProdutos();
- 
+const AddProduto = ({ onCancel }) => {
+  const { adicionarProduto, setAdicionar } = useProdutos();
   const navigate = useNavigate();
 
   const [novoProduto, setNovoProduto] = useState({
@@ -18,7 +16,6 @@ const AddProduto= () => {
     image: ""
   });
 
-      
   const handleChange = (e) => {
     setNovoProduto({ ...novoProduto, [e.target.name]: e.target.value });
   };
@@ -36,97 +33,108 @@ const AddProduto= () => {
     e.preventDefault();
     await adicionarProduto(novoProduto);
     setAdicionar(false);
+    if (onCancel) onCancel();
   };
 
-     
   return (
-      <div>
-        <h2>Adicionar Produto</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            name="title"
-            placeholder="Título"
-            value={novoProduto.title}
-            onChange={handleChange}
-            required
-          />
-          <select
+    <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, margin: 'auto', mt: 4 }}>
+      <Typography variant="h5" align="center" color="primary" gutterBottom>
+        Adicionar Produto
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <TextField
+          name="title"
+          label="Título"
+          value={novoProduto.title}
+          onChange={handleChange}
+          required
+        />
+        <FormControl fullWidth>
+          <InputLabel id="category-label">Categoria</InputLabel>
+          <Select
+            labelId="category-label"
             name="category"
             value={novoProduto.category}
+            label="Categoria"
             onChange={handleChange}
           >
-            <option value="">Selecione a categoria</option>
-            <option value="pizza"> Pizza </option>
-            <option value="bebida"> Bebida </option>
-          </select>
-
-
-          <select
+            <MenuItem value=""><em>Selecione</em></MenuItem>
+            <MenuItem value="pizza">Pizza</MenuItem>
+            <MenuItem value="bebida">Bebida</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl fullWidth disabled={!novoProduto.category}>
+          <InputLabel id="subcategory-label">Subcategoria</InputLabel>
+          <Select
+            labelId="subcategory-label"
             name="subcategory"
             value={novoProduto.subcategory}
+            label="Subcategoria"
             onChange={handleChange}
-            disabled={!novoProduto.category}
           >
-            <option value="">Selecione a subcategoria</option>
-
-            {novoProduto.category === 'pizza' ? (
+            <MenuItem value=""><em>Selecione</em></MenuItem>
+            {novoProduto.category === 'pizza' && (
               <>
-                <option value="doce">Doce</option>
-                <option value="salgado">Salgado</option>
+                <MenuItem value="doce">Doce</MenuItem>
+                <MenuItem value="salgado">Salgado</MenuItem>
               </>
-            ) : novoProduto.category === 'bebida' ? (
-              <>
-                <option value="agua">Água</option>
-                <option value="vinho">Vinho</option>
-                <option value="refrigerante">Refrigerante</option>
-              </>
-            ) : null}
-          </select>
-
-          <input
-            name="price"
-            placeholder="Preço"
-            value={novoProduto.price}
-            onChange={handleChange}
-          />
-          <input
-            name="ingredients"
-            placeholder="Ingredientes (separados por vírgula)"
-            value={novoProduto.ingredients}
-            onChange={handleChange}
-          />
-
-          <div
-            onDrop={handleDrop}
-            onDragOver={(e) => e.preventDefault()}
-            style={{
-              border: "2px dashed gray",
-              padding: "20px",
-              textAlign: "center",
-              marginTop: "10px"
-            }}
-          >
-            {novoProduto.image ? (
-              <img
-                src={novoProduto.image}
-                alt="preview"
-                style={{ width: "100px" }}
-              />
-            ) : (
-              "Arraste uma imagem aqui"
             )}
-          </div>
-
-          <button type="submit">Salvar</button>
-
-          <button type="button" onClick={() =>  navigate("/admin") }>
+            {novoProduto.category === 'bebida' && (
+              <>
+                <MenuItem value="agua">Água</MenuItem>
+                <MenuItem value="vinho">Vinho</MenuItem>
+                <MenuItem value="refrigerante">Refrigerante</MenuItem>
+              </>
+            )}
+          </Select>
+        </FormControl>
+        <TextField
+          name="price"
+          label="Preço"
+          value={novoProduto.price}
+          onChange={handleChange}
+        />
+        <TextField
+          name="ingredients"
+          label="Ingredientes (separados por vírgula)"
+          value={novoProduto.ingredients}
+          onChange={handleChange}
+        />
+        <Box
+          onDrop={handleDrop}
+          onDragOver={(e) => e.preventDefault()}
+          sx={{
+            border: "2px dashed gray",
+            padding: 2,
+            textAlign: "center",
+            marginTop: 1,
+            minHeight: 80
+          }}
+        >
+          {novoProduto.image ? (
+            <img src={novoProduto.image} alt="preview" style={{ width: "100px" }} />
+          ) : (
+            <Typography variant="body2" color="textSecondary">
+              Arraste uma imagem aqui
+            </Typography>
+          )}
+        </Box>
+        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', mt: 2 }}>
+          <Button type="submit" variant="contained" color="primary">
+            Salvar
+          </Button>
+          <Button
+            type="button"
+            variant="outlined"
+            color="secondary"
+            onClick={onCancel}
+          >
             Cancelar
-          </button>
+          </Button>
+        </Box>
+      </Box>
+    </Paper>
+  );
+};
 
-        </form>
-      </div>
-    );
-}
-
-export default AddProduto
-
+export default AddProduto;
