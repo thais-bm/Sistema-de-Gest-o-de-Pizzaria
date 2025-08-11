@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography, Paper, Container, Icon } from '@mui/material';
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -42,7 +42,7 @@ const Login = () => {
         <Paper elevation={3} sx={{ padding: 4, width: '100%'}}>
           <Button
             variant="outlined"
-            startIcon={<KeyboardReturnIcon />}
+            startIcon={<ArrowBackRoundedIcon />}
             onClick={() => navigate('/')}
           >
             Retornar 
