@@ -26,8 +26,14 @@ const AddProduto = ({ onCancel }) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setNovoProduto({ ...novoProduto, image: imageUrl });
+      const reader = new FileReader();
+      // O evento 'onloadend' é disparado quando a leitura do arquivo termina
+      reader.onloadend = () => {
+        // 'reader.result' contém a string Base64
+        setNovoProduto({ ...novoProduto, image: reader.result }); 
+      };
+      // Converte o blob/file para uma string de URL de dados (Base64)
+      reader.readAsDataURL(file);
     }
   };
 
