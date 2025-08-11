@@ -178,15 +178,6 @@
       "price": "5,99",
       "ingredients": "350ml",
       "image": "blob:http://localhost:5173/2f72fd72-a702-4c9f-84a9-2ef60282c89d"
-    },
-    {
-      "id": "2565",
-      "title": "",
-      "category": "",
-      "subcategory": "",
-      "price": "",
-      "ingredients": "",
-      "image": ""
     }
   ]
 }
