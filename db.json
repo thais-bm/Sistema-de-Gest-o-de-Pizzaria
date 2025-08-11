@@ -169,6 +169,105 @@
       "ingredients": [
         "molho de tomate, muçarela, calabresa fatiada, presunto, ovos, cebola, orégano"
       ]
+    },
+    {
+      "id": "3b51",
+      "title": "pizza de jujuba",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "100",
+      "ingredients": "queijo, jujuba, oregado, maconha",
+      "image": "blob:http://localhost:5173/ec394140-f8a8-4c37-91fd-cbc291c02f97"
+    },
+    {
+      "id": "355a",
+      "title": "pizza de jujuba",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "100",
+      "ingredients": "queijo, jujuba, oregado, maconha",
+      "image": "blob:http://localhost:5173/ec394140-f8a8-4c37-91fd-cbc291c02f97"
+    },
+    {
+      "id": "d1d7",
+      "title": "pizza de jujuba",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "100",
+      "ingredients": "queijo, jujuba, oregado, maconha",
+      "image": "blob:http://localhost:5173/ec394140-f8a8-4c37-91fd-cbc291c02f97"
+    },
+    {
+      "id": "8bc6",
+      "title": "pizza de esnupi",
+      "category": "pizza",
+      "subcategory": "salgado",
+      "price": "130",
+      "ingredients": "esnupi,amro",
+      "image": "blob:http://localhost:5173/53cf77c0-33e8-4956-b155-3dcb37aa34b6"
+    },
+    {
+      "id": "3aa6",
+      "title": "snup",
+      "category": "bebida",
+      "subcategory": "agua",
+      "price": "1",
+      "ingredients": "agua, snupi",
+      "image": "blob:http://localhost:5173/a6a8f665-9442-448d-b7f9-385a91cf2a67"
+    },
+    {
+      "id": "5029",
+      "title": "sadasda",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "133",
+      "ingredients": "esnupi",
+      "image": "blob:http://localhost:5173/91ac7cc3-12b4-48ef-853e-4382e8e3bccd"
+    },
+    {
+      "id": "497a",
+      "title": "sadasda",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "133",
+      "ingredients": "esnupi",
+      "image": "blob:http://localhost:5173/91ac7cc3-12b4-48ef-853e-4382e8e3bccd"
+    },
+    {
+      "id": "1e68",
+      "title": "sadasda",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "133",
+      "ingredients": "esnupi",
+      "image": "blob:http://localhost:5173/91ac7cc3-12b4-48ef-853e-4382e8e3bccd"
+    },
+    {
+      "id": "ab32",
+      "title": "sadsada",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "98",
+      "ingredients": "aa,bb",
+      "image": "blob:http://localhost:5173/3e47ba1f-455f-4b0b-9480-3b143aa69001"
+    },
+    {
+      "id": "f443",
+      "title": "apdapdossapsdo",
+      "category": "pizza",
+      "subcategory": "doce",
+      "price": "1",
+      "ingredients": "amor, cnada",
+      "image": "blob:http://localhost:5173/088a07ed-ec14-4963-ad49-09e030d58bb2"
+    },
+    {
+      "id": "a508",
+      "title": "filipe luis",
+      "category": "pizza",
+      "subcategory": "salgado",
+      "price": "98",
+      "ingredients": "catupiry, bacon, filipe luis",
+      "image": "blob:http://localhost:5173/ca889330-e4ee-4d05-ac71-fea77a67a344"
     }
   ]
 }

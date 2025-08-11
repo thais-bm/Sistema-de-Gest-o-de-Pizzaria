@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProdutos } from "../context/ProdutosContext";
 import { Paper, Box, Typography, TextField, Select, MenuItem, Button, FormControl, InputLabel } from '@mui/material';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduto = ({ onCancel }) => {
   const { adicionarProduto, setAdicionar } = useProdutos();
@@ -32,9 +34,10 @@ const AddProduto = ({ onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await adicionarProduto(novoProduto);
-    setAdicionar(false);
-    if (onCancel) onCancel();
-  };
+    toast.success('Produto adicionado com sucesso!');
+    setTimeout(() => {
+      if (onCancel) onCancel();
+    }, 1500); };
 
   return (
     <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, margin: 'auto', mt: 4 }}>
@@ -73,19 +76,15 @@ const AddProduto = ({ onCancel }) => {
             onChange={handleChange}
           >
             <MenuItem value=""><em>Selecione</em></MenuItem>
-            {novoProduto.category === 'pizza' && (
-              <>
-                <MenuItem value="doce">Doce</MenuItem>
-                <MenuItem value="salgado">Salgado</MenuItem>
-              </>
-            )}
-            {novoProduto.category === 'bebida' && (
-              <>
-                <MenuItem value="agua">Água</MenuItem>
-                <MenuItem value="vinho">Vinho</MenuItem>
-                <MenuItem value="refrigerante">Refrigerante</MenuItem>
-              </>
-            )}
+            {novoProduto.category === 'pizza' && [
+              <MenuItem key="doce" value="doce">Doce</MenuItem>,
+              <MenuItem key="salgado" value="salgado">Salgado</MenuItem>
+            ]}
+            {novoProduto.category === 'bebida' && [
+              <MenuItem key="agua" value="agua">Água</MenuItem>,
+              <MenuItem key="vinho" value="vinho">Vinho</MenuItem>,
+              <MenuItem key="refrigerante" value="refrigerante">Refrigerante</MenuItem>
+            ]}
           </Select>
         </FormControl>
         <TextField
@@ -133,6 +132,7 @@ const AddProduto = ({ onCancel }) => {
           </Button>
         </Box>
       </Box>
+      <ToastContainer position="top-right" hideProgressBar={false} />
     </Paper>
   );
 };
