@@ -48,19 +48,41 @@ const AddProduto= () => {
             placeholder="Título"
             value={novoProduto.title}
             onChange={handleChange}
+            required
           />
-          <input
+          <select
             name="category"
-            placeholder="Categoria"
             value={novoProduto.category}
             onChange={handleChange}
-          />
-          <input
+          >
+            <option value="">Selecione a categoria</option>
+            <option value="pizza"> Pizza </option>
+            <option value="bebida"> Bebida </option>
+          </select>
+
+
+          <select
             name="subcategory"
-            placeholder="Subcategoria"
             value={novoProduto.subcategory}
             onChange={handleChange}
-          />
+            disabled={!novoProduto.category}
+          >
+            <option value="">Selecione a subcategoria</option>
+
+            {novoProduto.category === 'pizza' ? (
+              <>
+                <option value="doce">Doce</option>
+                <option value="salgado">Salgado</option>
+              </>
+            ) : novoProduto.category === 'bebida' ? (
+              <>
+                <option value="agua">Água</option>
+                <option value="vinho">Vinho</option>
+                <option value="refrigerante">Refrigerante</option>
+              </>
+            ) : null}
+          </select>
+
           <input
             name="price"
             placeholder="Preço"
@@ -97,7 +119,7 @@ const AddProduto= () => {
 
           <button type="submit">Salvar</button>
 
-          <button type="button" onClick={() => { setAdicionar(false); navigate("/admin"); }}>
+          <button type="button" onClick={() =>  navigate("/admin") }>
             Cancelar
           </button>
 
