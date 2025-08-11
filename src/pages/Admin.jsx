@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Card, Box, CardContent, Button, Typography, Paper, Collapse } from '@mui/material';
 import { KeyboardArrowDown, KeyboardArrowUp} from '@mui/icons-material';
 import { set } from 'react-hook-form';
+import { PedidosProvider, useHistorico } from '../context/PedidosContext';
 
 import AddProduto from '../components/AddProduto';
 
@@ -19,10 +20,13 @@ const historicoDropdown = () => {
 
 
 // aqui fica as mudanças que eu estou fazendo no menu de Admin
-const novoMenu = () => {
+const NovoMenu = () => {
   const [gerenciarIconUp, setGerenciarIconUp] = useState(true);
   const [historicoIconUp, setHistoricoIconUp] = useState(true);
   const [showAddProduto, setShowAddProduto] = useState(false);
+  const [showHistorico, setShowHistorico] = useState(false);
+
+  const {totalPedidos, setTotalPedidos, adicionarAoHistorico, removerDoHistorico, limparHistorico} = useHistorico();
 
   const handleGerenciarProduto = () => {
     setGerenciarIconUp(!gerenciarIconUp);
@@ -63,6 +67,12 @@ const novoMenu = () => {
             <Button variant="outlined" color="primary" startIcon={historicoIconUp ? <KeyboardArrowUp /> : <KeyboardArrowDown />} onClick={handleHistoricoPedidos}>
               Histórico de Pedidos
             </Button>
+            <Collapse in={showHistorico} sx={{ width: '100%', mt: 2 }}>
+              {showHistorico && totalPedidos.length === 0 (
+                <Typography variant="h2"> O histórico está vazio!!! </Typography>
+              )}
+              
+            </Collapse>
           </Box>
         </Paper>
       </Container>
@@ -125,8 +135,8 @@ const Admin = () => {
 
 
 
-  // return novoMenu(); // Use novoMenu() para o novo design ou oldMenu() para o antigo
-  return novoMenu(); // Use oldMenu() para o antigo design
+  // return NovoMenu(); // Use NovoMenu() para o novo design ou oldMenu() para o antigo
+  return NovoMenu(); // Use oldMenu() para o antigo design
 
   
 

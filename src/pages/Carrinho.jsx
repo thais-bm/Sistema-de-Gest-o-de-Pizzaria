@@ -3,9 +3,11 @@ import { useCarrinho } from '../context/CarrinhoContext';
 import { useNavigate } from 'react-router-dom';
 import "./Carrinho.css"
 import { useId } from 'react';
+import { PedidosProvider, useHistorico } from '../context/PedidosContext';
 
 const Carrinho = () => {
 
+  const {adicionarAoHistorico} = useHistorico();
   const {carrinho,  enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
   const navigate = useNavigate();
 
@@ -132,7 +134,7 @@ const Carrinho = () => {
 
 
           <div className="botoes-carrinho">
-            <button onClick={() => {handleEnviarParaCozinha(); navigate('/Pagamento'); }}  className='btn' style={{background: 'green'} }>Enviar para a Cozinha</button>
+            <button onClick={() => {handleEnviarParaCozinha(); navigate('/Pagamento'); adicionarAoHistorico();}}  className='btn' style={{background: 'green'} }>Enviar para a Cozinha</button>
             <button onClick={limparCarrinho} className='btn' style={{background: 'FireBrick'}}>Limpar Carrinho</button>
             <button onClick={() => navigate('/Cardapio')} className='btn' style={{background: 'gold'}}>Continuar Comprando</button>
           </div>

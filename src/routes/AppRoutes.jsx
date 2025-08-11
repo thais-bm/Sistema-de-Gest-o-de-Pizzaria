@@ -13,10 +13,10 @@ import Pagamento from '../pages/Pagamento';
 import Login from '../pages/Login';
 import Entregas from '../pages/Entregas.jsx';
 
-
 import { ProdutosProvider } from '../context/ProdutosContext';
 import { CarrinhoProvider } from '../context/CarrinhoContext';
 import { AuthProvider } from '../context/AuthContext';
+import { PedidosProvider } from '../context/PedidosContext.jsx';
 
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline'; // Reseta o CSS padrão do navegador
@@ -29,6 +29,8 @@ const AppRoutes = () => {
       <AuthProvider>
         <ProdutosProvider>
           <CarrinhoProvider>
+            <PedidosProvider>
+            
             {/* O ToastContainer pros alertas */}
             <ToastContainer
               autoClose={1500}
@@ -57,6 +59,10 @@ const AppRoutes = () => {
             <Route element={<Entregas />} path="/Entregas" />
             </Route>
         </Routes>
+
+
+        
+        </PedidosProvider>
       </CarrinhoProvider>
     </ProdutosProvider>
     </AuthProvider>
