@@ -54,6 +54,8 @@ export function ProdutosProvider({ children }) {
     pizza.ingredients[0].split(",").map(ing => ing.trim().toLowerCase())
   );
 
+  const categorias = [...new Set(produtos.map(p => p.subcategory))];
+
   const ingredientes= [...new Set(todosIngredientes)];
 
   return (
@@ -63,7 +65,9 @@ export function ProdutosProvider({ children }) {
       ingredientes,
       adicionarProduto,
       removerProduto,
-      atualizarProduto
+      atualizarProduto,
+      categorias
+
     }}>
       {children}
     </ProdutosContext.Provider>

@@ -6,10 +6,12 @@ import { useState } from 'react'
 import { useProdutos } from "../context/ProdutosContext";
 
 const Cardapio = () => {
-  const {produtos, ingredientes} = useProdutos();
+  const {produtos, ingredientes, categorias} = useProdutos();
 
-  const [mostrarFiltros, setMostrarFiltros] = useState(false);
+  const [mostrarFiltrosIng, setMostrarFiltrosIng] = useState(false);
+  const [mostrarFiltrosTipos, setMostrarFiltrosTipos] = useState(false);
   const [ingredienteSelecionado, setIngredienteSelecionado] = useState("");
+  const [tipoSelecionado, setTipoSelecionado] = useState("");
 
   //Pizzas filtradas por ingredientes (que estão no produtosContext)
   const pizzasFiltradas = ingredienteSelecionado
@@ -18,6 +20,11 @@ const Cardapio = () => {
         .toLowerCase()
           .includes(ingredienteSelecionado.toLowerCase())
       )
+    : produtos;
+
+  //Produtos filtradas por tipos
+  const tiposFiltrados = tipoSelecionado
+    ? produtos.filter(produto=> produto.subcategory == tipoSelecionado)
     : produtos;
 
   const pizzasSalgadas = produtos.filter(p => p.category === "pizza" && p.subcategory === "salgada");
@@ -34,11 +41,15 @@ const Cardapio = () => {
         <div>
 
         <div className='filtro'>
-          <button className='filtro-botao' onClick={() => setMostrarFiltros(!mostrarFiltros)}>
-            {mostrarFiltros ? "Ocultar Filtros" : "Filtrar por ingrediente"}
+          <button className='filtro-botao' onClick={() => setMostrarFiltrosIng(!mostrarFiltrosIng)}>
+            {mostrarFiltrosIng ? "Ocultar Filtros" : "Filtrar por ingrediente"}
           </button>
 
-          {mostrarFiltros && (
+          <button className='filtro-botao'  onClick={() => setMostrarFiltrosTipos(!mostrarFiltrosTipos)}>
+            {mostrarFiltrosTipos ? "Ocultar Filtros" : "Filtrar por tipo"}
+          </button>
+
+          {mostrarFiltrosIng && (
             <div>
               <h3>Selecione um ingrediente:</h3>
               <select
@@ -56,6 +67,24 @@ const Cardapio = () => {
             </div>
           )}
 
+          {mostrarFiltrosTipos && (
+            <div>
+              <h3>Selecione um tipo de produto:</h3>
+              <select
+                className='select'
+                value={tipoSelecionado}
+                onChange={(e) => setTipoSelecionado(e.target.value)}
+              >
+                <option value="">Todos</option>
+                {categorias.map((tipo, index) => (
+                  <option key={index} value={tipo}>
+                    {tipo}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
           {ingredienteSelecionado && (
             <div>
               <h2 className='produto-h2'>Pizzas filtradas</h2>
@@ -66,7 +95,18 @@ const Cardapio = () => {
               </div>
             </div>
           )}
-           
+
+          {tipoSelecionado && (
+            <div>
+              <h2 className='produto-h2'>Tipos filtrados</h2>
+              <div className='cards'>
+                {tiposFiltrados.map(tipo => (
+                  <PizzaCard key={tipo.id} pizza={tipo} />
+                ))}
+              </div>
+            </div>
+          )}
+          
             
         </div>
 
