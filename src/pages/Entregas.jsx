@@ -13,7 +13,7 @@ const Entregas = () => {
        <Container maxWidth={false} className="container-cozinha">
         <Box className="box-titulo">
           <Typography variant="h2" className="titulo-cozinha">
-            Cozinha
+            Entregas
           </Typography>
         </Box>
 
@@ -39,11 +39,15 @@ const Entregas = () => {
               <Typography variant="body2" color="text.secondary">
                 {pedido.data}
               </Typography>
+
               {pedidosEntrega.map((item) => (
                 <Typography key={item.id}>
                   {item.quantidade}x {item.title} - R$ {item.preco} (Tamanho: {item.tamanho})
                 </Typography>
               ))}
+
+              
+
             </CardContent>
 
             <CardActions>

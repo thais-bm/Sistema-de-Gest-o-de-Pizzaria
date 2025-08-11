@@ -6,7 +6,6 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 const Login = () => {
 
-  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useContext(AuthContext);
@@ -19,7 +18,10 @@ const Login = () => {
       // O usuário está no contexto após login
       if (result.role === 'admin') {
         navigate('/admin');
-      } else if (result.role === 'cozinha' && <Escolha />) {
+      } else if (result.role === 'cozinha') {
+        navigate('/Cozinha');
+      }else if(result.role === 'entregas') {
+        navigate('/Entregas');
 
       }
     } else {
@@ -98,48 +100,4 @@ const Login = () => {
 }
 
 
-const Escolha = () => {
-
-  const navigate = useNavigate();
-
-  return (
-    <Container component="section" maxWidth="100%" sx={{
-      backgroundImage: 'url(/images/madeira.jpg)',
-    }}>
-      <Container component="main" maxWidth="xs" sx={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',  
-      }}>
-
-        <Paper elevation={3} sx={{ padding: 4, width: '100%'}}>
-          <Button
-            variant="outlined"
-            startIcon={<ArrowBackRoundedIcon />}
-            onClick={() => navigate('/')}
-          >
-            Retornar 
-          </Button>
-
-          <Button
-            variant="contained"
-            onClick={() => navigate('/Cozinha')}
-          >
-            Cozinha
-          </Button>
-
-          <Button
-            variant="contained"
-            onClick={() => navigate('/Entregas')}
-          >
-            Entregas
-          </Button>
-        </Paper>
-
-    </Container>
-    </Container>
-
-  )
-}
-export default Login
+export default Login;

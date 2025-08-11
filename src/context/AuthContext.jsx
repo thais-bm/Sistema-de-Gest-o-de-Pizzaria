@@ -31,6 +31,14 @@ export const AuthProvider = ({ children }) => {
       return userData; // usuario + role
     }
 
+    else if (username === 'entregas' && password === '123') {
+      const userData = { username: 'entregas', role: 'entregas' };
+      setIsAuthenticated(true);
+      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData)); // Armazena no localStorage
+      return userData; // usuario + role
+    }
+
     return false;
   };
 
