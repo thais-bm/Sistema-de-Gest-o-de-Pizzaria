@@ -2,21 +2,34 @@ import React, { useState } from 'react'
 import { useCarrinho } from '../context/CarrinhoContext';
 import { useNavigate } from 'react-router-dom';
 import "./Carrinho.css"
+import { useId } from 'react';
 
 const Carrinho = () => {
-  const { carrinho, removerDoCarrinho, limparCarrinho, valorTotal } = useCarrinho();
+
+  const {carrinho,  enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
   const navigate = useNavigate();
 
-  const[entrega, setEntrega] = useState(null)
-  const [mesa, setMesa] = useState(0)
-  const [endereco, setEndereco] = useState(null)
+  const uniqueId = useId();
 
-   const handleChangeMesa = (event) => {
+  const handleChangeMesa = (event) => {
     setMesa(event.target.value);
   };
 
+  const handleEnviarParaCozinha = () => {
+  const pedido = {
+    id: uniqueId,
+    itens: carrinho,
+    entrega,
+    mesa,
+    endereco,
+    data: new Date().toLocaleString()
+    };
+    enviarParaCozinha(pedido);
+    navigate('/Cozinha');
+  }
+
   return (
-    <main className='carrinho'>
+    <main className='carrinho'> 
       <div className="bg"></div>
       <div className="bg bg2"></div>
       <div className="bg bg3"></div>
@@ -71,14 +84,14 @@ const Carrinho = () => {
               <form>
                 <label htmlFor="mesa">Mesa</label>
                 <input
-                  type="radio" id="mesa" name="entrega" value="mesa"
+                  type="radio"  checked={entrega === "mesa"} id="mesa" name="entrega" value="mesa"
                   onChange={(e) => setEntrega(e.target.value)}
                 />
                 <br/>
 
                 <label htmlFor="casa">Entrega</label>
                 <input
-                  type="radio" id="casa" name="entrega" value="casa"
+                  type="radio" checked={entrega === "casa"} id="casa" name="entrega" value="casa"
                   onChange={(e) => setEntrega(e.target.value)}
                 />
               </form>
@@ -118,7 +131,7 @@ const Carrinho = () => {
 
 
           <div className="botoes-carrinho">
-            <button onClick={() => navigate('/Pagamento')} className='btn' style={{background: 'green'}}>Enviar para a Cozinha</button>
+            <button onClick={() => {handleEnviarParaCozinha(); navigate('/Pagamento'); }}  className='btn' style={{background: 'green'} }>Enviar para a Cozinha</button>
             <button onClick={limparCarrinho} className='btn' style={{background: 'FireBrick'}}>Limpar Carrinho</button>
             <button onClick={() => navigate('/Cardapio')} className='btn' style={{background: 'gold'}}>Continuar Comprando</button>
           </div>

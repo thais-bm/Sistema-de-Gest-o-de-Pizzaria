@@ -1,8 +1,14 @@
 import React from 'react';
+import { useCarrinho } from '../context/CarrinhoContext';
 import { Container, Typography, Box, Card, CardContent, Stack, Button, CardActions, Grid} from '@mui/material';
 import "./Cozinha.css"
+import { useNavigate } from 'react-router-dom';
 
 const Cozinha = () => {
+
+  const { pedidosPendentes, cancelarPedido } = useCarrinho();
+  const navigate = useNavigate();
+
   return (
      
       <Container maxWidth={false} className="container-cozinha">
@@ -13,38 +19,47 @@ const Cozinha = () => {
         </Box>
 
           <Container className='container-pedidos'>
+            {pedidosPendentes.length === 0 && (
+              <Typography variant="h6"> Nenhum pedido pendente!!! </Typography>
+            )}
             
             {/* Coluna das mesas */}
 
-            <Card className="pedidos">
-              <CardContent className='header-pedido'>
-                <Typography variant="h5" className="tipo-pedido">Mesa</Typography>
-                {/* Colocar o ID do pedido aq*/}
-                <Typography variant="h6" className='id'>ID: </Typography>
-              </CardContent>
-              <CardActions>
-                <Stack direction="row" spacing={1}>
-                  <Button className='botao' variant="contained" color="success"  disableElevation>Pedido pronto</Button>
-                  <Button className='botao' variant="contained" color="error"  disableElevation>Cancelar</Button>
-                </Stack>
-              </CardActions>
-            </Card>
+            {pedidosPendentes.map((pedido) => (
+          <Card key={pedido.id} className="pedidos">
+            <CardContent className='header-pedido'>
+              <Typography variant="h5" className="tipo-pedido">
+                {pedido.entrega === 'mesa' ? `Mesa ${pedido.mesa}` : 'Entrega'}
+              </Typography>
+              <Typography variant="h6" className='id'>
+                ID: {pedido.id}
+              </Typography>
+            </CardContent>
 
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                {pedido.data}
+              </Typography>
+              {pedido.itens.map((item) => (
+                <Typography key={item.id}>
+                  {item.quantidade}x {item.title} - R$ {item.preco} (Tamanho: {item.tamanho})
+                </Typography>
+              ))}
+            </CardContent>
 
-          {/* Coluna das entregas */}
+            <CardActions>
+              <Stack direction="row" spacing={1}>
+                <Button onClick={() => navigate('/Entregas')} className='botao' variant="contained" color="success" disableElevation>
+                  Pedido pronto
+                </Button>
+                <Button onClick = {() => cancelarPedido(pedido.id)}className='botao' variant="contained" color="error" disableElevation>
+                  Cancelar
+                </Button>
+              </Stack>
+            </CardActions>
 
-            <Card className="pedidos">
-              <CardContent className='header-pedido'>
-                <Typography variant="h5" className='tipo-pedido'>Entrega</Typography>
-                <Typography variant="h6" className='id'>ID:  </Typography>
-              </CardContent>
-              <CardActions sx={{ justifyContent: 'center', paddingBottom: 2 }}>
-                <Stack direction="row" spacing={1}>
-                  <Button className='botao' variant="contained" color="success"  disableElevation >Enviar para entrega</Button>
-                  <Button className='botao' variant="contained" color="error"  disableElevation >Cancelar</Button>
-                </Stack>
-              </CardActions>
-            </Card>
+          </Card>
+        ))}
 
           </Container>
 

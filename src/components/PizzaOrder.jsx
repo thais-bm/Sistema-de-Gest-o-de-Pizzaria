@@ -56,8 +56,11 @@ const PizzaOrder = () => {
 
   return (
     <div className="order">
-        
-      <img src={pizza.image}/>
+
+      <img className='madeira-pizza' src="/images/madeira_pizza.png"/>  
+      <img  className="pizza-imagem"src={pizza.image}/>
+
+      
       <div className='order-box'>
         <h1>{pizza.title}</h1>
         <h2 >{pizza.ingredients}</h2>

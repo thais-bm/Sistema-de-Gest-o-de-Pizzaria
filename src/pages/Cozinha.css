@@ -74,9 +74,9 @@
   background-color: #b32900 ;
   border-radius: 10px;
 
-  max-width: 100px; /* limita a largura máxima */
+  max-width: 120px; /* limita a largura máxima */
   margin: 0 auto; /* centraliza horizontalmente */
-  padding: 10px 20px; 
+  padding: 10px 10px; 
 }
 
 .botao {

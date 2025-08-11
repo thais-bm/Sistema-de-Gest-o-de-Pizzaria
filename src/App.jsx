@@ -36,4 +36,11 @@ function App() {
 //⣿⣿⠟⠋⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⣤⣦⡌⣳⣿⣄⡀⠀⠀⠀⠂⠠⠠⠚⠁⠿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢹⢟⣻⣽⣿⣿⣿⣿⢽⣿⣤⡈⢿
 //⠏⣡⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢄⢰⣟⡣⠶⠗⠃⣰⢚⠋⠿⢿⣿⣿⠷⠦⠤⡠⢤⠀⠴⢶⣤⣴⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠉⠵⠝⡳⠶⠌⢻⡻⠶⠧⠈
 
+//Coisas pra ajeitar pra eu n esquecer:
+//1. Pizza Order deixa de uma maneira que não precise scrollar
+//2. Criar uma barra de navegação
+//3. Se der colocar o botao de filtrar ingredientes pro lado direito
+//4. Deixar o nome da pizzariar bem centralizado
+//5. Melhorar a tela do pedido pendente
+
 export default App

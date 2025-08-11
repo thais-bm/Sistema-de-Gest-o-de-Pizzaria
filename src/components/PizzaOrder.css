@@ -1,11 +1,20 @@
-.order img{
-    top: 18%;
-    left:4%;
+.pizza-imagem{
+    top: 14%;
+    left:10%;
     position: absolute;
-    width: 600px; 
-    height: 600px;
+    width: 500px; 
+    height: 500px;
     border-radius: 50%;
-    
+}
+
+.madeira-pizza{
+  transform: rotate(-45deg);
+  top: 12%;
+  left:-6%;
+  position: absolute;
+  width: 960px; 
+  height: 700px;
+
 }
 
 .order{

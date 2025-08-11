@@ -11,6 +11,7 @@ import Admin from '../pages/Admin';
 import ProtectedRoute from '../routes/ProtectedRoute';
 import Pagamento from '../pages/Pagamento';
 import Login from '../pages/Login';
+import Entregas from '../pages/Entregas.jsx';
 
 import { ProdutosProvider } from '../context/ProdutosContext';
 import { CarrinhoProvider } from '../context/CarrinhoContext';
@@ -52,6 +53,7 @@ const AppRoutes = () => {
           <Route element={<ProtectedRoute />}>
             <Route element={<Cozinha />} path="/cozinha" />
             <Route element={<Admin />} path="/admin" />
+            <Route element={<Entregas />} path="/Entregas" />
             </Route>
         </Routes>
       </CarrinhoProvider>
