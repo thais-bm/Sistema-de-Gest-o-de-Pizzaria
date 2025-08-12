@@ -1,7 +1,6 @@
 import React from 'react'
 import PizzaCard from '../components/PizzaCard'
 import Header from '../components/Header'
-import "./Cardapio.css"
 import { useState } from 'react'
 import { useProdutos } from "../context/ProdutosContext";
 import Footer from '../components/Footer'
@@ -92,6 +91,7 @@ const Cardapio = () => {
                 labelId="ingrediente-label"
                 value={ingredienteSelecionado}
                 label="Ingrediente"
+                variant='filled'
                 onChange={(e) => setIngredienteSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
