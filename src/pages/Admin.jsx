@@ -59,10 +59,10 @@ const NovoMenu = () => {
           backgroundImage: 'url(/images/madeira.jpg)',   
     }}>
 
-      <Container maxWidth="xs" component="main" sx={{
+      <Container component="main" sx={{
         minHeight: '100vh',
-        maxHeight: 'xs',
-        minWidth: '500px',
+        maxHeight: 'xxs',
+        width: '40%',
         display: 'flex', 
         alignItems: 'center',
         justifyContent: 'center',

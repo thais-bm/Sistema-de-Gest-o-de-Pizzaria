@@ -50,7 +50,7 @@ const Header = () => {
 
   {/* Botões de Navegação */}
   <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 3 }}>
-<IconButton
+    <IconButton
         onClick={handleCarrinhoClick}
         color="inherit"
         aria-label="Carrinho"

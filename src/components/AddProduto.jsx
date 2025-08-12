@@ -49,7 +49,7 @@ const AddProduto = ({ onCancel }) => {
 
 
   return (
-    <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, margin: 'auto', mt: 4 }}>
+    <Paper elevation={3} sx={{ padding: 4, width:'90%', margin: 'auto', mt: 4 }}>
       <Typography variant="h5" align="center" color="primary" gutterBottom>
         Adicionar Produto
       </Typography>

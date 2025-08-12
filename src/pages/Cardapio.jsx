@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { useProdutos } from "../context/ProdutosContext";
 import Footer from '../components/Footer'
 
+import { Container, Box, Button, Typography, Paper, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+
 const Cardapio = () => {
   const {produtos, ingredientes, categorias} = useProdutos();
 
@@ -35,155 +37,303 @@ const Cardapio = () => {
   const bebidasAgua = produtos.filter(p => p.category === "bebida" && p.subcategory === "água");
 
   return (
-    <div>
-    <Header/>
-    <div className="cardapio">
-      <div  className='background-cardapio'>
-      <section>
-        <div>
+    <Box sx={{ backgroundImage: 'url("images/madeira.jpg")', backgroundSize: 'cover', minHeight: '100vh' }}>
+      <Header />
+      {/* Principal aqui */}
+      <Container maxWidth="90%" sx={{ py: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, pt: 4 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            size='large'
+            sx={{
+              backgroundColor: '#b32900',
+              '&:hover': {
+                backgroundColor: '#6c1305',
+              },
+            }}
+            onClick={() => {
+              setMostrarFiltrosIng(!mostrarFiltrosIng)
+              if (mostrarFiltrosIng) {
+                setIngredienteSelecionado('');
+              }
+            }}
+          >
+            {mostrarFiltrosIng ? 'Ocultar Filtros' : 'Filtrar por ingrediente'}
+          </Button>
 
-        <div className='filtro'>
-          <button className='filtro-botao' onClick={() => setMostrarFiltrosIng(!mostrarFiltrosIng)}>
-            {mostrarFiltrosIng ? "Ocultar Filtros" : "Filtrar por ingrediente"}
-          </button>
+          <Button
+            variant="contained"
+            color="primary"
+            size='large'
+            sx={{
+              backgroundColor: '#b32900',
+              '&:hover': {
+                backgroundColor: '#6c1305',
+              },
+            }}
+            onClick={ () => { setMostrarFiltrosTipos(!mostrarFiltrosTipos);
+              // Lógica de reset: se o filtro estiver sendo ocultado, reseta o valor
+              if (mostrarFiltrosTipos) {
+                setTipoSelecionado('');
+              }
+            }}
+          >
+            {mostrarFiltrosTipos ? 'Ocultar Filtros' : 'Filtrar por tipo'}
+          </Button>
+        </Box>
 
-          <button className='filtro-botao'  onClick={() => setMostrarFiltrosTipos(!mostrarFiltrosTipos)}>
-            {mostrarFiltrosTipos ? "Ocultar Filtros" : "Filtrar por tipo"}
-          </button>
-
-          {mostrarFiltrosIng && (
-            <div>
-              <h3>Selecione um ingrediente:</h3>
-              <select
-                className='select'
+        {mostrarFiltrosIng && (
+          <Box sx={{ mt: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography variant="h6" color="text.primary">Selecione um ingrediente:</Typography>
+            <FormControl sx={{ minWidth: 300, mt: 1 }}>
+              <InputLabel id="ingrediente-label">Ingrediente</InputLabel>
+              <Select
+                labelId="ingrediente-label"
                 value={ingredienteSelecionado}
+                label="Ingrediente"
                 onChange={(e) => setIngredienteSelecionado(e.target.value)}
               >
-                <option value="">Todos</option>
+                <MenuItem value="">Todos</MenuItem>
                 {ingredientes.map((ing, index) => (
-                  <option key={index} value={ing}>
+                  <MenuItem key={index} value={ing}>
                     {ing}
-                  </option>
+                  </MenuItem>
                 ))}
-              </select>
-            </div>
-          )}
+              </Select>
+            </FormControl>
+          </Box>
+        )}
 
-          {mostrarFiltrosTipos && (
-            <div>
-              <h3>Selecione um tipo de produto:</h3>
-              <select
-                className='select'
+        {mostrarFiltrosTipos && (
+          <Box sx={{ mt: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography variant="h6" color="text.primary">Selecione um tipo de produto:</Typography>
+            <FormControl sx={{ minWidth: 300, mt: 1 }}>
+              <InputLabel id="tipo-label">Tipo</InputLabel>
+              <Select
+                labelId="tipo-label"
                 value={tipoSelecionado}
+                label="Tipo"
                 onChange={(e) => setTipoSelecionado(e.target.value)}
               >
-                <option value="">Todos</option>
+                <MenuItem value="">Todos</MenuItem>
                 {categorias.map((tipo, index) => (
-                  <option key={index} value={tipo}>
+                  <MenuItem key={index} value={tipo}>
                     {tipo}
-                  </option>
+                  </MenuItem>
                 ))}
-              </select>
-            </div>
-          )}
+              </Select>
+            </FormControl>
+          </Box>
+        )}
+        
+        {ingredienteSelecionado && (
+          <Box sx={{ mt: 4 }}>
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{
+                textAlign: 'center',
+                color: 'rgb(245, 234, 227)',
+                backgroundColor: '#ffa221',
+                padding: '10px',
+                borderRadius: '30px',
+                fontWeight: 'bold',
+                textShadow: '1px 1px #421a0e'
+              }}
+            >
+              Pizzas filtradas
+            </Typography>
+            <Grid container spacing={3} sx={{ mt: 2 }}>
+              {pizzasFiltradas.map(pizza => (
+                <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+                  <PizzaCard pizza={pizza} />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        )}
 
-          {ingredienteSelecionado && (
-            <div>
-              <h2 className='produto-h2'>Pizzas filtradas</h2>
-              <div className='cards'>
-                {pizzasFiltradas.map(pizza => (
-                  <PizzaCard key={pizza.id} pizza={pizza} />
-                ))}
-              </div>
-            </div>
-          )}
+        {tipoSelecionado && (
+          <Box sx={{ mt: 4 }}>
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{
+                textAlign: 'center',
+                color: 'rgb(245, 234, 227)',
+                backgroundColor: '#ffa221',
+                padding: '10px',
+                borderRadius: '30px',
+                fontWeight: 'bold',
+                textShadow: '1px 1px #421a0e'
+              }}
+            >
+              Tipos filtrados
+            </Typography>
+            <Grid container spacing={3} sx={{ mt: 2 }}>
+              {tiposFiltrados.map(tipo => (
+                <Grid item xs={12} sm={6} md={4} key={tipo.id}>
+                  <PizzaCard pizza={tipo} />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        )}
+        
+        {/* Pizza aqui */}
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h3" component="h1" sx={{
+            border: '2px solid #4f2b09',
+            color: 'rgb(245, 234, 227)',
+            padding: '10px',
+            textAlign: 'center',
+            backgroundColor: '#92041eff',
+            textShadow: '2px 2px #421a0e',
+            borderRadius: '5px'
+          }}>
+            Pizzas
+          </Typography>
 
-          {tipoSelecionado && (
-            <div>
-              <h2 className='produto-h2'>Tipos filtrados</h2>
-              <div className='cards'>
-                {tiposFiltrados.map(tipo => (
-                  <PizzaCard key={tipo.id} pizza={tipo} />
-                ))}
-              </div>
-            </div>
-          )}
-          
-            
-        </div>
+          <Box sx={{ display: 'flex', gap: '2rem', justifyContent: 'center', my: 4 }}>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D'}}>
+              <Typography variant="h5" sx={{color: 'white'}} >Pequena</Typography>
+              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white' }}>R$ 77,99</Typography>
+            </Paper>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D' }}>
+              <Typography variant="h5" sx={{color: 'white'}}>Média</Typography>
+              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 99,99</Typography>
+            </Paper>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D' }}>
+              <Typography variant="h5" sx={{color: 'white'}}>Grande</Typography>
+              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 110,99</Typography>
+            </Paper>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D' }}>
+              <Typography variant="h5" sx={{color: 'white'}}>Família</Typography>
+              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 130,99</Typography>
+            </Paper>
+          </Box>
+        </Box>
 
-        <h1 className='produto-h1'> Pizzas </h1>
-        <div className="tamanhos">
-          <div className="tamanho-item">
-            <h2 className='tamanhos-tamanho'>Pequena</h2>
-            <p>R$ 77,99</p>
-          </div>
-          <div className="tamanho-item">
-            <h2 className='tamanhos-tamanho'>Média</h2>
-            <p>R$ 99,99</p>
-          </div>
-          <div className="tamanho-item">
-            <h2 className='tamanhos-tamanho'>Grande</h2>
-            <p>R$ 110,99</p>
-          </div>
-          <div className="tamanho-item">
-            <h2 className='tamanhos-tamanho'>Família</h2>
-            <p>R$ 130,99</p>
-          </div>
-        </div>
-
-        <h2 className='produto-h2'> Pizzas salgadas </h2>
-        <div className='cards'>
-          {pizzasSalgadas.map(pizza => (
-            <PizzaCard  key={pizza.id} pizza={pizza} />
-          ))}
-        </div>
-
-        <h2 className='produto-h2'> Pizzas doces </h2>
-        <div className='cards'>
-          {pizzasDoces.map(pizza => (
-            <PizzaCard key={pizza.id} pizza={pizza} />
-          ))}
-        </div>
-        </div>
-      </section>
-
-      <section className='produtos'>
-        <h1 className='produto-h1'> Bebidas </h1>
-
-        <div>
-          <h2 className='produto-h2'> Água </h2>
-          <div className='cards'>
+        {/* Pizza salgadas */}
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4" component="h2" sx={{
+            textAlign: 'center',
+            color: 'rgb(248, 230, 220)',
+            backgroundColor: '#ffa221',
+            padding: '10px',
+            borderRadius: '30px',
+            textShadow: '1px 1px #421a0e'
+          }}>
+            Pizzas salgadas
+          </Typography>
+          <Grid container spacing={3} sx={{ mt: 2, mb: 3, alignItems: 'center', justifyContent: 'center' }}>
+            {pizzasSalgadas.map(pizza => (
+              <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+                <PizzaCard pizza={pizza} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+        
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4" component="h2" sx={{
+            textAlign: 'center',
+            color: 'rgb(248, 230, 220)',
+            backgroundColor: '#ffa221',
+            padding: '10px',
+            borderRadius: '30px',
+            textShadow: '1px 1px #421a0e'
+          }}>
+            Pizzas doces
+          </Typography>
+          <Grid container spacing={3} sx={{ mt: 2, mb: 3, alignItems: 'center', justifyContent: 'center' }}>
+            {pizzasDoces.map(pizza => (
+              <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+                <PizzaCard pizza={pizza} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+        
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h3" component="h1" sx={{
+            border: '2px solid #4f2b09',
+            color: 'rgb(245, 234, 227)',
+            padding: '10px',
+            textAlign: 'center',
+            backgroundColor: '#92041eff',
+            textShadow: '2px 2px #421a0e',
+            borderRadius: '5px'
+          }}>
+            Bebidas
+          </Typography>
+        </Box>
+        
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4" component="h2" sx={{
+            textAlign: 'center',
+            color: 'rgb(248, 230, 220)',
+            backgroundColor: '#ffa221',
+            padding: '10px',
+            borderRadius: '30px',
+            textShadow: '1px 1px #421a0e'
+          }}>
+            Água
+          </Typography>
+          <Grid container spacing={3} sx={{ mt: 2, mb: 3, alignItems: 'center', justifyContent: 'center' }}>
             {bebidasAgua.map(pizza => (
-              <PizzaCard key={pizza.id} pizza={pizza} />
+              <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+                <PizzaCard pizza={pizza} />
+              </Grid>
             ))}
-          </div>
-        </div>
-
-        <div>
-          <h2 className='produto-h2'> Refrigerante </h2>
-          <div className='cards'>
+          </Grid>
+        </Box>
+        
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4" component="h2" sx={{
+            textAlign: 'center',
+            color: 'rgb(248, 230, 220)',
+            backgroundColor: '#ffa221',
+            padding: '10px',
+            borderRadius: '30px',
+            textShadow: '1px 1px #421a0e'
+          }}>
+            Refrigerante
+          </Typography>
+          <Grid container spacing={3} sx={{ mt: 2, mb: 3, alignItems: 'center', justifyContent: 'center' }}>
             {bebidasRefri.map(pizza => (
-              <PizzaCard key={pizza.id} pizza={pizza} />
+              <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+                <PizzaCard pizza={pizza} />
+              </Grid>
             ))}
-          </div>
-        </div>
+          </Grid>
+        </Box>
+        
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h4" component="h2" sx={{
+            textAlign: 'center',
+            color: 'rgb(248, 230, 220)',
+            backgroundColor: '#ffa221',
+            padding: '10px',
+            borderRadius: '30px',
+            textShadow: '1px 1px #421a0e'
+          }}>
+            Vinho
+          </Typography>
+          <Grid container spacing={3} sx={{ mt: 2, mb: 3, alignItems: 'center', justifyContent: 'center' }}>
+            {bebidasVinho.map(pizza => (
+              <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+                <PizzaCard pizza={pizza} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </Container>
 
-        <div>
-          <h2 className='produto-h2'> Vinho </h2>
-          <div className='cards'>
-          {bebidasVinho.map(pizza => (
-            <PizzaCard key={pizza.id} pizza={pizza} />
-          ))}
-          </div>
-        </div>
-      </section>
-      </div>
-
-      <Footer/>
-    </div>
-    </div>
-  )
+      <Footer />
+    </Box>
+  );
 }
 
 export default Cardapio
