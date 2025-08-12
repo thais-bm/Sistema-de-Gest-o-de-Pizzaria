@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import "./Cardapio.css"
 import { useState } from 'react'
 import { useProdutos } from "../context/ProdutosContext";
+import Footer from '../components/Footer'
 
 const Cardapio = () => {
   const {produtos, ingredientes, categorias} = useProdutos();
@@ -34,9 +35,12 @@ const Cardapio = () => {
   const bebidasAgua = produtos.filter(p => p.category === "bebida" && p.subcategory === "água");
 
   return (
-    <div className="cardapio">
-      <div  className='background-cardapio'>
+    <div>
     <Header/>
+    <div className="cardapio">
+      
+      <div  className='background-cardapio'>
+    
       <section>
         <div>
 
@@ -177,6 +181,9 @@ const Cardapio = () => {
         </div>
       </section>
       </div>
+
+      <Footer/>
+    </div>
     </div>
   )
 }

@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link} from 'react-router-dom'
-import './Header.css'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, IconButton, Box } from '@mui/material';
+import LockIcon from '@mui/icons-material/Lock';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -15,19 +16,72 @@ const Header = () => {
   };
 
   return (
-    <header>
-        <div className="header-container">
-            <div>
-                <h1 className="melting-text">Freddy's Pizzaria</h1>
-                <img src='/logo/freddy_pizza.png' alt='Logo' className='logo'/>
-            </div>
-            <div className="nav-links">
-              <button onClick={handleCarrinhoClick} className="button-29" role="button"> 🛒</button>
-              <button onClick={handleAcessoRestritoClick} className="button-29" role="button">🚫 Acesso Restrito</button>
-            </div>
-        </div>      
-    </header>
-  );
-};  
+    <AppBar position="relative"  sx={{
+      height: 170,
+      backgroundImage: 'url("/logo/fundo.jpeg")',
+      backgroundPosition: 'center',
+    }}>
 
-export default Header
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+
+        {/* Logo e título */}
+        <Box sx={{ display: 'flex', alignItems: 'center', height: 200, px: 2 }}>
+          <img
+            src="/logo/freddy_pizza.png"
+            alt="Logo Freddy's Pizzaria"
+            style={{ height: 160, width: 'auto', paddingRight: 400}}
+          />
+
+          <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
+            <Typography
+              variant="h2"
+              component="h1"
+              sx={{
+                fontWeight: 'bold',
+                userSelect: 'none',
+                fontSize: '80px'
+              }}
+            >
+              Freddy's Pizzaria
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* Botões de navegação */}
+        <Box sx={{ display: 'flex', gap: 3 }}>
+          <IconButton
+            onClick={handleCarrinhoClick}
+            color="inherit"
+            aria-label="Carrinho"
+            size="large"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'primary.main', 
+                transition: 'background-color 0.3s',
+              },
+            }}
+          >
+            <ShoppingCartIcon sx = {{fontSize: '50px'}} />
+          </IconButton>
+
+          <IconButton
+            onClick={handleAcessoRestritoClick}
+            color="inherit"
+            aria-label="Acesso Restrito"
+            size="large"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'primary.main', 
+                transition: 'background-color 0.3s',
+              },
+            }}
+          >
+            <LockIcon sx = {{fontSize: '50px'}}  />
+          </IconButton>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default Header;
