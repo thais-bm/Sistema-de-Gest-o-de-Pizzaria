@@ -1,22 +1,53 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { useHistorico } from '../context/PedidosContext';
+import { useCarrinho } from '../context/CarrinhoContext';
+import { Container, Typography, Box, Card, CardContent, Stack, Button, CardActions, Grid} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Historico = () => {
-  const { totalPedidos } = useHistorico();
 
-  if (totalPedidos.length === 0) {
-    return (
-      <Typography variant="h6" sx={{ mt: 2, textAlign: 'center' }}>
-        O histórico está vazio!!!
-      </Typography>
-    );
-  }
-
-
+  const { pedidosPendentes } = useCarrinho();
+  const navigate = useNavigate();
 
   return (
-        <h1> :3 </h1>
+      <Container>
+
+          <Container className='container-pedidos'>
+            {pedidosPendentes.length === 0 && (
+              <Typography variant="h6"> Nenhum pedido no histórico :( </Typography>
+            )}
+            
+            {/* Coluna das mesas */}
+
+            {pedidosPendentes.map((pedido) => (
+          <Card key={pedido.id} >
+            <CardContent className='header-pedido'>
+              <Typography variant="h5" className="tipo-pedido">
+                {pedido.entrega === 'mesa' ? `Mesa ${pedido.mesa}` : 'Entrega'}
+              </Typography>
+              <Typography variant="h6" className='id'>
+                ID: {pedido.id}
+              </Typography>
+            </CardContent>
+
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                {pedido.data}
+              </Typography>
+              {pedido.itens.map((item) => (
+                <Typography key={item.id}>
+                  {item.quantidade}x {item.title} - R$ {item.preco} (Tamanho: {item.tamanho})
+                </Typography>
+              ))}
+            </CardContent>
+
+
+          </Card>
+        ))}
+
+          </Container>
+
+      </Container>
+    
   );
 };
 

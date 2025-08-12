@@ -3,7 +3,6 @@ import './App.css'
 import { ProdutosProvider } from './context/ProdutosContext';
 import { CarrinhoProvider } from './context/CarrinhoContext';
 import { AuthProvider } from './context/AuthContext';
-import { PedidosProvider } from './context/PedidosContext.jsx';
 
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -24,7 +23,6 @@ function App() {
         <AuthProvider>
           <ProdutosProvider>
             <CarrinhoProvider>
-              <PedidosProvider>
                 {/* O ToastContainer pros alertas */}
                 <ToastContainer
                   autoClose={1500}
@@ -35,8 +33,7 @@ function App() {
                 />
 
                 <AppRoutes/>
-
-              </PedidosProvider>
+                
             </CarrinhoProvider>
           </ProdutosProvider>
         </AuthProvider>

@@ -5,16 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Card, Box, CardContent, Button, Typography, Paper, Collapse } from '@mui/material';
 import { KeyboardArrowDown, KeyboardArrowUp} from '@mui/icons-material';
 import { set } from 'react-hook-form';
-import { PedidosProvider, useHistorico } from '../context/PedidosContext';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 import AddProduto from '../components/AddProduto';
 import AttProduto from '../components/AttProduto';
-import Historico from '../components/Historico';
+import Historico from '../components/Historico'
 
 // eu vou transformar em um menu dropdown pra aparecer na propria pagina de Admin
 const gerenciarDropdown = () => {
-
+  
 };
 
 const historicoDropdown = () => {
@@ -36,7 +35,6 @@ const NovoMenu = () => {
 
   const [showHistorico, setShowHistorico] = useState(false);
 
-  const {totalPedidos, setTotalPedidos, adicionarAoHistorico, removerDoHistorico, limparHistorico} = useHistorico();
 
   const handleGerenciarProduto = () => {
     setGerenciarIconUp(!gerenciarIconUp);
