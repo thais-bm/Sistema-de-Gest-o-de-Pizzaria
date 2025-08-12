@@ -9,6 +9,8 @@ import { PedidosProvider, useHistorico } from '../context/PedidosContext';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 import AddProduto from '../components/AddProduto';
+import AttProduto from '../components/AttProduto';
+
 
 // eu vou transformar em um menu dropdown pra aparecer na propria pagina de Admin
 const gerenciarDropdown = () => {
@@ -24,18 +26,28 @@ const historicoDropdown = () => {
 const NovoMenu = () => {
   const [gerenciarIconUp, setGerenciarIconUp] = useState(true);
   const [historicoIconUp, setHistoricoIconUp] = useState(true);
+
+  const [showGerenciarMenu, setShowGerenciarMenu] = useState(false);
   const [showAddProduto, setShowAddProduto] = useState(false);
+  const [showAttProduto, setShowAttProduto] = useState(false);
+
   const [showHistorico, setShowHistorico] = useState(false);
 
   const {totalPedidos, setTotalPedidos, adicionarAoHistorico, removerDoHistorico, limparHistorico} = useHistorico();
 
   const handleGerenciarProduto = () => {
     setGerenciarIconUp(!gerenciarIconUp);
-    setShowAddProduto(!showAddProduto);
+    setShowGerenciarMenu(!showGerenciarMenu);
+
+    if (showGerenciarMenu) {
+      setShowAddProduto(false);
+      setShowAttProduto(false);
+    }
   };
 
   const handleHistoricoPedidos = () => {
     setHistoricoIconUp(!historicoIconUp);
+    setShowHistorico(!showHistorico);
   }
   return (
     <Container component="section" maxWidth="100%" sx={{
@@ -65,14 +77,39 @@ const NovoMenu = () => {
           <Typography variant="h6" color="primary" padding="10px">O que deseja fazer?</Typography> 
 
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, marginTop: 3 }}>
-            <Button variant="outlined" color="primary" startIcon={gerenciarIconUp ? <KeyboardArrowUp /> : <KeyboardArrowDown />} onClick={handleGerenciarProduto}>
-              Gerenciar Produto
+            <Button variant="outlined" color="primary" 
+              startIcon={gerenciarIconUp ? <KeyboardArrowUp /> : <KeyboardArrowDown />} 
+              onClick={handleGerenciarProduto}
+            >
+              Gerenciar Produtos
             </Button>
-            <Collapse in={showAddProduto} sx={{ width: '100%', mt: 2 }}>
-              {showAddProduto && (
-                <AddProduto onCancel={() => setShowAddProduto(false)} />
-              )}
+
+          <Collapse in={showGerenciarMenu} sx={{ width: '100%', mt: 2 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                
+                <Button variant="contained" color="success" onClick={() => {setShowAddProduto(!showAddProduto); setShowAttProduto(false); }}>
+                  Adicionar Produto
+                </Button>
+
+                {showAddProduto && (
+                  <AddProduto onCancel={() => setShowAddProduto(false)} />
+                )}
+
+                <Button variant="contained" color="warning"
+                  onClick={() => {
+                    setShowAttProduto(!showAttProduto);
+                    setShowAddProduto(false); 
+                  }}
+                >
+                  Modificar Produto
+                </Button>
+                {showAttProduto && (
+                  <AttProduto onCancel={() => setShowAttProduto(false)} />
+                )}
+
+              </Box>
             </Collapse>
+
             <Button variant="outlined" color="primary" startIcon={historicoIconUp ? <KeyboardArrowUp /> : <KeyboardArrowDown />} onClick={handleHistoricoPedidos}>
               Histórico de Pedidos
             </Button>
@@ -154,50 +191,3 @@ const Admin = () => {
 }
 
 export default Admin;
-
-/*
-
-<Container>
-
-      <Card>
-        <Button onClick={() => navigate('/Adicionar')}> Adicionar produto</Button>
-      </Card>
-
-      <Card >
-        {produtos.map(produto => (
-          <div className="card">
-            <div className="tilt">
-            <div className="img">
-              <img src={produto.image}/>
-            </div>
-          </div>
-          <div className="info">
-            <div className="cat">{produto.ingredients}</div>
-            <h2 className="title">{produto.title}</h2>
-            <p className="desc"> </p>
-            <div className="feats">
-            <span className="feat">{produto.category}</span>
-            <span className="feat">{produto.subcategory}</span>
-            <span className="feat"></span>
-            </div>
-            <div className="bottom">
-            {produto.price && (
-                <div className="price">
-                  <span className="new">R$ {produto.price}</span>
-                </div>
-            )}
-            <button className="btn" onClick={() => atualizarProduto}>
-                <span > Alterar informações </span>
-            </button>
-        
-            <Button color="error" className='button-29'onClick={() => removerProduto(produto.id)}> Excluir Produto </Button>
-            </div>
-              </div>
-            </div>
-        ))}
-
-        
-      </Card>
-    </Container>
-
-*/
