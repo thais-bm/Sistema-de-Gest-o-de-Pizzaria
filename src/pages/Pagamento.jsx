@@ -30,10 +30,10 @@ const Pagamento = () => {
       alert('Por favor, selecione um método de pagamento!');
       return;
     }
-    limparCarrinho();
     notify();
     setTimeout(() => {
       navigate('/');
+      limparCarrinho();
     }, 2000);
   };
 
@@ -73,7 +73,7 @@ const Pagamento = () => {
             margin="normal"
             label="Número do Cartão"
             placeholder="Ex.: 1234 5678 9101 1121"
-            inputProps={{ maxLength: 16 }}
+            maxLength="16"
             required
             inputMode="numeric"
           />

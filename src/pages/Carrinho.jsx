@@ -29,7 +29,6 @@ const Carrinho = () => {
     
     adicionarHistorico(pedido);
     enviarParaCozinha(pedido);
-    limparCarrinho();
     navigate('/Cozinha');
 
   }
