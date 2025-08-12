@@ -7,7 +7,7 @@ import { CarrinhoProvider } from '../context/CarrinhoContext';
 
 const Carrinho = () => {
 
-  const {carrinho, adicionarHistorico, enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
+  const {carrinho, nome, adicionarHistorico, enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
   const navigate = useNavigate();
 
   const uniqueId = useId();
@@ -24,6 +24,8 @@ const Carrinho = () => {
     entrega,
     mesa,
     endereco,
+    valorTotal,
+    nome,
     data: new Date().toLocaleString()
     };
     
@@ -35,9 +37,6 @@ const Carrinho = () => {
 
   return (
     <main className='carrinho'> 
-      <div className="bg"></div>
-      <div className="bg bg2"></div>
-      <div className="bg bg3"></div>
       {carrinho.length === 0 ? (
         <section className='carrinho-vazio'>  
           <p className='carinha-vazio-header'>Seu carrinho está vazio :(</p>
@@ -111,6 +110,11 @@ const Carrinho = () => {
                     <option value="301">301</option>
                     <option value="125">125</option>
                     <option value="174">174</option>
+                    <option value="101">101</option>
+                    <option value="1">1</option>
+                    <option value="239">239</option>
+                    <option value="57">57</option>
+
                   </select>
                 </div>
               );
@@ -118,6 +122,15 @@ const Carrinho = () => {
               return (
                 <div>
                   <h2>Informe o endereço de entrega:</h2>
+
+                  <input
+                    className='endereco'
+                    type='text'
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                    placeholder="Digite seu nome"
+                  
+                  />
                   <input
                     className='endereco'
                     type="text"

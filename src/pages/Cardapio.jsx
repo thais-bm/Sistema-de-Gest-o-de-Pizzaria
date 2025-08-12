@@ -36,7 +36,7 @@ const Cardapio = () => {
   const bebidasAgua = produtos.filter(p => p.category === "bebida" && p.subcategory === "água");
 
   return (
-    <Box sx={{ backgroundImage: 'url("images/madeira.jpg")', backgroundSize: 'cover', minHeight: '100vh' }}>
+    <Box sx={{ backgroundImage: 'url("images/madeira.jpg")', minHeight: '100vh' }}>
       <Header />
       {/* Principal aqui */}
       <Container maxWidth="90%" sx={{ py: 4 }}>
@@ -86,12 +86,13 @@ const Cardapio = () => {
           <Box sx={{ mt: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Typography variant="h6" color="text.primary">Selecione um ingrediente:</Typography>
             <FormControl sx={{ minWidth: 300, mt: 1 }}>
-              <InputLabel id="ingrediente-label">Ingrediente</InputLabel>
+              <InputLabel id="ingrediente-label" >Ingrediente</InputLabel>
               <Select
                 labelId="ingrediente-label"
                 value={ingredienteSelecionado}
                 label="Ingrediente"
                 variant='filled'
+                sx = {{backgroundColor: '#b32a00c3',}}
                 onChange={(e) => setIngredienteSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
@@ -114,6 +115,7 @@ const Cardapio = () => {
                 labelId="tipo-label"
                 value={tipoSelecionado}
                 label="Tipo"
+                sx = {{backgroundColor: '#b32a00c3'}}
                 onChange={(e) => setTipoSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
@@ -171,7 +173,7 @@ const Cardapio = () => {
             >
               Tipos filtrados
             </Typography>
-            <Grid container spacing={3} sx={{ mt: 2 }}>
+            <Grid container spacing={3} sx={{ mt: 2, alignItems: 'center', justifyContent: 'center'  }}>
               {tiposFiltrados.map(tipo => (
                 <Grid item xs={12} sm={6} md={4} key={tipo.id}>
                   <PizzaCard pizza={tipo} />
@@ -196,19 +198,19 @@ const Cardapio = () => {
           </Typography>
 
           <Box sx={{ display: 'flex', gap: '2rem', justifyContent: 'center', my: 4 }}>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D'}}>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09',}}>
               <Typography variant="h5" sx={{color: 'white'}} >Pequena</Typography>
               <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white' }}>R$ 77,99</Typography>
             </Paper>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D' }}>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09', }}>
               <Typography variant="h5" sx={{color: 'white'}}>Média</Typography>
               <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 99,99</Typography>
             </Paper>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D' }}>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09', }}>
               <Typography variant="h5" sx={{color: 'white'}}>Grande</Typography>
               <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 110,99</Typography>
             </Paper>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#D2042D' }}>
+            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09', }}>
               <Typography variant="h5" sx={{color: 'white'}}>Família</Typography>
               <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 130,99</Typography>
             </Paper>
@@ -220,10 +222,11 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffa221',
+            backgroundColor: '#ffb80e ',
             padding: '10px',
             borderRadius: '30px',
-            textShadow: '1px 1px #421a0e'
+            textShadow: '1px 1px #421a0e',
+             border: '1px solid #4f2b09'
           }}>
             Pizzas salgadas
           </Typography>
@@ -240,8 +243,9 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffa221',
+            backgroundColor: '#ffb80e ',
             padding: '10px',
+            border: '1px solid #4f2b09',
             borderRadius: '30px',
             textShadow: '1px 1px #421a0e'
           }}>
@@ -262,6 +266,7 @@ const Cardapio = () => {
             color: 'rgb(245, 234, 227)',
             padding: '10px',
             textAlign: 'center',
+            border: '1px solid #4f2b09',
             backgroundColor: '#92041eff',
             textShadow: '2px 2px #421a0e',
             borderRadius: '5px'
@@ -274,9 +279,10 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffa221',
+            backgroundColor: '#ffb80e ',
             padding: '10px',
             borderRadius: '30px',
+            border: '1px solid #4f2b09',
             textShadow: '1px 1px #421a0e'
           }}>
             Água
@@ -294,9 +300,10 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffa221',
+            backgroundColor: '#ffb80e ',
             padding: '10px',
             borderRadius: '30px',
+            border: '1px solid #4f2b09',
             textShadow: '1px 1px #421a0e'
           }}>
             Refrigerante
@@ -314,9 +321,10 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffa221',
+            backgroundColor: '#ffb80e ',
             padding: '10px',
             borderRadius: '30px',
+            border: '1px solid #4f2b09',
             textShadow: '1px 1px #421a0e'
           }}>
             Vinho

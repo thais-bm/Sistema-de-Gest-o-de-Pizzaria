@@ -105,6 +105,7 @@ export const CarrinhoProvider = ({ children }) => {
   const [entrega, setEntrega] = useState(() => localStorage.getItem('entrega') || null);
   const [mesa, setMesa] = useState(() => localStorage.getItem('mesa') || "101");
   const [endereco, setEndereco] = useState(() => localStorage.getItem('endereco') || '');
+  const [nome, setNome] = useState(() => localStorage.getItem('nome') || '');
 
   useEffect(() => {
     if (id) localStorage.setItem('ID', id);
@@ -145,7 +146,10 @@ export const CarrinhoProvider = ({ children }) => {
         removerDaEntrega,
         pedidosEntrega, 
         setPedidosEntrega,
-        adicionarHistorico
+        adicionarHistorico,
+        valorTotal,
+        nome,
+        setNome
       }}
       >
 

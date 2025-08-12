@@ -20,7 +20,7 @@
 .order{
   position: flex;
   height: 1050px;
-  background: linear-gradient(135deg, #92041eff 50%,#ffa221 50% 100%)
+  background-image: linear-gradient(-60deg, #ffb80e 50%, 	#e32929 50%);
 }
 
 textarea {

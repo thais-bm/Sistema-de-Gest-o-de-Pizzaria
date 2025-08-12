@@ -2,6 +2,7 @@
 
 .carrinho{
     top: 0;
+    
     z-index: 1000;
     font-size: 2rem;
     text-align: center;
@@ -12,7 +13,6 @@
     -webkit-text-stroke: 1px black;
     margin: 0 auto;
     
-    background: linear-gradient(90deg, #472504, #9a4309, #c74b08);
 }
 
 
@@ -130,6 +130,7 @@
 .carrinho-com-itens {
   max-width: 800px;
   margin: 0 auto;
+  
   padding: 20px;
 }
 

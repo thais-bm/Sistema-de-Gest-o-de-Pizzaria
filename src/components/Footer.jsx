@@ -7,7 +7,7 @@ const Footer = () => (
       bottom: 0,
       left: 0,
       right: 0,
-      bgcolor: "primary.main",
+      bgcolor: "	#813531",
       color: "white",
       textAlign: "center",
       py: 1
@@ -20,3 +20,5 @@ const Footer = () => (
 );
 
 export default Footer;
+
+
