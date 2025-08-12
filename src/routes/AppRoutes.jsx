@@ -34,11 +34,11 @@ const AppRoutes = () => {
             {/* O ToastContainer pros alertas */}
             <ToastContainer
               autoClose={1500}
-          hideProgressBar={false}
-          closeOnClick
-          pauseOnHover
-          theme="light"
-        />
+              hideProgressBar={false}
+              closeOnClick
+              pauseOnHover
+              theme="light"
+            />
 
         {/* As rotas */}
         <Routes>

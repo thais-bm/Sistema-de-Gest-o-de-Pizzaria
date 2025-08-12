@@ -45,6 +45,9 @@ const AddProduto = ({ onCancel }) => {
       if (onCancel) onCancel();
     }, 1500); };
 
+
+
+
   return (
     <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, margin: 'auto', mt: 4 }}>
       <Typography variant="h5" align="center" color="primary" gutterBottom>

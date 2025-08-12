@@ -24,6 +24,9 @@ const historicoDropdown = () => {
 
 // aqui fica as mudanças que eu estou fazendo no menu de Admin
 const NovoMenu = () => {
+
+  const navigate = useNavigate();
+  
   const [gerenciarIconUp, setGerenciarIconUp] = useState(true);
   const [historicoIconUp, setHistoricoIconUp] = useState(true);
 
@@ -57,6 +60,7 @@ const NovoMenu = () => {
       <Container maxWidth="xs" component="main" sx={{
         minHeight: '100vh',
         maxHeight: 'xs',
+        minWidth: '500px',
         display: 'flex', 
         alignItems: 'center',
         justifyContent: 'center',
@@ -64,7 +68,7 @@ const NovoMenu = () => {
 
       {/* Paper: um container "elevado" */}
 
-        <Paper elevation={3} sx={{ padding: 4, width: '100%'}}>
+        <Paper elevation={3} sx={{ padding: 3, width: '100%'}}>
           <Button sx={{mb: 4}}
             variant="outlined"
             startIcon={<ArrowBackRoundedIcon />}

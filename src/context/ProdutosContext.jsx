@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import { toast,  ToastContainer } from 'react-toastify';
 import { useEffect, useState, useContext, createContext } from 'react';
 
 const ProdutosContext = createContext();
@@ -46,6 +47,10 @@ export function ProdutosProvider({ children }) {
   };
 
   const removerProduto = async (id) => {
+    toast.success("Item removido com sucesso!");
+        setTimeout(() => {
+          if (onCancel) onCancel();
+        }, 1500); 
     await axios.delete(`${API_URL}/${id}`);
     setProdutos(prev => prev.filter(p => p.id !== id));
   };
