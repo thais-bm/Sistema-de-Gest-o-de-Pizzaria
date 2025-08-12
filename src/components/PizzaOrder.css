@@ -20,7 +20,7 @@
 .order{
   position: flex;
   height: 1050px;
-  background: linear-gradient(135deg, rgb(245, 155, 11) 50%,rgb(237, 202, 28) 50% 100%)
+  background: linear-gradient(135deg, #92041eff 50%,#ffa221 50% 100%)
 }
 
 textarea {
@@ -55,7 +55,16 @@ textarea::placeholder {
 }
 
 .order-box h2{
-  font-size: 1.6rem;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-weight: Impact;
+    text-transform: uppercase;
+    color: #ffffff;
+    -webkit-text-stroke: 1px #330a04;
+    margin: 0;
+    font-size: 1.6rem;
   font-style: italic;
 }
 
@@ -71,7 +80,11 @@ textarea::placeholder {
 .tamanho{
   text-align: center;
   font-size: 25px;
-
+  color: #ffffff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: Impact;
+  -webkit-text-stroke: 1px #330a04;
 }
 
 
@@ -80,6 +93,7 @@ input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
     width: 20px;
+    align-items: center;
     height: 20px;
     border: 2px solid #000;
     border-radius: 50%;
@@ -91,7 +105,7 @@ input[type="radio"] {
 
 
 input[type="radio"]:checked {
-    background-color: rgb(92, 16, 92); 
+    background-color: #FFFD75; 
 }
 
 input[type="radio"]:checked::after {

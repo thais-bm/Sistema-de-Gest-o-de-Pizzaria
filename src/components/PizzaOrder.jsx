@@ -5,7 +5,8 @@ import './PizzaOrder.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useCarrinho } from '../context/CarrinhoContext';
-import { useProdutos } from '../context/ProdutosContext'; 
+import { useProdutos } from '../context/ProdutosContext';
+import { Button } from '@mui/material';
 
 const PizzaOrder = () => {
   const location = useLocation();
@@ -63,7 +64,7 @@ const PizzaOrder = () => {
       
       <div className='order-box'>
         <h1>{pizza.title}</h1>
-        <h2 >{pizza.ingredients}</h2>
+        <h2>{pizza.ingredients}</h2>
         
         {pizza.category === "pizza" && (
           <div className="tamanho">
@@ -107,9 +108,15 @@ const PizzaOrder = () => {
             cols="50" 
             placeholder="Ex: Tirar cebola, tirar azeitonas..."
         ></textarea>
-        <br/>
 
-        <button className="button-29" onClick={handleCarrinhoClick}> Adicionar ao Carrinho </button>
+        <Button onClick={handleCarrinhoClick}
+          variant="contained"
+          color="primary"  
+        > 
+        Adicionar ao Carrinho 
+
+        </Button>
+
       </div>
       </div>
     </div>

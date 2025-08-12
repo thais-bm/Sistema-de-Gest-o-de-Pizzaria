@@ -13,7 +13,7 @@ export function PedidosProvider({ children })  {
   //Adiciona todos os pedidos ao historico
   const [totalPedidos, setTotalPedidos] = useState(() => {
     const historico = localStorage.getItem('totalPedidos');
-    return historico? JSON.parse(historico) : [];
+    return historico ? JSON.parse(historico) : [];
   });
 
 

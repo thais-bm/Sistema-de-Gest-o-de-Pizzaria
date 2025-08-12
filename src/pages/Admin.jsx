@@ -10,7 +10,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 import AddProduto from '../components/AddProduto';
 import AttProduto from '../components/AttProduto';
-
+import Historico from '../components/Historico';
 
 // eu vou transformar em um menu dropdown pra aparecer na propria pagina de Admin
 const gerenciarDropdown = () => {
@@ -47,6 +47,8 @@ const NovoMenu = () => {
       setShowAttProduto(false);
     }
   };
+
+  const toggleHistorico = () => setShowHistorico(prev => !prev);
 
   const handleHistoricoPedidos = () => {
     setHistoricoIconUp(!historicoIconUp);
@@ -118,9 +120,8 @@ const NovoMenu = () => {
               Histórico de Pedidos
             </Button>
             <Collapse in={showHistorico} sx={{ width: '100%', mt: 2 }}>
-              {showHistorico && totalPedidos.length === 0 (
-                <Typography variant="h2"> O histórico está vazio!!! </Typography>
-              )}
+
+              {showHistorico && <Historico />}
               
             </Collapse>
           </Box>
@@ -133,16 +134,8 @@ const NovoMenu = () => {
 
 
 const Admin = () => {
-
-
-
   // return NovoMenu(); // Use NovoMenu() para o novo design ou oldMenu() para o antigo
   return NovoMenu(); // Use oldMenu() para o antigo design
-
-  
-
-   
- 
 }
 
 export default Admin;

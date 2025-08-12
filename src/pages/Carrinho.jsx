@@ -18,6 +18,7 @@ const Carrinho = () => {
   };
 
   const handleEnviarParaCozinha = () => {
+
   const pedido = {
     id: uniqueId,
     itens: carrinho,
@@ -26,9 +27,12 @@ const Carrinho = () => {
     endereco,
     data: new Date().toLocaleString()
     };
+    
+    adicionarAoHistorico(pedido);
     enviarParaCozinha(pedido);
     limparCarrinho();
     navigate('/Cozinha');
+
   }
 
   return (
@@ -134,7 +138,7 @@ const Carrinho = () => {
 
 
           <div className="botoes-carrinho">
-            <button onClick={() => {handleEnviarParaCozinha(); navigate('/Pagamento'); adicionarAoHistorico();}}  className='btn' style={{background: 'green'} }>Enviar para a Cozinha</button>
+            <button onClick={() => {handleEnviarParaCozinha(); navigate('/Pagamento'); }}  className='btn' style={{background: 'green'} }>Enviar para a Cozinha</button>
             <button onClick={limparCarrinho} className='btn' style={{background: 'FireBrick'}}>Limpar Carrinho</button>
             <button onClick={() => navigate('/Cardapio')} className='btn' style={{background: 'gold'}}>Continuar Comprando</button>
           </div>
