@@ -3,12 +3,11 @@ import { useCarrinho } from '../context/CarrinhoContext';
 import { useNavigate } from 'react-router-dom';
 import "./Carrinho.css"
 import { useId } from 'react';
-import { PedidosProvider, useHistorico } from '../context/PedidosContext';
+import { CarrinhoProvider } from '../context/CarrinhoContext';
 
 const Carrinho = () => {
 
-  const {adicionarAoHistorico} = useHistorico();
-  const {carrinho,  enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
+  const {carrinho, adicionarHistorico, enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
   const navigate = useNavigate();
 
   const uniqueId = useId();
@@ -28,7 +27,7 @@ const Carrinho = () => {
     data: new Date().toLocaleString()
     };
     
-    adicionarAoHistorico(pedido);
+    adicionarHistorico(pedido);
     enviarParaCozinha(pedido);
     limparCarrinho();
     navigate('/Cozinha');

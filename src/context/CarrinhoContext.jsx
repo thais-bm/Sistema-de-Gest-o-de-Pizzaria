@@ -22,6 +22,11 @@ export const CarrinhoProvider = ({ children }) => {
     return pedidosEntrega ? JSON.parse(pedidosEntrega) : [];
   });
 
+  const [historicoPedidos, setHistoricoPedidos] = useState(() =>{
+    const historicoPedidos = localStorage.getItem('historicoPedidos');
+    return historicoPedidos ? JSON.parse(historicoPedidos) : [];
+  });
+
   useEffect(() => {
     localStorage.setItem('pedidosPendentes', JSON.stringify(pedidosPendentes));
   }, [pedidosPendentes]);
@@ -29,6 +34,10 @@ export const CarrinhoProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('pedidosEntrega', JSON.stringify(pedidosEntrega));
   }, [pedidosEntrega]);
+
+  useEffect(() => {
+    localStorage.setItem('historicoPedidos', JSON.stringify(historicoPedidos));
+  }, [historicoPedidos]);
 
   // Função para adicionar pedido à lista de pendentes
   const enviarParaCozinha = (pedido) => {
@@ -49,6 +58,11 @@ export const CarrinhoProvider = ({ children }) => {
   const cancelarPedido = (id) => {
     setPedidosPendentes((prevPedidos) => prevPedidos.filter((pedido) => pedido.id !== id));
   };
+
+  //funcaor para adicionar ao historico de pediso
+  const  adicionarHistorico = (pedido) => {
+    setHistoricoPedidos(prev => [...prev, pedido]);
+  }
 
   const [carrinho, setCarrinho] = useState(() => {
   const carrinhoSalvo = localStorage.getItem("carrinho");
@@ -130,7 +144,8 @@ export const CarrinhoProvider = ({ children }) => {
         enviarParaEntrega,
         removerDaEntrega,
         pedidosEntrega, 
-        setPedidosEntrega
+        setPedidosEntrega,
+        adicionarHistorico
       }}
       >
 
