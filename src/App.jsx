@@ -1,10 +1,44 @@
 import './App.css'
+
+import { ProdutosProvider } from './context/ProdutosContext';
+import { CarrinhoProvider } from './context/CarrinhoContext';
+import { AuthProvider } from './context/AuthContext';
+import { PedidosProvider } from './context/PedidosContext.jsx';
+
+
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'; // Reseta o CSS padrão do navegador
+import theme from './theme/theme.jsx'; // Importa o seu tema
+import { ToastContainer } from 'react-toastify';
+
+
 import AppRoutes from './routes/AppRoutes'
 
 function App() {
 
   return (
-      <AppRoutes/>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+        <AuthProvider>
+          <ProdutosProvider>
+            <CarrinhoProvider>
+              <PedidosProvider>
+                {/* O ToastContainer pros alertas */}
+                <ToastContainer
+                  autoClose={1500}
+                  hideProgressBar={false}
+                  closeOnClick
+                  pauseOnHover
+                  theme="light"
+                />
+
+                <AppRoutes/>
+
+              </PedidosProvider>
+            </CarrinhoProvider>
+          </ProdutosProvider>
+        </AuthProvider>
+    </ThemeProvider>
   )
 }
 
