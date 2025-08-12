@@ -38,9 +38,7 @@ const Cardapio = () => {
     <div>
     <Header/>
     <div className="cardapio">
-      
       <div  className='background-cardapio'>
-    
       <section>
         <div>
 

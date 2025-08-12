@@ -22,64 +22,66 @@ const Header = () => {
       backgroundPosition: 'center',
     }}>
 
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+<Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  {/* Logo */}
+  <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+    <img
+      src="/logo/freddy_pizza.png"
+      alt="Logo Freddy's Pizzaria"
+      style={{ height: 160, width: 'auto' }}
+    />
+  </Box>
 
-        {/* Logo e título */}
-        <Box sx={{ display: 'flex', alignItems: 'center', height: 200, px: 2 }}>
-          <img
-            src="/logo/freddy_pizza.png"
-            alt="Logo Freddy's Pizzaria"
-            style={{ height: 160, width: 'auto', paddingRight: 400}}
-          />
+  {/* Título*/}
+  <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+    <Typography
+      variant="h2"
+      component="h1"
+      sx={{
+        fontWeight: 'bold',
+        userSelect: 'none',
+        fontSize: '68px',
+        textAlign: 'center',
+      }}
+    >
+      Freddy's Pizzaria
+    </Typography>
+  </Box>
 
-          <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
-            <Typography
-              variant="h2"
-              component="h1"
-              sx={{
-                fontWeight: 'bold',
-                userSelect: 'none',
-                fontSize: '80px'
-              }}
-            >
-              Freddy's Pizzaria
-            </Typography>
-          </Box>
-        </Box>
+  {/* Botões de Navegação */}
+  <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 3 }}>
+<IconButton
+        onClick={handleCarrinhoClick}
+        color="inherit"
+        aria-label="Carrinho"
+        size="large"
+        sx={{
+          '&:hover': {
+            backgroundColor: 'primary.main', 
+            transition: 'background-color 0.3s',
+          },
+        }}
+      >
+        <ShoppingCartIcon sx = {{fontSize: '50px'}} />
+      </IconButton>
 
-        {/* Botões de navegação */}
-        <Box sx={{ display: 'flex', gap: 3 }}>
-          <IconButton
-            onClick={handleCarrinhoClick}
-            color="inherit"
-            aria-label="Carrinho"
-            size="large"
-            sx={{
-              '&:hover': {
-                backgroundColor: 'primary.main', 
-                transition: 'background-color 0.3s',
-              },
-            }}
-          >
-            <ShoppingCartIcon sx = {{fontSize: '50px'}} />
-          </IconButton>
+      <IconButton
+        onClick={handleAcessoRestritoClick}
+        color="inherit"
+        aria-label="Acesso Restrito"
+        size="large"
+        sx={{
+          '&:hover': {
+            backgroundColor: 'primary.main', 
+            transition: 'background-color 0.3s',
+          },
+        }}
+      >
+        <LockIcon sx = {{fontSize: '50px'}}  />
+      </IconButton>
+  </Box>
+</Toolbar>
 
-          <IconButton
-            onClick={handleAcessoRestritoClick}
-            color="inherit"
-            aria-label="Acesso Restrito"
-            size="large"
-            sx={{
-              '&:hover': {
-                backgroundColor: 'primary.main', 
-                transition: 'background-color 0.3s',
-              },
-            }}
-          >
-            <LockIcon sx = {{fontSize: '50px'}}  />
-          </IconButton>
-        </Box>
-      </Toolbar>
     </AppBar>
   );
 };
