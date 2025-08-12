@@ -19,7 +19,7 @@ const Historico = () => {
             {/* Coluna das mesas */}
 
             {pedidosPendentes.map((pedido) => (
-          <Card key={pedido.id} className="pedidos">
+          <Card key={pedido.id} >
             <CardContent className='header-pedido'>
               <Typography variant="h5" className="tipo-pedido">
                 {pedido.entrega === 'mesa' ? `Mesa ${pedido.mesa}` : 'Entrega'}

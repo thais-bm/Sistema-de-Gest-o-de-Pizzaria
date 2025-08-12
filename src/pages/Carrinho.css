@@ -11,6 +11,8 @@
     color: transparent;
     -webkit-text-stroke: 1px black;
     margin: 0 auto;
+    
+    background: linear-gradient(90deg, #472504, #9a4309, #c74b08);
 }
 
 
