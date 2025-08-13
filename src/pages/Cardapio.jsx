@@ -262,7 +262,6 @@ const Cardapio = () => {
         
         <Box sx={{ mt: 4 }}>
           <Typography variant="h3" component="h1" sx={{
-            border: '2px solid #4f2b09',
             color: 'rgb(245, 234, 227)',
             padding: '10px',
             textAlign: 'center',

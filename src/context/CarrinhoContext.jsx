@@ -8,7 +8,7 @@ export const useCarrinho = () => {
   return useContext(CarrinhoContext);
 };
 
-// transformei em arrow function pro professor não reclamar 
+// transformei em arrow
 // e porque é pra manter o padrão
 export const CarrinhoProvider = ({ children }) => {
 
@@ -144,7 +144,6 @@ export const CarrinhoProvider = ({ children }) => {
         adicionarAoCarrinho,
         removerDoCarrinho,
         limparCarrinho,
-        valorTotal,
         id,
         setID,
         entrega,
