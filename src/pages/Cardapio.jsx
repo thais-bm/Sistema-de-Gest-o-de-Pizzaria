@@ -8,6 +8,13 @@ import Footer from '../components/Footer'
 import { Container, Box, Button, Typography, Paper, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const Cardapio = () => {
+    const tamanhos = [
+    { nome: 'Pequena', preco: 'R$ 77,99' },
+    { nome: 'Média', preco: 'R$ 99,99' },
+    { nome: 'Grande', preco: 'R$ 110,99' },
+    { nome: 'Família', preco: 'R$ 130,99' },
+  ];
+
   const {produtos, ingredientes, categorias} = useProdutos();
 
   const [mostrarFiltrosIng, setMostrarFiltrosIng] = useState(false);
@@ -196,24 +203,42 @@ const Cardapio = () => {
           }}>
             Pizzas
           </Typography>
-
-          <Box sx={{ display: 'flex', gap: '2rem', justifyContent: 'center', my: 4 }}>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09',}}>
-              <Typography variant="h5" sx={{color: 'white'}} >Pequena</Typography>
-              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white' }}>R$ 77,99</Typography>
+          
+          {/* Responsividadeeee */}
+          <Box sx={{ my: 4, px: 2 }}>
+            <Grid container spacing={3} justifyContent="center">
+        {tamanhos.map((item, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index}>
+            <Paper
+              sx={{
+                p: 2,
+                textAlign: 'center',
+                backgroundColor: '#b32900',
+                border: '1px solid #4f2b09',
+                transition: 'transform 0.3s',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
+              }}
+              elevation={4}
+            >
+              <Typography variant="h5" sx={{ color: 'white' }}>
+                {item.nome}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  mt: 1,
+                  textDecoration: 'underline',
+                  color: 'white',
+                }}
+              >
+                {item.preco}
+              </Typography>
             </Paper>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09', }}>
-              <Typography variant="h5" sx={{color: 'white'}}>Média</Typography>
-              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 99,99</Typography>
-            </Paper>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09', }}>
-              <Typography variant="h5" sx={{color: 'white'}}>Grande</Typography>
-              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 110,99</Typography>
-            </Paper>
-            <Paper sx={{ p: 2, textAlign: 'center', minWidth: 100, backgroundColor: '#b32900', border: '1px solid #4f2b09', }}>
-              <Typography variant="h5" sx={{color: 'white'}}>Família</Typography>
-              <Typography variant="body1" sx={{ mt: 1, textDecoration: 'underline', color: 'white'  }}>R$ 130,99</Typography>
-            </Paper>
+          </Grid>
+        ))}
+            </Grid>
           </Box>
         </Box>
 

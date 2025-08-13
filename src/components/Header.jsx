@@ -16,32 +16,50 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="relative"  sx={{
-      height: 170,
+    <AppBar  position="static" sx={{
+      minHeight: {
+          xs: 120,
+          sm: 140,
+          md: 170,
+        },
+      display: 'flex',
       backgroundImage: 'url("/logo/fundo.jpeg")',
       backgroundPosition: 'center',
+      height: '100%',
+      justifyContent: 'center'
     }}>
 
-    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
       {/* Logo */}
       <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
         <img
           src="/logo/freddy_pizza.png"
           alt="Logo Freddy's Pizzaria"
-          style={{ height: 160, width: 'auto' }}
+          style={{
+              height: 'auto',
+              maxHeight: '140px',
+              width: '100%',
+              maxWidth: '160px',
+            
+          }}
         />
       </Box>
 
     {/* Título*/}
-    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+    <Box sx={{ flex: 2, display: 'flex', justifyContent: 'center' }}>
       <Typography
         variant="h2"
         component="h1"
         sx={{
           fontWeight: 'bold',
           userSelect: 'none',
-          fontSize: '68px',
           textAlign: 'center',
+          fontSize: {
+            xs: '24px', // telas pequenas
+            sm: '48px', // tablets
+            md: '60px', // desktops médios
+            lg: '68px', // telas grandes
+          },
         }}
       >
         Freddy's Pizzaria
@@ -49,7 +67,7 @@ const Header = () => {
     </Box>
 
       {/* Botões de Navegação */}
-      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 3 }}>
+      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
         <IconButton
             onClick={handleCarrinhoClick}
             color="inherit"
@@ -62,7 +80,7 @@ const Header = () => {
               },
             }}
           >
-            <ShoppingCartIcon sx = {{fontSize: '50px'}} />
+            <ShoppingCartIcon sx = {{fontSize: { xs: '30px', md: '50px' }}} />
           </IconButton>
 
           <IconButton
@@ -77,7 +95,7 @@ const Header = () => {
               },
             }}
           >
-            <LockIcon sx = {{fontSize: '50px'}}  />
+            <LockIcon sx = {{ xs: '30px', md: '50px' }}  />
           </IconButton>
       </Box>
     </Toolbar>
