@@ -222,7 +222,7 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffb80e ',
+            backgroundColor: '#feb710ee ',
             padding: '10px',
             borderRadius: '30px',
             textShadow: '1px 1px #421a0e',
@@ -243,7 +243,7 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffb80e ',
+            backgroundColor: '#feb710ee  ',
             padding: '10px',
             border: '1px solid #4f2b09',
             borderRadius: '30px',
@@ -279,7 +279,7 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffb80e ',
+            backgroundColor: '#feb710ee  ',
             padding: '10px',
             borderRadius: '30px',
             border: '1px solid #4f2b09',
@@ -300,7 +300,7 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffb80e ',
+            backgroundColor: '#feb710ee  ',
             padding: '10px',
             borderRadius: '30px',
             border: '1px solid #4f2b09',
@@ -321,7 +321,7 @@ const Cardapio = () => {
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
             color: 'rgb(248, 230, 220)',
-            backgroundColor: '#ffb80e ',
+            backgroundColor: '#feb710ee  ',
             padding: '10px',
             borderRadius: '30px',
             border: '1px solid #4f2b09',

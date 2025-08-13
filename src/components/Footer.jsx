@@ -7,7 +7,7 @@ const Footer = () => (
       bottom: 0,
       left: 0,
       right: 0,
-      bgcolor: "	#813531",
+      bgcolor: "#b32900",
       color: "white",
       textAlign: "center",
       py: 1

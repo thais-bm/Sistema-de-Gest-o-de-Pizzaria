@@ -78,7 +78,8 @@ const Historico = () => {
                 onClick={handleClose}
                 variant="contained"
                 color="primary"
-                sx={{ mt: 2 }}
+                sx={{ mt: 2, marginRight:'15px'}}
+                
               >
                 Fechar
               </Button>
