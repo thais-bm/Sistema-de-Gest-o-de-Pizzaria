@@ -141,26 +141,24 @@ const Cozinha = () => {
 
             {/* Conteúdo */}
             <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                Cliente: {pedido.nome}
-              </Typography>
 
-              <Typography variant="body2" color="text.secondary">
-                {pedido.data}
-              </Typography>
+              <Typography><strong>Cliente:</strong> {pedido.nome}</Typography>
+              <Typography><strong>Data:</strong> {pedido.data}</Typography>
+              <Typography><strong>Entrega:</strong> {pedido.entrega}</Typography>
+              
+              <Typography sx={{ mt: 3, fontWeight: 'bold' }}>Itens:</Typography>
+              
               {pedido.itens.map((item) => (
                 <Typography key={item.id}>
-                  {item.quantidade}x {item.title} - R$ {item.preco} (Tamanho: {item.tamanho})
+                  {item.quantidade}x {item.title} - R$ {item.preco} ({item.tamanho})
                 </Typography>
               ))}
-
-              <Typography variant="body2" color="text.secondary">
-                Valor total: {pedido.valorTotal}
+              
+              <Typography sx={{ mt: 3, fontWeight: 'bold' }}>
+                Valor total: R$ {pedido.valorTotal}
               </Typography>
-
-              <Typography variant="body2" color="text.secondary">
-                Endereço: {pedido.endereco}
-              </Typography>
+              
+              <Typography><strong>Endereço:</strong> {pedido.endereco}</Typography>
             </CardContent>
 
             {/* Botões */}
@@ -206,7 +204,7 @@ const Cozinha = () => {
                 <Button
                   onClick={() => cancelarPedido(pedido.id)}
                   variant="contained"
-                  color="error"
+                  color="primary"
                   sx={{
                     position: 'relative',
                     borderRadius: '6px',

@@ -64,6 +64,16 @@ export const CarrinhoProvider = ({ children }) => {
     setHistoricoPedidos(prev => [...prev, pedido]);
   }
 
+    const removerDoHistorico = (produtoId) => {
+    setHistoricoPedidos((prevHistoricoPedidos) =>
+      prevHistoricoPedidos.filter((item) => item.id !== produtoId)
+    );
+  };
+
+  const limparHistorico = () => {
+    setHistoricoPedidos([]);
+  };
+
   const [carrinho, setCarrinho] = useState(() => {
   const carrinhoSalvo = localStorage.getItem("carrinho");
     return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
@@ -124,6 +134,10 @@ export const CarrinhoProvider = ({ children }) => {
     if (endereco) localStorage.setItem('endereco', endereco);
   }, [endereco]);
 
+  useEffect(() => {
+    if (nome) localStorage.setItem('nome', nome);
+  }, [nome]);
+
   return (
     <CarrinhoContext.Provider value={{ 
         carrinho,
@@ -149,7 +163,10 @@ export const CarrinhoProvider = ({ children }) => {
         adicionarHistorico,
         valorTotal,
         nome,
-        setNome
+        setNome,
+        historicoPedidos,
+        removerDoHistorico,
+        limparCarrinho
       }}
       >
 

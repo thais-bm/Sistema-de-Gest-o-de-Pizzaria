@@ -7,7 +7,7 @@ import { CarrinhoProvider } from '../context/CarrinhoContext';
 
 const Carrinho = () => {
 
-  const {carrinho, nome, adicionarHistorico, enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
+  const {carrinho, nome, setNome, adicionarHistorico, enviarParaCozinha, valorTotal, limparCarrinho, removerDoCarrinho, entrega, setEntrega, mesa, setMesa, endereco, setEndereco } = useCarrinho();
   const navigate = useNavigate();
 
   const uniqueId = useId();

@@ -1,114 +1,116 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogContent, Typography, Button} from '@mui/material';
 import { useCarrinho } from '../context/CarrinhoContext';
-import { Container, Typography, Box, Card, CardContent } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 
 const Historico = () => {
-  const { pedidosPendentes } = useCarrinho();
-  const navigate = useNavigate();
+  const { historicoPedidos, limparHistorico, removerDoHistorico} = useCarrinho();
+  const [pedidoSelecionado, setPedidoSelecionado] = useState(null);
+
+  const handleClickPedido = (pedido) => {
+    setPedidoSelecionado(pedido);
+  };
+
+  const handleClose = () => {
+    setPedidoSelecionado(null);
+  };
 
   return (
-    <Container>
-      <Container
-        sx={{
-          display: 'flex',
-          gap: '16px',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          padding: '16px',
-          flexWrap: 'wrap',
-        }}
-      >
-        {pedidosPendentes.length === 0 && (
-          <Typography variant="h6">Nenhum pedido no histórico :(</Typography>
-        )}
+    <Container sx={{ mt: 4 }}>
+      {historicoPedidos.length === 0 ? (
+        <Typography variant="h6">Nenhum pedido no histórico :(  </Typography>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: '#6c1305' }}>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>ID</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Cliente</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Data</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Valor Total</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {historicoPedidos.map((pedido) => (
+                <TableRow
+                  key={pedido.id}
+                  hover
+                  sx={{ cursor: 'pointer' }}
+                  onClick={() => handleClickPedido(pedido)}
+                >
+                  <TableCell>{pedido.id}</TableCell>
+                  <TableCell>{pedido.nome}</TableCell>
+                  <TableCell>{pedido.data}</TableCell>
+                  <TableCell>R$ {pedido.valorTotal}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
 
-        {pedidosPendentes.map((pedido) => (
-          <Card
-            key={pedido.id}
-            sx={{
-              width: '400px',
-              border: '2px solid #6c1305',
-              height: '450px',
-              justifyContent: 'center',
-              padding: '10px 20px',
-              borderRadius: '60px',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            {/* Cabeçalho */}
-            <CardContent
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '0 10px',
-                marginBottom: '10px',
-              }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  border: '2px solid #291c0f',
-                  color: '#fff',
-                  textAlign: 'center',
-                  fontSize: '30px',
-                  backgroundColor: '#6c1305',
-                  borderRadius: '50px',
-                  maxWidth: '150px',
-                  padding: '10px 20px',
-                }}
-              >
-                {pedido.entrega === 'mesa'
-                  ? `Mesa ${pedido.mesa}`
-                  : 'Entrega'}
+      {/*card mais detalhado*/}
+      <Dialog open={!!pedidoSelecionado} onClose={handleClose} maxWidth="sm" fullWidth>
+        <DialogContent>
+          {pedidoSelecionado && (
+            <>
+              <Typography variant="h5" gutterBottom>
+                Pedido #{pedidoSelecionado.id}
               </Typography>
-              <Typography
-                variant="h3"
-                sx={{
-                  border: '2px solid #291c0f',
-                  color: '#fff',
-                  textAlign: 'center',
-                  fontSize: '20px',
-                  backgroundColor: '#b32900',
-                  borderRadius: '10px',
-                  maxWidth: '120px',
-                  padding: '10px 10px',
-                }}
-              >
-                ID: {pedido.id}
-              </Typography>
-            </CardContent>
+              <Typography><strong>Cliente:</strong> {pedidoSelecionado.nome}</Typography>
+              <Typography><strong>Data:</strong> {pedidoSelecionado.data}</Typography>
+              <Typography><strong>Entrega:</strong> {pedidoSelecionado.entrega}</Typography>
 
-            {/* Conteúdo */}
-            <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="h5" color="black">
-                Cliente: {pedido.nome}
-              </Typography>
+              <Typography sx={{ mt: 3, fontWeight: 'bold' }}>Itens:</Typography>
 
-              <Typography variant="body2" color="text.secondary">
-                {pedido.data}
-              </Typography>
-
-              {pedido.itens.map((item) => (
+              {pedidoSelecionado.itens.map((item) => (
                 <Typography key={item.id}>
-                  {item.quantidade}x {item.title} - R$ {item.preco} (Tamanho:{' '}
-                  {item.tamanho})
+                  {item.quantidade}x {item.title} - R$ {item.preco} ({item.tamanho})
                 </Typography>
               ))}
 
-              <Typography variant="h6" color="black">
-                Valor total: {pedido.valorTotal}
+              <Typography sx={{ mt: 3, fontWeight: 'bold' }}>
+                Valor total: R$ {pedidoSelecionado.valorTotal}
               </Typography>
 
-              <Typography variant="h6" color="black">
-                Endereço: {pedido.endereco}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </Container>
+              <Typography><strong>Endereço:</strong> {pedidoSelecionado.endereco}</Typography>
+
+              <Button
+                onClick={handleClose}
+                variant="contained"
+                color="primary"
+                sx={{ mt: 2 }}
+              >
+                Fechar
+              </Button>
+
+               <Button
+                onClick={() => {
+                  removerDoHistorico(pedidoSelecionado.id);
+                  handleClose();
+                }}
+                variant="contained"
+                color="primary"
+                sx={{ mt: 2 }}
+              >
+                Remover
+              </Button>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+       <Button
+          onClick={() => {
+          limparHistorico();
+          handleClose();
+        }}
+          variant="contained"
+          color="primary"
+          sx={{ mt: 2, alignItems: 'center', alignSelf: 'center' }}
+          
+        >
+          Limpar Histórico
+      </Button>
     </Container>
   );
 };
