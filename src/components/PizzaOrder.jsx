@@ -67,10 +67,14 @@ const PizzaOrder = () => {
       sx={{
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
-
+        justifyContent: 'center',
+        alignItems: 'center',
         minHeight: '1200px',
-        justifyContent: 'center', 
         backgroundImage: 'url(/images/madeira.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        padding: 4,
+        gap: 4
       }}
     >
       {/* Imagem da pizza */}
@@ -78,24 +82,32 @@ const PizzaOrder = () => {
         component="img"
         src={pizza.image}
         alt={pizza.title}
-        sx={{ width: { md: 600 }, marginTop: '200px',height: { md: 600},  borderRadius: 100 }}
+        sx={{
+          width: { xs: '100%', md: 500 },
+          height: { xs: 'auto', md: 500 },
+          borderRadius: 10,
+          objectFit: 'cover',
+          marginBottom: { xs: 4, md: 0 },
+}}
       />
 
       {/* Box com info da pizza */}
-      <Box sx={{height: '1150px', ml: '200px', mt:'20px', width: '800px', bgcolor: 'rgba(255,255,255,0.9)', p: 3, borderRadius: 2 }}>
+      <Box sx={{width: { xs: '100%', md: 600 },
+          bgcolor: 'rgba(255,255,255,0.95)',
+          p: 3,
+          borderRadius: 3,
+}}>
         <Typography
           variant="h3"
           gutterBottom
           sx={{
-            fontSize: '4rem',
+            fontSize: { xs: '2.5rem', md: '4rem' },
             textAlign: 'center',
-            paddingTop: '1.5rem',
-            fontWeight: 'bold', 
+            fontWeight: 'bold',
             textTransform: 'uppercase',
             color: '#ffca0c',
-            WebkitTextStroke: '3px #330a04',
-            margin: 0,
-            fontFamily: 'Impact, Charcoal, sans-serif', 
+            WebkitTextStroke: '2px #330a04',
+            fontFamily: 'Impact, Charcoal, sans-serif',
           }}
         >
           {pizza.title}
@@ -106,14 +118,14 @@ const PizzaOrder = () => {
           gutterBottom
           sx={{
             textAlign: 'center',
-            paddingTop: '1.5rem',
+            mt: 2,
             fontFamily: 'Impact, Charcoal, sans-serif',
             textTransform: 'uppercase',
             color: '#b81818ff',
             WebkitTextStroke: '1px #330a04',
-            margin: 0,
-            fontSize: '1.6rem',
+            fontSize: { xs: '1.2rem', md: '1.6rem' },
             fontStyle: 'italic',
+
           }}
         >
           {pizza.ingredients}
@@ -122,29 +134,27 @@ const PizzaOrder = () => {
           <Typography
               variant="subtitle1"
               sx={{
+                mt: 4,
                 border: '2px solid #330a04',
-                fontFamily: "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif",
+                fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
                 color: 'rgb(253, 251, 250)',
                 padding: '8px',
-                margin: '20px',
                 textAlign: 'center',
                 backgroundColor: '#b32900',
                 WebkitTextStroke: '0.8px rgb(66, 26, 14)',
                 borderRadius: '5px',
                 fontWeight: 'bold',
-                fontSize: 20,
-                
+                fontSize: 20,   
               }}>
                 Selecione o tamanho da pizza:
             </Typography>
 
         {pizza.category === 'pizza' && (
-          <FormControl component="fieldset" sx={{ mt: 3 }}>
+          <FormControl component="fieldset" sx={{ mt: 2 }}>
             <RadioGroup
               aria-label="tamanho"
               name="tamanho"
               value={tamanho}
-              
               onChange={(e) => setTamanho(e.target.value)}
             >
               {precosPizza.map((precoInfo) => (
@@ -153,7 +163,7 @@ const PizzaOrder = () => {
                   value={precoInfo.id}
                   control={<Radio sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />}
                   label={`Pizza ${precoInfo.nome} (R$${precoInfo.preco})`}
-                  sx={{ fontSize: 25, fontWeight: 'bold', mb: 1 }}
+                  sx={{ fontSize: 18, fontWeight: 'bold', mb: 1 }}
                 />
               ))}
             </RadioGroup>
@@ -181,7 +191,7 @@ const PizzaOrder = () => {
                 Selecione o tamanho da pizza:
             </Typography>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'center', mt: 2 }}>
             <IconButton
               aria-label="diminuir quantidade"
               onClick={diminuirQuantidade}
@@ -201,9 +211,8 @@ const PizzaOrder = () => {
             sx={{
               mt: 4,
               position: 'relative',
-              padding: '2em',
-              width: 300,
-              minHeight: 100,
+              padding: 2,
+              borderRadius: 2,
               backgroundColor: '#FFFD75',
               transition: 'transform 0.15s',
               margin: 0,
@@ -242,7 +251,7 @@ const PizzaOrder = () => {
           </Box>
 
         {/* Botão adicionar ao carrinho */}
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 4, textAlign: 'center' }}>
           <Button variant="contained" color="primary" size="large" onClick={handleCarrinhoClick}>
             Adicionar ao Carrinho
           </Button>
