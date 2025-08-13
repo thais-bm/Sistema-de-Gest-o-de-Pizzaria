@@ -69,20 +69,24 @@ const PizzaOrder = () => {
         {pizza.category === "pizza" && (
           <div className="tamanho">
           <form>
-            <p className='tamanho-pizzas'>Selecione o tamanho da pizza:</p>
+            <p className='tamanho-pizzas' >Selecione o tamanho da pizza:</p>
             {/* Com base do dicionario no ProdutosContext */}
             {precosPizza.map((precoInfo) => (
               <React.Fragment key={precoInfo.id}>
-                <input 
-                  type="radio" 
-                  id={precoInfo.id} 
-                  name="tamanho" 
-                  value={precoInfo.id} 
-                  onChange={(e) => setTamanho(e.target.value)}
-                />
-                <label htmlFor={precoInfo.id}>
-                  {`Pizza ${precoInfo.nome} (R$${precoInfo.preco})`}
-                </label> <br/>
+                <div key={precoInfo.id}
+                  style={{ display: 'flex', marginLeft: '50px'}} >
+                  <input
+                    type="radio"
+                    id={precoInfo.id}
+                    name="tamanho"
+                    value={precoInfo.id}
+                    onChange={(e) => setTamanho(e.target.value)}
+                  />
+                  <label htmlFor={precoInfo.id} style={{ fontSize: '25px', fontWeight: 'bold' }}>
+                    {`Pizza ${precoInfo.nome} (R$${precoInfo.preco})`}
+                  </label>
+                </div>
+                <br/>
               </React.Fragment>
             ))}
           </form>

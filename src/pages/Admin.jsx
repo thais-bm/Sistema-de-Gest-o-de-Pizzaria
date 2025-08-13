@@ -46,8 +46,6 @@ const NovoMenu = () => {
     }
   };
 
-  const toggleHistorico = () => setShowHistorico(prev => !prev);
-
   const handleHistoricoPedidos = () => {
     setHistoricoIconUp(!historicoIconUp);
     setShowHistorico(!showHistorico);

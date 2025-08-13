@@ -20,7 +20,7 @@
 .order{
   position: flex;
   height: 1050px;
-  background-image: linear-gradient(-60deg, #ffb80e 50%, 	#e32929 50%);
+  background-image: url("/images/madeira.jpg");
 }
 
 textarea {
@@ -79,7 +79,7 @@ textarea::placeholder {
 
 .tamanho{
   text-align: center;
-  font-size: 25px;
+  font-size: 22px;
   color: #ffffff;
   font-size: 2rem;
   text-transform: uppercase;
@@ -105,7 +105,7 @@ input[type="radio"] {
 
 
 input[type="radio"]:checked {
-    background-color: #FFFD75; 
+    background-color: #fff41c; 
 }
 
 input[type="radio"]:checked::after {

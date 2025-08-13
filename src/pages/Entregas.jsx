@@ -156,11 +156,11 @@ const Entregas = () => {
                 </Typography>
               ))}
               
-                            <Typography sx={{ mt: 3, fontWeight: 'bold' }}>
-                              Valor total: R$ {pedido.valorTotal}
-                            </Typography>
+              <Typography sx={{ mt: 3, fontWeight: 'bold' }}>
+                Valor total: R$ {pedido.valorTotal}
+              </Typography>
               
-                            <Typography><strong>Endereço:</strong> {pedido.endereco}</Typography>
+              <Typography><strong>Endereço:</strong> {pedido.endereco}</Typography>
             </CardContent>
 
             {/* Botões */}
