@@ -71,7 +71,7 @@ const Carrinho = () => {
             maxWidth: 600,
             mx: 'auto',
           }}
-        >
+        > 
           <Typography
             variant="h4"
             sx={{
