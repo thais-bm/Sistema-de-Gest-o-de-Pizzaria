@@ -87,7 +87,7 @@ const AddProduto = ({ onCancel }) => {
             <MenuItem value=""><em>Selecione</em></MenuItem>
             {novoProduto.category === 'pizza' && [
               <MenuItem key="doce" value="doce">Doce</MenuItem>,
-              <MenuItem key="salgado" value="salgado">Salgado</MenuItem>
+              <MenuItem key="salgado" value="salgado">Salgada</MenuItem>
             ]}
             {novoProduto.category === 'bebida' && [
               <MenuItem key="agua" value="agua">Água</MenuItem>,

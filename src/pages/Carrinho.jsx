@@ -43,7 +43,6 @@ const Carrinho = () => {
 
     adicionarHistorico(pedido);
     enviarParaCozinha(pedido);
-    navigate('/Cozinha');
   };
 
   if (carrinho.length === 0) {
