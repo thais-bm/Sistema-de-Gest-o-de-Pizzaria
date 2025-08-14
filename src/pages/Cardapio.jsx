@@ -8,14 +8,14 @@ import Footer from '../components/Footer'
 import { Container, Box, Button, Typography, Paper, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const Cardapio = () => {
-    const tamanhos = [
+  const tamanhos = [
     { nome: 'Pequena', preco: 'R$ 77,99' },
     { nome: 'Média', preco: 'R$ 99,99' },
     { nome: 'Grande', preco: 'R$ 110,99' },
     { nome: 'Família', preco: 'R$ 130,99' },
   ];
 
-  const {produtos, ingredientes, categorias} = useProdutos();
+  const { produtos, ingredientes, categorias } = useProdutos();
 
   const [mostrarFiltrosIng, setMostrarFiltrosIng] = useState(false);
   const [mostrarFiltrosTipos, setMostrarFiltrosTipos] = useState(false);
@@ -25,15 +25,15 @@ const Cardapio = () => {
   //Pizzas filtradas por ingredientes (que estão no produtosContext)
   const pizzasFiltradas = ingredienteSelecionado
     ? produtos.filter(pizza =>
-        pizza.ingredients[0]
+      pizza.ingredients[0]
         .toLowerCase()
-          .includes(ingredienteSelecionado.toLowerCase())
-      )
+        .includes(ingredienteSelecionado.toLowerCase())
+    )
     : produtos;
 
   //Produtos filtradas por tipos
   const tiposFiltrados = tipoSelecionado
-    ? produtos.filter(produto=> produto.subcategory == tipoSelecionado)
+    ? produtos.filter(produto => produto.subcategory == tipoSelecionado)
     : produtos;
 
   const pizzasSalgadas = produtos.filter(p => p.category === "pizza" && p.subcategory === "salgada");
@@ -78,7 +78,8 @@ const Cardapio = () => {
                 backgroundColor: '#6c1305',
               },
             }}
-            onClick={ () => { setMostrarFiltrosTipos(!mostrarFiltrosTipos);
+            onClick={() => {
+              setMostrarFiltrosTipos(!mostrarFiltrosTipos);
               // Lógica de reset: se o filtro estiver sendo ocultado, reseta o valor
               if (mostrarFiltrosTipos) {
                 setTipoSelecionado('');
@@ -99,7 +100,7 @@ const Cardapio = () => {
                 value={ingredienteSelecionado}
                 label="Ingrediente"
                 variant='filled'
-                sx = {{backgroundColor: '#b32a00c3',}}
+                sx={{ backgroundColor: '#b32a00c3', }}
                 onChange={(e) => setIngredienteSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
@@ -122,7 +123,7 @@ const Cardapio = () => {
                 labelId="tipo-label"
                 value={tipoSelecionado}
                 label="Tipo"
-                sx = {{backgroundColor: '#b32a00c3'}}
+                sx={{ backgroundColor: '#b32a00c3' }}
                 onChange={(e) => setTipoSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
@@ -135,7 +136,7 @@ const Cardapio = () => {
             </FormControl>
           </Box>
         )}
-        
+
         {ingredienteSelecionado && (
           <Box sx={{ mt: 4 }}>
             <Typography
@@ -180,7 +181,7 @@ const Cardapio = () => {
             >
               Tipos filtrados
             </Typography>
-            <Grid container spacing={3} sx={{ mt: 2, alignItems: 'center', justifyContent: 'center'  }}>
+            <Grid container spacing={3} sx={{ mt: 2, alignItems: 'center', justifyContent: 'center' }}>
               {tiposFiltrados.map(tipo => (
                 <Grid item xs={12} sm={6} md={4} key={tipo.id}>
                   <PizzaCard pizza={tipo} />
@@ -189,7 +190,7 @@ const Cardapio = () => {
             </Grid>
           </Box>
         )}
-        
+
         {/* Pizza aqui */}
         <Box sx={{ mt: 4 }}>
           <Typography variant="h3" component="h1" sx={{
@@ -203,41 +204,40 @@ const Cardapio = () => {
           }}>
             Pizzas
           </Typography>
-          
+
           {/* Responsividadeeee */}
           <Box sx={{ my: 4, px: 2 }}>
             <Grid container spacing={3} justifyContent="center">
-        {tamanhos.map((item, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Paper
-              sx={{
-                p: 2,
-                textAlign: 'center',
-                backgroundColor: '#b32900',
-                border: '1px solid #4f2b09',
-                transition: 'transform 0.3s',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                },
-              }}
-              elevation={4}
-            >
-              <Typography variant="h5" sx={{ color: 'white' }}>
-                {item.nome}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  mt: 1,
-                  textDecoration: 'underline',
-                  color: 'white',
-                }}
-              >
-                {item.preco}
-              </Typography>
-            </Paper>
-          </Grid>
-        ))}
+              {tamanhos.map((item, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      textAlign: 'center',
+                      backgroundColor: '#b32900',
+                      border: '1px solid #4f2b09',
+                      transition: 'transform 0.3s',
+                      '&:hover': {
+                        transform: 'scale(1.05)',
+                      },
+                    }}
+                    elevation={4}>
+                    <Typography variant="h5" sx={{ color: 'white' }}>
+                      {item.nome}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        mt: 1,
+                        textDecoration: 'underline',
+                        color: 'white',
+                      }}
+                    >
+                      {item.preco}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
             </Grid>
           </Box>
         </Box>
@@ -251,7 +251,7 @@ const Cardapio = () => {
             padding: '10px',
             borderRadius: '30px',
             textShadow: '1px 1px #421a0e',
-             border: '1px solid #4f2b09'
+            border: '1px solid #4f2b09'
           }}>
             Pizzas salgadas
           </Typography>
@@ -263,7 +263,7 @@ const Cardapio = () => {
             ))}
           </Grid>
         </Box>
-        
+
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
@@ -284,7 +284,7 @@ const Cardapio = () => {
             ))}
           </Grid>
         </Box>
-        
+
         <Box sx={{ mt: 4 }}>
           <Typography variant="h3" component="h1" sx={{
             color: 'rgb(245, 234, 227)',
@@ -298,7 +298,7 @@ const Cardapio = () => {
             Bebidas
           </Typography>
         </Box>
-        
+
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
@@ -319,7 +319,7 @@ const Cardapio = () => {
             ))}
           </Grid>
         </Box>
-        
+
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
@@ -340,7 +340,7 @@ const Cardapio = () => {
             ))}
           </Grid>
         </Box>
-        
+
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
