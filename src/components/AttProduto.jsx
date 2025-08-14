@@ -7,8 +7,6 @@ import { ProdutosProvider, useProdutos } from '../context/ProdutosContext';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import Tooltip from '@mui/material/Tooltip'; 
 
-
-
 const AttProduto = () => {
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -50,11 +48,8 @@ const AttProduto = () => {
   const handleSalvar = () => {
     atualizarProduto(pizzaSelecionada, formData);
     toast.success("Item modificado com sucesso!");
-    setTimeout(() => {
-      if (onCancel) onCancel();
-    }, 1500); 
-  };
-
+  }
+  
   //pra ele desaparecer na hora
   const handleRemover = () => {
     removerProduto(pizzaSelecionada);

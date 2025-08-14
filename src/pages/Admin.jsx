@@ -1,37 +1,31 @@
 import React, {useState} from 'react'
 import '../components/PizzaCard.css'
-import { useProdutos } from "../context/ProdutosContext";
 import { useNavigate } from 'react-router-dom';
+import { ProdutosProvider} from '../context/ProdutosContext';
 import { Container, Card, Box, CardContent, Button, Typography, Paper, Collapse } from '@mui/material';
 import { KeyboardArrowDown, KeyboardArrowUp} from '@mui/icons-material';
-import { set } from 'react-hook-form';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
 import AddProduto from '../components/AddProduto';
 import AttProduto from '../components/AttProduto';
-import Historico from '../components/Historico'
-
-// eu vou transformar em um menu dropdown pra aparecer na propria pagina de Admin
-const gerenciarDropdown = () => {
-  
-};
-
-const historicoDropdown = () => {
-
-};
+import Historico from '../components/Historico';
+import Promoção from '../components/Promoção';
 
 
 // aqui fica as mudanças que eu estou fazendo no menu de Admin
 const NovoMenu = () => {
 
+
   const navigate = useNavigate();
 
   const [gerenciarIconUp, setGerenciarIconUp] = useState(true);
   const [historicoIconUp, setHistoricoIconUp] = useState(true);
+  const [promocoesIconUp, setPromocoesIconUp] = useState(true);
 
   const [showGerenciarMenu, setShowGerenciarMenu] = useState(false);
   const [showAddProduto, setShowAddProduto] = useState(false);
   const [showAttProduto, setShowAttProduto] = useState(false);
+  const [showPromocoesMenu, setShowPromocoesMenu] = useState(false);
 
   const [showHistorico, setShowHistorico] = useState(false);
 
@@ -49,6 +43,12 @@ const NovoMenu = () => {
   const handleHistoricoPedidos = () => {
     setHistoricoIconUp(!historicoIconUp);
     setShowHistorico(!showHistorico);
+  }
+
+  const handlePromoções =() => {
+    setPromocoesIconUp(!promocoesIconUp);
+    setShowPromocoesMenu(!showPromocoesMenu);
+
   }
   return (
     <Container component="section" maxWidth="100%" sx={{
@@ -110,6 +110,19 @@ const NovoMenu = () => {
                 )}
 
               </Box>
+            </Collapse>
+
+            <Button variant="outlined" color="primary" 
+              startIcon={gerenciarIconUp ? <KeyboardArrowUp /> : <KeyboardArrowDown />} 
+              onClick={handlePromoções}
+            >
+              Adicionar promoções
+            </Button>
+
+            <Collapse in={showPromocoesMenu} sx={{ width: '100%', mt: 2 }}>
+
+              {showPromocoesMenu && <Promoção />}
+              
             </Collapse>
 
             <Button variant="outlined" color="primary" startIcon={historicoIconUp ? <KeyboardArrowUp /> : <KeyboardArrowDown />} onClick={handleHistoricoPedidos}>

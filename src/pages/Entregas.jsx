@@ -85,7 +85,7 @@ const Entregas = () => {
               Nenhum entrega pendente!!!
             </Typography>
 
-         )}
+        )}
 
         {pedidosPendentes.map((pedido) => (
           <Card
@@ -161,6 +161,7 @@ const Entregas = () => {
               </Typography>
               
               <Typography><strong>Endereço:</strong> {pedido.endereco}</Typography>
+              <Typography><strong>Taxa de entrega:</strong> R$15,00 </Typography>
             </CardContent>
 
             {/* Botões */}

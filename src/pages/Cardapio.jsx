@@ -8,14 +8,8 @@ import Footer from '../components/Footer'
 import { Container, Box, Button, Typography, Paper, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const Cardapio = () => {
-  const tamanhos = [
-    { nome: 'Pequena', preco: 'R$ 77,99' },
-    { nome: 'Média', preco: 'R$ 99,99' },
-    { nome: 'Grande', preco: 'R$ 110,99' },
-    { nome: 'Família', preco: 'R$ 130,99' },
-  ];
 
-  const { produtos, ingredientes, categorias } = useProdutos();
+  const { produtos, ingredientes, categorias, precosPizza} = useProdutos();
 
   const [mostrarFiltrosIng, setMostrarFiltrosIng] = useState(false);
   const [mostrarFiltrosTipos, setMostrarFiltrosTipos] = useState(false);
@@ -208,7 +202,7 @@ const Cardapio = () => {
           {/* Responsividadeeee */}
           <Box sx={{ my: 4, px: 2 }}>
             <Grid container spacing={3} justifyContent="center">
-              {tamanhos.map((item, index) => (
+              {precosPizza.map((item, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
                   <Paper
                     sx={{
@@ -233,7 +227,7 @@ const Cardapio = () => {
                         color: 'white',
                       }}
                     >
-                      {item.preco}
+                      R$ {item.preco}
                     </Typography>
                   </Paper>
                 </Grid>
