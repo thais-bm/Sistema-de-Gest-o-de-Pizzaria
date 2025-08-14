@@ -258,6 +258,16 @@ const Carrinho = () => {
               >
                 Informe o número da mesa:
               </Typography>
+
+              <TextField
+                label="Digite seu nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                fullWidth
+                variant="outlined"
+                sx={{paddingBottom:'10px'}}
+              />
+
               <Select fullWidth value={mesa} onChange={handleChangeMesa}>
                 <MenuItem value="301">301</MenuItem>
                 <MenuItem value="125">125</MenuItem>
