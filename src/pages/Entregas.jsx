@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCarrinho } from '../context/CarrinhoContext';
-import { Container, IconButton, Typography, Box, Card, CardContent, Stack, Button, CardActions } from '@mui/material';
+import { Container,Radio, FormControlLabel, RadioGroup, IconButton, Typography, Box, Card, CardContent, FormControl, Stack, Button, CardActions } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import LockIcon from '@mui/icons-material/Lock';
@@ -11,6 +11,12 @@ const Entregas = () => {
   const { pedidosPendentes, removerDaEntrega } = useCarrinho();
 
   const navigate = useNavigate();
+
+  const [escolha, setEscolha] = useState("")
+  
+  const handleEscolha = (event) => {
+    setEscolha(event.target.value);
+  };
 
   const handleCardapioClick = () => {
     navigate('/Cardapio');
@@ -92,7 +98,7 @@ const Entregas = () => {
             key={pedido.id}
             sx={{
               width: '400px',
-              height: '450px',
+              height: '600px',
               justifyContent: 'center',
               padding: '10px 20px',
               borderRadius: '60px',
@@ -160,8 +166,29 @@ const Entregas = () => {
                 Valor total: R$ {pedido.valorTotal}
               </Typography>
               
-              <Typography><strong>Endereço:</strong> {pedido.endereco}</Typography>
-              <Typography><strong>Taxa de entrega:</strong> R$15,00 </Typography>
+              
+              
+              {pedido.entrega == 'entrega' &&(
+                <>
+                  <Typography><strong>Taxa de entrega:</strong> R$15,00 </Typography>
+                  <Typography><strong>Endereço:</strong> {pedido.endereco}</Typography>
+                </>
+              )}
+
+              {pedido.entrega === 'mesa' && (
+                <FormControl component="fieldset" sx={{ mt: 2 }}>
+                  <Typography><strong>Cliente aceita taxa do garçom {/*nome do garcom*/}?</strong></Typography>
+                  <RadioGroup
+                    aria-label="tamanho"
+                    name="tamanho"
+                    value={escolha}
+                    onChange={(e) => setEscolha(e.target.value)}
+                  >
+                    <FormControlLabel value="Sim" control={<Radio />} label="Sim" />
+                    <FormControlLabel value="Não" control={<Radio />} label="Não" />
+                  </RadioGroup>
+                </FormControl>
+              )}
             </CardContent>
 
             {/* Botões */}
