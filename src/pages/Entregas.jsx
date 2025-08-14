@@ -229,7 +229,7 @@ const Entregas = () => {
                     },
                   }}
                 >
-                  Cancelado
+                  Servido
                 </Button>
               </Stack>
             </CardActions>
